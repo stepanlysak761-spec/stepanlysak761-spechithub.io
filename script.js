@@ -1,45 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Ефект друку тексту
-    const textElement = document.getElementById('typing-text');
-    const fullText = textElement.innerHTML;
-    textElement.innerHTML = '';
-    let index = 0;
+    // 1. Друк тексту
+    const text = "Ferrari 499P — це вершина інженерії Hypercar. Повернення Ferrari до Ле-Ману після 50 років призвело до трьох послідовних перемог у 2023, 2024 та 2025 роках.";
+    const output = document.getElementById('typewriter-output');
+    let i = 0;
 
     function type() {
-        if (index < fullText.length) {
-            textElement.innerHTML += fullText.charAt(index);
-            index++;
-            setTimeout(type, 15);
+        if (i < text.length) {
+            output.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 30);
         }
     }
-    setTimeout(type, 1000);
 
-    // 2. Зміна кольору акценту
-    const switcher = document.getElementById('color-switcher');
-    const colors = ['#ff0000', '#ffd700', '#00d4ff', '#00ff66'];
-    let cIndex = 0;
-
-    switcher.addEventListener('click', () => {
-        cIndex = (cIndex + 1) % colors.length;
-        document.documentElement.style.setProperty('--accent-color', colors[cIndex]);
-        console.log("Accent updated to: " + colors[cIndex]);
-    });
-
-    // 3. Плавна поява при скролі
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+    // 2. Скрол-анімація
+    const reveal = () => {
+        document.querySelectorAll('.reveal').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) el.classList.add('active');
         });
-    }, { threshold: 0.15 });
+    };
 
-    const animateList = '.specs-card, .info-card, .timeline-item, .history-image-showcase, .video-section';
-    document.querySelectorAll(animateList).forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(40px)';
-        el.style.transition = 'all 0.8s ease-out';
-        observer.observe(el);
+    // 3. Зміна кольору (MODE)
+    const btn = document.getElementById('mode-trigger');
+    let mode = 0;
+    btn.addEventListener('click', () => {
+        mode = (mode + 1) % 2;
+        document.documentElement.style.setProperty('--accent', mode === 0 ? '#ff0000' : '#ffd700');
     });
+
+    window.addEventListener('scroll', reveal);
+    type();
+    reveal();
 });
