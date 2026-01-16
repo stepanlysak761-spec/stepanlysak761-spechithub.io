@@ -3,113 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endurance Racing | 24 Hours of Pure Speed</title>
+    <title>Ferrari 499P | Технічне досьє</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="brand">ENDURANCE<span>HUB</span></div>
-            <ul>
-                <li><a href="#live">Live Timing</a></li>
-                <li><a href="#classes">Класи авто</a></li>
-                <li><a href="#track">Траса</a></li>
-                <li><a href="#history">Історія</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="vignette"></div>
 
-    <main>
-        <section class="hero-section">
-            <div class="overlay">
-                <span class="race-status">LIVE: 24 HEURES DU MANS</span>
-                <h1>ВИЖИВАЄ НАЙСИЛЬНІШИЙ</h1>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="category">LE MANS HYPERCAR</span>
+            <h1>FERRARI 499P</h1>
+            <p>Повернення легенди через 50 років.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <div class="grid-layout">
+            <section class="specs-box">
+                <h2 class="section-title">СПЕЦИФІКАЦІЇ</h2>
+                <div class="spec-row">
+                    <span>ДВИГУН</span>
+                    <span class="highlight">3.0L V6 TWIN-TURBO</span>
+                </div>
+                <div class="spec-row">
+                    <span>ГІБРИДНА СИСТЕМА</span>
+                    <span class="highlight">ERS (200 KW)</span>
+                </div>
+                <div class="spec-row">
+                    <span>ПОТУЖНІСТЬ</span>
+                    <span class="highlight">680 К.С.</span>
+                </div>
+                <div class="spec-row">
+                    <span>ВАГА</span>
+                    <span class="highlight">1030 КГ</span>
+                </div>
+                <div class="spec-row">
+                    <span>ШАСІ</span>
+                    <span class="highlight">ВУГЛЕЦЕВИЙ МОНОКОК</span>
+                </div>
+            </section>
+
+            <section class="info-content">
+                <h2 class="section-title">ПРО АВТОМОБІЛЬ</h2>
+                <p id="typing-text">Ferrari 499P — це не просто машина, це маніфест італійської інженерії. Створений для підкорення 24 годин Ле-Мана, цей прототип використовує архітектуру двигуна від моделі 296 GTB, але переосмислену для екстремальних навантажень.</p>
                 
-                <div id="race-timer">
-                    <div class="time-block"><span>18</span> год</div>
-                    <div class="time-block"><span>42</span> хв</div>
-                    <div class="time-block"><span>05</span> сек</div>
+                <div class="feature-tags">
+                    <span class="tag">#Winner2023</span>
+                    <span class="tag">#Winner2024</span>
+                    <span class="tag">#HybridPower</span>
                 </div>
+            </section>
+        </div>
+
+        <section class="visual-section">
+            <div class="data-point" style="top: 20%; left: 30%;">
+                <div class="pulse"></div>
+                <div class="label">Активна аеродинаміка</div>
+            </div>
+            <div class="data-point" style="top: 60%; left: 70%;">
+                <div class="pulse"></div>
+                <div class="label">ERS Energy Recovery</div>
             </div>
         </section>
 
-        <section id="live" class="leaderboard">
-            <h2>Поточні лідери</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Поз.</th>
-                        <th>Клас</th>
-                        <th>№</th>
-                        <th>Команда / Авто</th>
-                        <th>Інтервал</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="class-hypercar">
-                        <td>1</td>
-                        <td><span class="badge hypercar">Hypercar</span></td>
-                        <td>#51</td>
-                        <td>Ferrari AF Corse (499P)</td>
-                        <td>Leader</td>
-                    </tr>
-                    <tr class="class-hypercar">
-                        <td>2</td>
-                        <td><span class="badge hypercar">Hypercar</span></td>
-                        <td>#8</td>
-                        <td>Toyota Gazoo Racing (GR010)</td>
-                        <td>+15.420s</td>
-                    </tr>
-                    <tr class="class-gt3">
-                        <td>12</td>
-                        <td><span class="badge lmgt3">LMGT3</span></td>
-                        <td>#92</td>
-                        <td>Manthey PureRxcing (Porsche 911)</td>
-                        <td>+4 Laps</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="classes" class="car-categories">
-            <h2>Технічні Класи</h2>
-            <div class="class-container">
-                <article class="class-card">
-                    <img src="hypercar.jpg" alt="Hypercar Class">
-                    <h3>Hypercar (LMH/LMDh)</h3>
-                    <p>Вершина інженерної думки. Гібридні прототипи потужністю понад 670 к.с.</p>
-                    <ul>
-                        <li><strong>Вага:</strong> 1030 кг</li>
-                        <li><strong>Двигун:</strong> Гібридна установка</li>
-                    </ul>
-                </article>
-
-                <article class="class-card">
-                    <img src="gt3.jpg" alt="LMGT3 Class">
-                    <h3>LMGT3</h3>
-                    <p>Суперкари на базі серійних моделей: Ferrari, Porsche, Corvette, BMW.</p>
-                    <ul>
-                        <li><strong>Вага:</strong> ~1300 кг</li>
-                        <li><strong>Особливість:</strong> Клієнтські команди</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="track" class="track-info">
-            <div class="track-content">
-                <h2>Circuit de la Sarthe</h2>
-                <p>Довжина: 13.626 км | Повороти: 38</p>
-                <div class="track-map">
-                    <p>[Карта траси Ле-Ман]</p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Endurance Hub. Всі права захищені.</p>
+        <p>FERRARI HYPERCAR PROGRAM 2026 // SCUDERIA FERRARI</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
