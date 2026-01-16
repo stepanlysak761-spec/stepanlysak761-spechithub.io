@@ -1,49 +1,114 @@
-// Preloader
-const lights = document.querySelectorAll('.light');
-let lightIdx = 0;
-const interval = setInterval(() => {
-    if(lightIdx < 5) {
-        lights[lightIdx].classList.add('on');
-        lightIdx++;
-    } else {
-        clearInterval(interval);
-        setTimeout(() => {
-            const loader = document.getElementById('loader');
-            if(loader) {
-                loader.style.opacity = '0';
-                setTimeout(() => loader.remove(), 600);
-            }
-        }, 1000);
-    }
-}, 400);
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZERO POINT FIVE | 2021 F1 Digital Archive</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛞</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-// Radio Typewriter
-function playRadio(pilot, text) {
-    const display = document.getElementById('radio-display');
-    display.innerText = "";
-    display.style.color = (pilot === 'TOTO') ? '#00d2be' : '#0f0';
-    let i = 0;
-    const type = setInterval(() => {
-        if(i < text.length) { display.innerText += text.charAt(i); i++; }
-        else clearInterval(type);
-    }, 50);
-}
+    <div id="loader">
+        <div class="light-row">
+            <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+        </div>
+        <p id="loader-status">SYNCING 2021 DATA...</p>
+    </div>
 
-// Scroll Reveal
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('active');
-    });
-}, { threshold: 0.1 });
-document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+    <nav class="pill-nav">
+        <div class="logo">ZERO POINT FIVE</div>
+        <button class="music-pill" onclick="toggleMusic()">🎵 START ATMOSPHERE</button>
+    </nav>
 
-// Music Logic
-let isPlaying = false;
-function toggleMusic() {
-    const music = document.getElementById('audio-engine'), btn = document.querySelector('.music-pill');
-    if(!isPlaying) { 
-        music.src += "&autoplay=1"; 
-        btn.innerText = "⏸ STOP ATMOSPHERE"; 
-        isPlaying = true; 
-    }
-}
+    <iframe id="audio-engine" width="0" height="0" src="https://www.youtube.com/embed/LJzp_mDxaT0?enablejsapi=1" style="display:none"></iframe>
+
+    <main class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <span class="badge reveal">THE 2021 DIGITAL ARCHIVE</span>
+                <h1 class="glitch-text">ZERO POINT<br><span class="outline">FIVE</span></h1>
+                <p class="hero-sub">THE MARGIN BETWEEN GLORY AND DEFEAT.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card"><h3>369.5</h3><p>PTS EQUAL</p></div>
+                <div class="stat-card"><h3>22</h3><p>RACES DRIVEN</p></div>
+            </div>
+        </header>
+
+        <section class="section-reveal">
+            <h2 class="section-title">VIDEO ARCHIVE</h2>
+            <div class="video-grid">
+                <div class="video-card large">
+                    <span class="tag">ABU DHABI FINALE</span>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/MTe12fH2xtQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <h4>THE FINAL LAP OVERTAKE</h4>
+                </div>
+                <div class="video-sub-grid">
+                    <div class="video-card">
+                        <span class="tag" style="background:var(--red)">SILVERSTONE CRASH</span>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/oIKel6jVD3Q" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <span class="tag" style="background:var(--gold)">SEASON RECAP</span>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/yO2SBWOgci4" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-reveal">
+            <h2 class="section-title">KEY MOMENTS</h2>
+            <div class="modern-bento">
+                <div class="bento-card long" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?q=80&w=2070');">
+                    <div class="bento-content">
+                        <span class="tag">BAKU</span>
+                        <h3>TYRE BLOWOUT</h3>
+                        <p>Макс втрачає перемогу на швидкості 300 км/год. Льюїс помиляється на рестарті.</p>
+                    </div>
+                </div>
+                <div class="bento-card square">
+                    <div class="bento-content">
+                        <span class="tag" style="background: var(--blue);">SPA</span>
+                        <h3>THE 0.5 FACTOR</h3>
+                        <p>Дощ, 2 кола та історичне рішення про половину очок.</p>
+                        <div class="mini-stat">+5.0 PTS</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="radio-section section-reveal">
+            <div class="glass-card">
+                <h2 class="section-title">TEAM RADIO</h2>
+                <div id="radio-display">[ SELECT FREQUENCY ]</div>
+                <div class="radio-controls">
+                    <button class="btn-radio" onclick="playRadio('MAX', 'OMG! OH MY GOD GUYS!')">MAX</button>
+                    <button class="btn-radio" onclick="playRadio('HORNER', 'MAX VERSTAPPEN, YOU ARE CHAMPION!')">HORNER</button>
+                    <button class="btn-radio" onclick="playRadio('TOTO', 'NO MICHAEL! NO NO MICHAEL!')">TOTO</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="facts-wrapper">
+                <div class="fact-item"><strong>18</strong> PODIUMS (MAX)</div>
+                <div class="fact-item"><strong>103rd</strong> WIN (LEWIS)</div>
+                <div class="fact-item"><strong>22</strong> STAGES</div>
+            </div>
+            <p style="margin-top: 50px; opacity: 0.3; font-size: 0.7rem;">© 2026 ZERO POINT FIVE | BY F1 FAN ARCHIVE</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
