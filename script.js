@@ -1,63 +1,48 @@
-// 1. Lights Out Preloader
+// Preloader
 const lights = document.querySelectorAll('.light');
-let lightCount = 0;
-const lightInterval = setInterval(() => {
-    if(lightCount < 5) {
-        lights[lightCount].classList.add('on');
-        lightCount++;
-    } else {
-        clearInterval(lightInterval);
-        setTimeout(() => {
-            document.getElementById('loader').style.opacity = '0';
-            setTimeout(() => document.getElementById('loader').remove(), 600);
-        }, 800);
-    }
-}, 500);
+let lIdx = 0;
+const lInt = setInterval(() => {
+    if(lIdx < 5) { lights[lIdx].classList.add('on'); lIdx++; }
+    else { clearInterval(lInt); setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').remove(), 600); }, 800); }
+}, 400);
 
-// 2. Custom Cursor Follower
-const follower = document.getElementById('cursor-follower');
-const dot = document.getElementById('dot');
-function moveCursor(e) {
-    follower.style.left = e.clientX - 15 + 'px';
-    follower.style.top = e.clientY - 15 + 'px';
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
+// Cursor
+const f = document.getElementById('cursor-follower'), d = document.getElementById('dot');
+function moveCursor(e) { 
+    f.style.left = e.clientX - 15 + 'px'; f.style.top = e.clientY - 15 + 'px';
+    d.style.left = e.clientX + 'px'; d.style.top = e.clientY + 'px';
 }
 
-// 3. Experience Toggle (Music)
-let playing = false;
+// History Themes
+function setTheme(color) {
+    const r = document.documentElement;
+    if(color === 'red') r.style.setProperty('--bg', '#1a0505');
+    else if(color === 'blue') r.style.setProperty('--bg', '#05051a');
+    else if(color === 'gold') r.style.setProperty('--bg', '#1a1405');
+    setTimeout(() => r.style.setProperty('--bg', '#030303'), 1500);
+}
+
+// Music
+let p = false;
 function toggleMusic() {
-    const music = document.getElementById('audio-engine');
-    const btn = document.querySelector('.music-pill');
-    if(!playing) {
-        music.src += "&autoplay=1";
-        btn.innerText = "⏸ STOP EXPERIENCE";
-        playing = true;
-    }
+    const m = document.getElementById('audio-engine'), b = document.querySelector('.music-pill');
+    if(!p) { m.src += "&autoplay=1"; b.innerText = "⏸ STOP EXPERIENCE"; p = true; }
 }
 
-// 4. Team Radio Simulator
+// Radio Typewriter
 function playRadio(pilot, text) {
-    const display = document.getElementById('radio-display');
-    display.innerText = "";
-    display.style.color = (pilot === 'TOTO' || pilot === 'LEWIS') ? '#00d2be' : '#0f0';
-    
+    const disp = document.getElementById('radio-display');
+    disp.innerText = "";
+    disp.style.color = (pilot === 'TOTO' || pilot === 'LEWIS') ? '#00d2be' : '#0f0';
     let i = 0;
-    const timer = setInterval(() => {
-        if (i < text.length) {
-            display.innerText += text.charAt(i);
-            i++;
-        } else {
-            clearInterval(timer);
-        }
+    const t = setInterval(() => {
+        if(i < text.length) { disp.innerText += text.charAt(i); i++; }
+        else clearInterval(t);
     }, 50);
 }
 
-// 5. Scroll Reveal Logic
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('active');
-    });
+// Scroll Reveal
+const obs = new IntersectionObserver((es) => {
+    es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
 }, { threshold: 0.1 });
-
-document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.section-reveal').forEach(el => obs.observe(el));
