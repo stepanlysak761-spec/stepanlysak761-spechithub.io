@@ -1,12 +1,7 @@
-/* Скидання налаштувань та головні кольори */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --accent-color: #ff0000; /* Основний акцентний колір, який буде змінюватись */
+    --accent-color: #ff0000;
     --dark: #050505;
     --card: #111111;
     --text: #ffffff;
@@ -24,89 +19,70 @@ header {
     padding: 20px 5%;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Центруємо елементи по вертикалі */
+    align-items: center;
     border-bottom: 1px solid #222;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
+    position: sticky; top: 0; z-index: 100;
 }
 
-.logo { font-weight: 900; letter-spacing: 2px; font-size: 1.5rem; }
-.logo span { color: var(--accent-color); } /* Використовуємо змінну */
+.logo { font-weight: 900; letter-spacing: 2px; }
+.logo span { color: var(--accent-color); transition: 0.3s; }
 
-.header-controls {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Відступ між елементами в хедері */
+.header-controls { display: flex; align-items: center; gap: 20px; }
+
+.color-switcher {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.7rem;
+    transition: 0.3s;
 }
 
 .system-status { color: #00ff00; font-size: 0.7rem; font-family: monospace; }
 
-/* Кнопка зміни кольору */
-.color-switcher {
-    background: var(--accent-color); /* Колір кнопки залежить від акценту */
-    color: var(--text);
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-}
-
-.color-switcher:hover {
-    filter: brightness(1.2);
-}
-
-
-/* Hero Section */
 .hero {
     height: 70vh;
     background: linear-gradient(to bottom, rgba(5,5,5,0.2), var(--dark)), 
                 url('https://images.unsplash.com/photo-1592193660027-5831f58904b1?auto=format&fit=crop&w=1920&q=80') center/cover;
-    background-size: cover; /* Забезпечуємо покриття */
-    background-attachment: fixed; /* Ефект паралаксу */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    background-attachment: fixed;
+    display: flex; align-items: center; justify-content: center; text-align: center;
 }
 
-.hero h1 { font-size: 8rem; font-weight: 900; margin: 0; letter-spacing: -5px; }
-.badge { background: var(--accent-color); padding: 5px 15px; font-size: 0.8rem; font-weight: bold; } /* Використовуємо змінну */
+.hero h1 { font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; margin: 0; letter-spacing: -5px; }
+.badge { background: var(--accent-color); padding: 5px 15px; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
 
-/* Контент */
-.container { max-width: 1200px; margin: -100px auto 50px; padding: 0 20px; }
+.container { max-width: 1200px; margin: -100px auto 50px; padding: 0 20px; position: relative; }
 
-.grid-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; }
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-.specs-card, .info-card {
-    background: var(--card);
-    padding: 40px;
-    border: 1px solid #222;
-}
+.specs-card, .info-card { background: var(--card); padding: 40px; border: 1px solid #222; }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-    border-bottom: 1px solid #222;
-    font-size: 0.9rem;
-}
-
+.row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #222; font-size: 0.9rem; }
 .row span { color: var(--gray); }
-.row strong { color: var(--accent-color); font-family: monospace; } /* Використовуємо змінну */
+.row strong { color: var(--accent-color); transition: 0.3s; }
 
-/* Відео */
-.video-section { margin-top: 50px; text-align: center; }
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    margin-top: 20px;
-    border: 5px solid var(--card);
+.tags { margin-top: 20px; }
+.tags span { border: 1px solid #333; padding: 5px 10px; margin-right: 10px; font-size: 0.7rem; color: var(--gray); }
+
+/* Timeline Styles */
+.history-section { margin-top: 80px; }
+.timeline { position: relative; border-left: 2px solid #222; padding-left: 30px; margin: 40px auto; max-width: 800px; }
+.timeline-item { margin-bottom: 40px; position: relative; }
+.timeline-item::before {
+    content: ''; position: absolute; left: -37px; top: 5px;
+    width: 12px; height: 12px; background: #333; border-radius: 50%;
 }
+.timeline-item.winner::before { background: var(--accent-color); box-shadow: 0 0 10px var(--accent-color); }
+.date { color: var(--accent-color); font-weight: bold; font-family: monospace; }
+.event h4 { margin: 5px 0; }
+.event p { color: var(--gray); font-size: 0.9rem; }
 
-.video-container iframe {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-}
+.video-section { margin-top: 80px; text-align: center; }
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid var(--card); }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-.title { letter-spacing: 5px; color: var(--gray); font-size: 1rem; margin-bottom: 20px; }
+.title { letter-spacing: 5px; color: var(--gray); font-size: 1rem; margin-bottom: 30px; }
+footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.7rem; color: #444; }
