@@ -3,76 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferrari 499P | Технічне досьє</title>
+    <title>Ferrari 499P | Technical Dossier & History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="vignette"></div>
+    <header>
+        <div class="logo">FERRARI <span>HYPERCAR</span></div>
+        <div class="header-controls">
+            <button id="color-switcher" class="color-switcher">ЗМІНИТИ АКЦЕНТ</button>
+            <div class="system-status">SYSTEM: ONLINE</div>
+        </div>
+    </header>
 
     <section class="hero">
         <div class="hero-content">
-            <span class="category">LE MANS HYPERCAR</span>
-            <h1>FERRARI 499P</h1>
-            <p>Повернення легенди через 50 років.</p>
+            <span class="badge">LE MANS WINNER</span>
+            <h1>499P</h1>
+            <p>THE ART OF ENDURANCE</p>
         </div>
     </section>
 
     <main class="container">
-        
         <div class="grid-layout">
-            <section class="specs-box">
-                <h2 class="section-title">СПЕЦИФІКАЦІЇ</h2>
-                <div class="spec-row">
-                    <span>ДВИГУН</span>
-                    <span class="highlight">3.0L V6 TWIN-TURBO</span>
-                </div>
-                <div class="spec-row">
-                    <span>ГІБРИДНА СИСТЕМА</span>
-                    <span class="highlight">ERS (200 KW)</span>
-                </div>
-                <div class="spec-row">
-                    <span>ПОТУЖНІСТЬ</span>
-                    <span class="highlight">680 К.С.</span>
-                </div>
-                <div class="spec-row">
-                    <span>ВАГА</span>
-                    <span class="highlight">1030 КГ</span>
-                </div>
-                <div class="spec-row">
-                    <span>ШАСІ</span>
-                    <span class="highlight">ВУГЛЕЦЕВИЙ МОНОКОК</span>
-                </div>
-            </section>
+            <div class="specs-card">
+                <h3>ТЕХНІЧНІ ДАНІ</h3>
+                <div class="line"></div>
+                <div class="row"><span>ENGINE</span> <strong>3.0L V6 BITURBO</strong></div>
+                <div class="row"><span>POWER</span> <strong>680 HP</strong></div>
+                <div class="row"><span>WEIGHT</span> <strong>1030 KG</strong></div>
+                <div class="row"><span>TOP SPEED</span> <strong>343 KM/H</strong></div>
+                <div class="row"><span>HYBRID</span> <strong>ERS (200 KW)</strong></div>
+            </div>
 
-            <section class="info-content">
-                <h2 class="section-title">ПРО АВТОМОБІЛЬ</h2>
-                <p id="typing-text">Ferrari 499P — це не просто машина, це маніфест італійської інженерії. Створений для підкорення 24 годин Ле-Мана, цей прототип використовує архітектуру двигуна від моделі 296 GTB, але переосмислену для екстремальних навантажень.</p>
-                
-                <div class="feature-tags">
-                    <span class="tag">#Winner2023</span>
-                    <span class="tag">#Winner2024</span>
-                    <span class="tag">#HybridPower</span>
+            <div class="info-card">
+                <h3>ДЕТАЛІ ПРОТОТИПУ</h3>
+                <p id="typing-text">Ferrari 499P — це спортивний прототип, побудований Scuderia Ferrari для участі в чемпіонаті світу FIA WEC. Поява 499P знаменує 50 років з моменту, коли Ferrari востаннє боролася за загальну перемогу в Ле-Мані. Кожна лінія кузова оптимізована для максимальної притискної сили.</p>
+                <div class="tags">
+                    <span>#LeMans</span><span>#Hypercar</span><span>#Ferrari499P</span>
                 </div>
-            </section>
+            </div>
         </div>
 
-        <h2 class="section-title video-title">DYNAMIC SHOWCASE</h2>
-        <section class="video-showcase">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/videoseries?si=tXyC09Kj-Q6L8b0e&amp;list=PLc4tM-P0QnJ0mE2w0g6f0k3o4j5l9q9_C" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen></iframe>
-            </div>
-            <div class="video-description">
-                <h3>ЕМОЦІЇ ТА ШВИДКІСТЬ</h3>
-                <p>Відчуйте пульс 24-годинних перегонів разом із Ferrari 499P. Кожен момент — це виклик, кожне коло — це історія.</p>
+        <section class="history-section">
+            <h2 class="title">ІСТОРІЯ ТА ТРІУМФ</h2>
+            <div class="history-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="date">Жовтень 2022</div>
+                        <div class="event">
+                            <h4>Світова прем'єра</h4>
+                            <p>Автомобіль представлений на Ferrari Finali Mondiali як данина 50-річчю виступів у топовому класі.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item winner">
+                        <div class="date">Червень 2023</div>
+                        <div class="event">
+                            <h4>Повернення короля</h4>
+                            <p>Екіпаж №51 (Джовінацці, П'єр Гвіді, Каладо) здобуває першу перемогу в Ле-Мані для Ferrari з 1965 року.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item winner">
+                        <div class="date">Червень 2024</div>
+                        <div class="event">
+                            <h4>Одинадцята перемога</h4>
+                            <p>Екіпаж №50 (Фуоко, Моліна, Нільсен) підтверджує домінування Ferrari, здобувши другу перемогу поспіль.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item winner">
+                        <div class="date">Червень 2025</div>
+                        <div class="event">
+                            <h4>Легендарний Хет-трик</h4>
+                            <p>Екіпаж №83 команди AF Corse (Кубіца, Є, Хансон) приводить бренд до третьої поспіль перемоги в Ле-Мані.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        </main>
+
+        <div class="video-section">
+            <h2 class="title">DYNAMIC SHOWCASE</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/22I7yJiOu0s?si=uVavcn06lINphE49" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
 
     <footer>
         <p>FERRARI HYPERCAR PROGRAM 2026 // SCUDERIA FERRARI</p>
