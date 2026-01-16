@@ -3,9 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferrari 499P | Центр Керування</title>
+    <title>Ferrari 499P | Technical Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS СТИЛІ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --accent-color: #ff0000;
+            --dark: #050505;
+            --card: #0e0e0e;
+            --text: #ffffff;
+            --gray: #808080;
+        }
+        body { background-color: var(--dark); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+
+        header { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); border-bottom: 1px solid #1a1a1a; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 900; letter-spacing: 2px; }
+        .logo span { color: var(--accent-color); transition: 0.3s; }
+        .color-switcher { background: var(--accent-color); color: white; border: none; padding: 8px 16px; cursor: pointer; font-weight: bold; font-size: 0.7rem; transition: 0.3s; border-radius: 2px; }
+
+        .hero { height: 65vh; background: linear-gradient(to bottom, rgba(0,0,0,0.1), var(--dark)), url('https://images.unsplash.com/photo-1592193660027-5831f58904b1?auto=format&fit=crop&w=1920&q=80') center/cover; background-attachment: fixed; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero h1 { font-size: clamp(3rem, 12vw, 8rem); font-weight: 900; letter-spacing: -3px; transition: 0.5s; }
+        .badge { background: var(--accent-color); padding: 4px 12px; font-size: 0.75rem; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+
+        .container { max-width: 1100px; margin: -80px auto 50px; padding: 0 20px; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .specs-card, .info-card { background: var(--card); padding: 40px; border: 1px solid #1a1a1a; }
+        .row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1a1a1a; }
+        .row strong { color: var(--accent-color); transition: 0.3s; }
+
+        /* Історія */
+        .history-section { margin-top: 100px; }
+        .timeline { border-left: 1px solid #222; padding-left: 35px; margin: 40px 0; }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-item::before { content: ''; position: absolute; left: -41.5px; top: 5px; width: 11px; height: 11px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 12px var(--accent-color); }
+        .date { color: var(--accent-color); font-weight: bold; font-family: monospace; }
+
+        /* Секція №83 */
+        .history-image-showcase { margin-top: 40px; border: 1px solid #1a1a1a; padding: 10px; background: #080808; }
+        .history-image-showcase img { width: 100%; filter: grayscale(40%); transition: 0.5s; display: block; }
+        .history-image-showcase:hover img { filter: grayscale(0%); }
+        .image-caption { margin-top: 15px; font-size: 0.75rem; text-align: right; color: var(--gray); text-transform: uppercase; }
+        .image-caption span { color: var(--accent-color); font-weight: bold; }
+
+        /* Технічний опис (Modificata) */
+        .deep-tech-section { margin-top: 80px; }
+        .tech-card-large { background: #0a0a0a; border-right: 4px solid var(--accent-color); padding: 40px; border-top: 1px solid #1a1a1a; }
+        .tech-content-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin-top: 30px; }
+        .modificata-box { border: 1px dashed var(--accent-color); padding: 25px; background: rgba(255,255,255,0.02); }
+        .modificata-box h4 { color: var(--accent-color); margin-bottom: 10px; }
+
+        /* Відео */
+        .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+        .video-container { position: relative; padding-bottom: 56.25%; border: 4px solid var(--card); overflow: hidden; }
+        .video-container iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: 0; }
+
+        .title { letter-spacing: 5px; color: var(--gray); font-size: 0.9rem; margin-bottom: 30px; text-align: center; text-transform: uppercase; }
+        footer { text-align: center; padding: 60px 0; color: #333; font-size: 0.7rem; border-top: 1px solid #111; letter-spacing: 2px; }
+
+        @media (max-width: 768px) { .video-grid, .tech-content-wrapper { grid-template-columns: 1fr; } .hero h1 { font-size: 4rem; } }
+    </style>
 </head>
 <body>
 
@@ -13,93 +70,141 @@
         <div class="logo">FERRARI <span>HYPERCAR</span></div>
         <div class="header-controls">
             <button id="color-switcher" class="color-switcher">ЗМІНИТИ АКЦЕНТ</button>
-            <div class="system-status">SYSTEM: ONLINE</div>
+            <div class="system-status" style="color: #00ff00; font-family: monospace; font-size: 0.7rem;">SYSTEM: ONLINE</div>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <span class="badge">LE MANS LEGEND</span>
-            <h1>499P</h1>
-            <p>ПЕРЕМОЖЕЦЬ 2023, 2024, 2025</p>
+            <span class="badge">LE MANS WINNER</span>
+            <h1 id="hero-title">499P</h1>
+            <p style="letter-spacing: 2px;">ТРІУМФАЛЬНЕ ПОВЕРНЕННЯ 2023-2025</p>
         </div>
     </section>
 
     <main class="container">
         <div class="grid-layout">
             <div class="specs-card">
-                <h3>ТЕХНІЧНЕ ДОСЬЄ</h3>
-                <div class="line"></div>
-                <div class="row"><span>ENGINE</span> <strong>3.0L V6 BITURBO</strong></div>
-                <div class="row"><span>HYBRID</span> <strong>ERS (200 KW)</strong></div>
-                <div class="row"><span>POWER</span> <strong>680 HP</strong></div>
-                <div class="row"><span>WEIGHT</span> <strong>1030 KG</strong></div>
-                <div class="row"><span>CHASSIS</span> <strong>CARBON MONOCOQUE</strong></div>
+                <h3 class="title" style="text-align: left;">ТЕХНІЧНЕ ДОСЬЄ</h3>
+                <div class="row"><span>ДВИГУН</span> <strong>3.0L V6 (120°)</strong></div>
+                <div class="row"><span>ЕЛЕКТРО</span> <strong>ERS (900V)</strong></div>
+                <div class="row"><span>ПОТУЖНІСТЬ</span> <strong>680 К.С.</strong></div>
+                <div class="row"><span>ПРИВІД</span> <strong>AWD (>190 KM/H)</strong></div>
             </div>
 
             <div class="info-card">
-                <h3>ПРО ПРОЕКТ</h3>
-                <p id="typing-text">Ferrari 499P — це спортивний прототип, побудований Scuderia Ferrari для участі в чемпіонаті світу FIA WEC. Поява 499P знаменує 50 років з моменту, коли Ferrari востаннє боролася за загальну перемогу в Ле-Мані. Номер 50 на борті — це данина цій великій історії та поверненню легенди.</p>
-                <div class="tags">
-                    <span>#LeMans24</span><span>#ScuderiaFerrari</span><span>#HybridPower</span>
+                <h3 class="title" style="text-align: left;">СИМВОЛ РЕВАНШУ</h3>
+                <p id="typing-text">Ferrari 499P знаменує 50 років з моменту, коли марка востаннє боролася за перемогу в Ле-Мані. Назва вказує на об'єм одного циліндра (499 см³), а літера «P» — на категорію прототипів.</p>
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <span style="border: 1px solid #333; padding: 4px 8px; font-size: 0.6rem; color: #666;">#LMH</span>
+                    <span style="border: 1px solid #333; padding: 4px 8px; font-size: 0.6rem; color: #666;">#AFCORSE</span>
                 </div>
             </div>
         </div>
 
+        <section class="deep-tech-section">
+            <div class="tech-card-large">
+                <h2 class="title" style="text-align: left; color: var(--accent-color);">ENGINEERING INSIGHT</h2>
+                <div class="tech-content-wrapper">
+                    <div class="tech-text">
+                        <p>Унікальність боліда полягає в тому, що 120-градусний двигун V6 є частиною силової конструкції шасі. Гібридна система передає потужність ДВЗ на задню вісь, а 272-сильний електромотор на передню вісь активується лише після <strong>190 км/год</strong>.</p>
+                        <p>Дизайн з легендарною червоно-жовтою ліверією відсилає до історичної моделі <strong>312 PB</strong> 1970-х років. Це поєднання мистецтва та аеродинаміки.</p>
+                    </div>
+                    <div class="modificata-box">
+                        <h4>499P MODIFICATA</h4>
+                        <p>Ексклюзивна версія за <strong>€5,000,000+</strong>. Потужність 870 к.с., повний привід з 0 км/год. Доступна лише для клієнтської програми Ferrari.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="history-section">
-            <h2 class="title">ІСТОРІЯ ТА ТРІУМФ</h2>
-            
+            <h2 class="title">ХРОНОЛОГІЯ ПЕРЕМОГ</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="date">ЖОВТЕНЬ 2022</div>
-                    <div class="event">
-                        <h4>Світова прем'єра</h4>
-                        <p>Автомобіль представлений на Ferrari Finali Mondiali, знаменуючи повернення через півстоліття.</p>
-                    </div>
+                    <div class="date">2023</div>
+                    <p>Перемога №51 (Джовінацці, П'єр Гвіді, Каладо) у дебютний сезон.</p>
                 </div>
-                <div class="timeline-item winner">
-                    <div class="date">ЧЕРВЕНЬ 2023</div>
-                    <div class="event">
-                        <h4>Тріумфальне повернення</h4>
-                        <p>Екіпаж №51 (Джовінацці, П'єр Гвіді, Каладо) виграє гонку. Перша перемога Ferrari з 1965 року.</p>
-                    </div>
+                <div class="timeline-item">
+                    <div class="date">2024</div>
+                    <p>Другий тріумф поспіль екіпажу №50 (Фуоко, Моліна, Нільсен).</p>
                 </div>
-                <div class="timeline-item winner">
-                    <div class="date">ЧЕРВЕНЬ 2024</div>
-                    <div class="event">
-                        <h4>Друга перемога поспіль</h4>
-                        <p>Екіпаж №50 (Фуоко, Моліна, Нільсен) здобуває 11-ту перемогу в історії бренду.</p>
-                    </div>
-                </div>
-                <div class="timeline-item winner">
-                    <div class="date">ЧЕРВЕНЬ 2025</div>
-                    <div class="event">
-                        <h4>Легендарний хет-трик</h4>
-                        <p>Автомобіль №83 команди AF Corse під керівництвом Роберта Кубіци приносить Ferrari третю перемогу поспіль.</p>
-                    </div>
+                <div class="timeline-item">
+                    <div class="date">2025</div>
+                    <p>Історичний хет-трик боліда №83 команди AF Corse (Кубіца, Є, Хансон).</p>
                 </div>
             </div>
 
             <div class="history-image-showcase">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg/960px-83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg" alt="AF Corse Ferrari 499P #83">
-                <div class="image-caption">
-                    <span>AF CORSE FERRARI 499P №83</span> — ПЕРЕМОЖЕЦЬ ЛЕ-МАНА 2025
-                </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg/960px-83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg" alt="AF Corse #83">
+                <div class="image-caption"><span>FERRARI №83</span> — ТРЕТЯ ПЕРЕМОГА ПОСПІЛЬ</div>
             </div>
         </section>
 
         <div class="video-section">
             <h2 class="title">DYNAMIC SHOWCASE</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/22I7yJiOu0s?si=uVavcn06lINphE49" frameborder="0" allowfullscreen></iframe>
+            <div class="video-grid">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/22I7yJiOu0s" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Dn0TuqQgXTw" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <p>FERRARI HYPERCAR PROGRAM 2026 // SCUDERIA FERRARI // AF CORSE</p>
-    </footer>
+    <footer><p>FERRARI HYPERCAR PROGRAM // 2023-2025 // SCUDERIA FERRARI</p></footer>
 
-    <script src="script.js"></script>
+    <script>
+        // JAVASCRIPT ЛОГІКА
+        document.addEventListener('DOMContentLoaded', () => {
+            // Друк тексту
+            const textElement = document.getElementById('typing-text');
+            const fullText = textElement.innerHTML;
+            textElement.innerHTML = '';
+            let index = 0;
+            function type() {
+                if (index < fullText.length) {
+                    textElement.innerHTML += fullText.charAt(index);
+                    index++;
+                    setTimeout(type, 15);
+                }
+            }
+            setTimeout(type, 1000);
+
+            // Перемикач кольорів
+            const switcher = document.getElementById('color-switcher');
+            const heroTitle = document.getElementById('hero-title');
+            const colors = ['#ff0000', '#ffd700', '#00d4ff']; // Червоний, Жовтий, Блакитний
+            let cIndex = 0;
+
+            switcher.addEventListener('click', () => {
+                cIndex = (cIndex + 1) % colors.length;
+                const color = colors[cIndex];
+                document.documentElement.style.setProperty('--accent-color', color);
+                
+                // Спеціальний заголовок для жовтого кольору
+                heroTitle.innerText = (color === '#ffd700') ? "312 PB TRIBUTE" : "499P";
+            });
+
+            // Анімація появи при скролі
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.specs-card, .info-card, .timeline-item, .history-image-showcase, .deep-tech-section, .video-container').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.8s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
