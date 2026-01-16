@@ -1,131 +1,113 @@
-:root {
-    --f-red: #ef1a2d;
-    --dark: #0a0a0a;
-    --grey: #1c1c1c;
-    --text: #ffffff;
+/* ... (існуючі стилі) ... */
+
+.video-title {
+    margin-top: 60px;
+    text-align: center;
+    color: #f4f4f4;
+    font-size: 1.5rem;
 }
 
-body {
-    background-color: var(--dark);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    line-height: 1.6;
+.video-showcase {
+    background: var(--grey);
+    border: 1px solid #333;
+    padding: 30px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr; /* За замовчуванням - одна колонка */
+    gap: 30px;
+    align-items: center;
 }
 
-/* Ефект накладання для глибини */
-.vignette {
-    position: fixed;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle, transparent 50%, black 150%);
-    pointer-events: none;
-    z-index: 10;
+/* Адаптивність для відео на великих екранах */
+@media (min-width: 768px) {
+    .video-showcase {
+        grid-template-columns: 1.5fr 1fr; /* Дві колонки на десктопі */
+    }
 }
 
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Співвідношення сторін 16:9 */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-description {
+    padding: 20px;
+    background: #111;
+    border-left: 3px solid var(--f-red);
+}
+
+.video-description h3 {
+    font-size: 1.4rem;
+    color: var(--f-red);
+    margin-top: 0;
+    letter-spacing: 1px;
+}
+
+.video-description p {
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+/* Ефект "Glitch" для hero-секції, щоб підкреслити технології */
 .hero {
-    height: 60vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before, .hero::after {
+    content: attr(data-text); /* Текст для glitch-ефекту */
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--dark)),
                 url('https://images.unsplash.com/photo-1592193660027-5831f58904b1?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    color: var(--text);
+    overflow: hidden;
+    z-index: 1;
+    clip-path: inset(0 0 100% 0); /* Спочатку невидимий */
 }
 
-.hero h1 {
-    font-size: 5rem;
-    margin: 0;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -2px;
+/* Анімація glitch */
+.hero::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--f-red);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
 }
 
-.category {
-    background: var(--f-red);
-    padding: 5px 15px;
-    font-weight: bold;
-    font-size: 0.8rem;
+.hero::after {
+    left: -2px;
+    text-shadow: 2px 0 #00f;
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
 }
 
-.container {
-    max-width: 1100px;
-    margin: -50px auto 50px;
-    padding: 0 20px;
+/* Keyframes для glitch */
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    40% { clip-path: inset(70% 0 10% 0); }
+    100% { clip-path: inset(30% 0 50% 0); }
+}
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(80% 0 20% 0); }
+    60% { clip-path: inset(10% 0 70% 0); }
+    100% { clip-path: inset(40% 0 30% 0); }
+}
+
+/* Для hero-content щоб був поверх glitch-ефекту */
+.hero-content {
     position: relative;
-    z-index: 20;
-}
-
-.grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 40px;
-}
-
-.specs-box {
-    background: var(--grey);
-    padding: 30px;
-    border-left: 4px solid var(--f-red);
-}
-
-.section-title {
-    font-size: 0.9rem;
-    color: #666;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-}
-
-.spec-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid #333;
-    font-size: 0.9rem;
-}
-
-.highlight {
-    color: var(--f-red);
-    font-weight: bold;
-    font-family: monospace;
-}
-
-.tag {
-    display: inline-block;
-    border: 1px solid #444;
-    padding: 5px 12px;
-    margin-right: 10px;
-    font-size: 0.8rem;
-    color: #888;
-}
-
-/* Анімація пульсуючих точок */
-.visual-section {
-    height: 400px;
-    margin-top: 50px;
-    background: #111;
-    border-radius: 10px;
-    position: relative;
-    border: 1px dashed #333;
-}
-
-.data-point {
-    position: absolute;
-    display: flex;
-    align-items: center;
-}
-
-.pulse {
-    width: 12px; height: 12px;
-    background: var(--f-red);
-    border-radius: 50%;
-    margin-right: 10px;
-    box-shadow: 0 0 10px var(--f-red);
-    animation: pulse-animation 2s infinite;
-}
-
-@keyframes pulse-animation {
-    0% { transform: scale(0.95); opacity: 0.7; }
-    70% { transform: scale(1.5); opacity: 0; }
-    100% { transform: scale(0.95); opacity: 0; }
+    z-index: 2; /* Поверх ::before та ::after */
 }
