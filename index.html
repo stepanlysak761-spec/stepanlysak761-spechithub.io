@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferrari 499P | Mobile & Desktop Ready</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Ferrari 499P | Ultimate Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,13 +12,16 @@
 
     <header>
         <div class="logo">FERRARI <span>499P</span></div>
-        <button id="mode-trigger" class="btn-ui">MODE</button>
+        <div class="header-nav">
+            <span id="sys-status">STATUS: ACTIVE</span>
+            <button id="mode-btn" class="btn-ui">ENGINE_MODE</button>
+        </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1 id="hero-title">499P</h1>
-            <p class="hero-subtitle">BEYOND PERFORMANCE</p>
+            <p class="hero-subtitle">HYPERCAR DOMINANCE // 2023-2026</p>
         </div>
     </section>
 
@@ -27,45 +30,41 @@
             <div class="glass-card reveal">
                 <span class="label">// TELEMETRY</span>
                 <div class="specs-list">
-                    <div><span>ENGINE</span> <strong>3.0L V6</strong></div>
-                    <div><span>HYBRID</span> <strong>900V</strong></div>
-                    <div><span>AWD</span> <strong>>190 KM/H</strong></div>
+                    <div><span>ENGINE</span> <strong>3.0L V6 BITURBO</strong></div>
+                    <div><span>HYBRID</span> <strong>900V SYSTEM</strong></div>
+                    <div><span>POWER</span> <strong>680 HP</strong></div>
+                    <div><span>WEIGHT</span> <strong>1030 KG</strong></div>
                 </div>
             </div>
 
             <div class="glass-card reveal">
-                <span class="label">// BRIEFING</span>
-                <p id="typewriter-output" class="info-text"></p>
-            </div>
-
-            <div class="tech-wide-card reveal">
-                <div class="glass-card tech-flex">
-                    <div class="info-block">
-                        <h2>499P MODIFICATA</h2>
-                        <p>Ексклюзив за €5.1 млн: 870 к.с. без обмежень FIA. Доступно для програми Corse Clienti.</p>
-                    </div>
-                    <div class="modificata-badge">
-                        <span>UNLIMITED POWER</span>
-                    </div>
-                </div>
+                <span class="label">// MISSION_LOG</span>
+                <p id="typewriter" class="info-text"></p>
             </div>
         </div>
 
+        <section class="history-facts reveal">
+            <h2 class="section-title">// HISTORICAL_DATA_CORE</h2>
+            <div class="facts-grid" id="facts-container">
+                </div>
+        </section>
+
         <div class="media-reveal reveal">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg/960px-83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg" alt="Ferrari 499P #83">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg/1280px-83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg" alt="Ferrari 499P">
+            <div class="caption">EQUIPE AF CORSE №83 // CIRCUIT DE LA SARTHE</div>
         </div>
 
         <div class="video-grid">
-            <div class="video-item reveal">
-                <iframe src="https://www.youtube.com/embed/22I7yJiOu0s" allowfullscreen></iframe>
+            <div class="video-wrapper reveal">
+                <iframe src="https://www.youtube.com/embed/22I7yJiOu0s" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div class="video-item reveal">
-                <iframe src="https://www.youtube.com/embed/Dn0TuqQgXTw" allowfullscreen></iframe>
+            <div class="video-wrapper reveal">
+                <iframe src="https://www.youtube.com/embed/Dn0TuqQgXTw" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </main>
 
-    <footer>SCUDERIA FERRARI // 2026</footer>
+    <footer>SCUDERIA FERRARI HYPERCAR PROGRAM // MODENA, ITALY</footer>
 
     <script src="script.js"></script>
 </body>
