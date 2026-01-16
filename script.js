@@ -1,84 +1,55 @@
-/**
- * FERRARI 499P - TECHNICAL DOSSIER LOGIC
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. ЕФЕКТ ДРУКУ ТЕКСТУ (Typing Effect)
+    // 1. Ефект друку тексту
     const textElement = document.getElementById('typing-text');
-    if (textElement) {
-        const content = textElement.innerHTML;
-        textElement.innerHTML = '';
-        
-        let i = 0;
-        function type() {
-            if (i < content.length) {
-                textElement.innerHTML += content.charAt(i);
-                i++;
-                setTimeout(type, 15); // Швидкість друку (мс)
-            }
-        }
-        
-        // Запуск через невелику паузу після завантаження
-        setTimeout(type, 500);
-    }
-
-    // 2. НАЛАШТУВАННЯ GLITCH ЕФЕКТУ
-    const heroTitle = document.querySelector('.hero-content h1');
-    const heroSection = document.querySelector('.hero');
+    const fullText = textElement.innerHTML;
+    textElement.innerHTML = '';
     
-    if (heroTitle && heroSection) {
-        // Копіюємо текст заголовка в атрибут data-text для CSS ефектів
-        heroSection.setAttribute('data-text', heroTitle.innerText);
+    let index = 0;
+    function type() {
+        if (index < fullText.length) {
+            textElement.innerHTML += fullText.charAt(index);
+            index++;
+            setTimeout(type, 20); // Швидкість друку (мс)
+        }
     }
+    setTimeout(type, 1000); // Запускаємо друк через 1 секунду
 
-    // 3. АНІМАЦІЯ ПРИ СКРОЛІ (Reveal Animation)
-    // Робимо так, щоб блоки специфікацій та відео плавно з'являлися
-    const observerOptions = {
-        threshold: 0.2 // Подія спрацює, коли 20% блоку буде видно
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    // Додаємо класи для відстеження (Specs та Video)
-    const elementsToAnimate = document.querySelectorAll('.specs-box, .video-showcase, .info-content');
-    elementsToAnimate.forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        el.style.transition = "all 0.8s ease-out";
-        revealObserver.observe(el);
+    // 2. Анімація появи карток
+    const cards = document.querySelectorAll('.specs-card, .info-card, .video-section');
+    cards.forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = `all 0.8s ease ${i * 0.2}s`;
+        
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 500);
     });
 
-    // 4. ФУНКЦІЯ ДЛЯ ПЛАВНОЇ ПОЯВИ (допоміжний клас)
-    // Додаємо CSS стиль динамічно через JS для анімації появи
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+    // 3. Зміна акцентного кольору
+    const colorSwitcherBtn = document.getElementById('color-switcher');
+    const root = document.documentElement; // Доступ до :root змінних
+    const accentColors = [
+        '#ff0000',      // Оригінальний Ferrari Red
+        '#ffd700',      // Giallo Modena (Ferrari Yellow)
+        '#00aaff',      // Electric Blue (як технологічний акцент)
+        '#00ff00'       // Lime Green (для контрасту)
+    ];
+    let currentColorIndex = 0;
+
+    colorSwitcherBtn.addEventListener('click', () => {
+        currentColorIndex = (currentColorIndex + 1) % accentColors.length;
+        const newColor = accentColors[currentColorIndex];
+        root.style.setProperty('--accent-color', newColor); // Змінюємо змінну в CSS
+    });
+
+    // 4. Паралакс ефект для Hero (опціонально)
+    window.addEventListener('scroll', () => {
+        const scrollValue = window.scrollY;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.backgroundPositionY = (scrollValue * 0.4) + 'px'; // Зменшив множник для більш плавного ефекту
         }
-    `;
-    document.head.appendChild(style);
-
-    // 5. ЛОГУВАННЯ СТАТУСУ (Для імітації "системи")
-    console.log("--- FERRARI 499P SYSTEMS ONLINE ---");
-    console.log("Telemetry: Connected");
-    console.log("Aero Data: Optimized");
-});
-
-/** * ДОДАТКОВО: Паралакс ефект для Hero (опціонально)
- * Робить фонове зображення рухомим при скролі
- */
-window.addEventListener('scroll', () => {
-    const scrollValue = window.scrollY;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.backgroundPositionY = (scrollValue * 0.5) + 'px';
-    }
+    });
 });
