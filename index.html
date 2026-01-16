@@ -3,114 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO POINT FIVE | 2021 F1 Archive</title>
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛞</text></svg>">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <title>Endurance World | 24h of Speed</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">ENDURANCE<span>24</span></div>
+            <ul>
+                <li><a href="#about">Про перегони</a></li>
+                <li><a href="#classes">Класи</a></li>
+                <li><a href="#calendar">Календар</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div id="loader">
-        <div class="light-row">
-            <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>БІЛЬШЕ НІЖ ШВИДКІСТЬ</h1>
+            <p>Витривалість. Технології. Легенди Ле-Мана.</p>
+            <button id="cta-btn">Дізнатися більше</button>
         </div>
-        <p>INITIALIZING ARCHIVE...</p>
-    </div>
+    </section>
 
-    <nav class="pill-nav">
-        <div class="logo">ZERO POINT FIVE</div>
-        <button class="music-pill" onclick="toggleMusic()">🎵 START AUDIO</button>
-    </nav>
-
-    <iframe id="audio-engine" width="0" height="0" src="https://www.youtube.com/embed/LJzp_mDxaT0?enablejsapi=1" style="display:none"></iframe>
-
-    <main class="container">
-        <header class="hero section-reveal">
-            <div class="hero-content">
-                <span class="badge">SEASON 2021</span>
-                <h1 class="glitch-text">ZERO POINT<br><span class="outline">FIVE</span></h1>
-                <p class="hero-sub">THE MARGIN BETWEEN GLORY AND DEFEAT</p>
+    <section id="classes" class="classes">
+        <h2>Класи автомобілів</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Hypercars</h3>
+                <p>Найвищий клас: гібридні прототипи майбутнього.</p>
             </div>
-            <div class="hero-stats">
-                <div class="stat-card"><h3>369.5</h3><p>PTS EQUAL</p></div>
-                <div class="stat-card"><h3>22</h3><p>RACES</p></div>
+            <div class="card">
+                <h3>LMGT3</h3>
+                <p>Серійні суперкари, адаптовані для траси.</p>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <section class="section-reveal">
-            <h2 class="section-title">THE TITAN CLASH</h2>
-            <div class="video-grid">
-                <div class="video-card large">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/MTe12fH2xtQ" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div class="card-info">
-                        <span class="tag">ABU DHABI</span>
-                        <h4>THE FINAL LAP</h4>
-                    </div>
-                </div>
-                <div class="video-sub-grid">
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/oIKel6jVD3Q" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="card-info"><span class="tag">SILVERSTONE</span></div>
-                    </div>
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/yO2SBWOgci4" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="card-info"><span class="tag">SEASON TOP 10</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-reveal">
-            <h2 class="section-title">CRITICAL POINTS</h2>
-            <div class="modern-bento">
-                <div class="bento-card" style="background-image: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&q=80');">
-                    <div class="bento-content">
-                        <span class="tag">BAKU</span>
-                        <h3>THE BLOWOUT</h3>
-                        <p>Max's tire failure at 300km/h and Lewis's 'Magic Button' mistake.</p>
-                    </div>
-                </div>
-                <div class="bento-card">
-                    <div class="bento-content">
-                        <span class="tag" style="background:#0600ef">SPA</span>
-                        <h3>0.5 POINTS</h3>
-                        <p>The shortest race in history that defined the championship gap.</p>
-                        <div class="mini-stat">+5.0 PTS</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="radio-section section-reveal">
-            <div class="glass-card">
-                <h2 class="section-title">TEAM RADIO</h2>
-                <div id="radio-display">[ STANDBY ]</div>
-                <div class="radio-controls">
-                    <button class="btn-radio" onclick="playRadio('MAX', 'OMG! OH MY GOD!')">MAX</button>
-                    <button class="btn-radio" onclick="playRadio('HORNER', 'YOU ARE WORLD CHAMPION!')">HORNER</button>
-                    <button class="btn-radio" onclick="playRadio('TOTO', 'NO MICHAEL! NO!')">TOTO</button>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="facts-wrapper">
-                <div class="fact-item">MAX: 10 WINS</div>
-                <div class="fact-item">LEWIS: 8 WINS</div>
-                <div class="fact-item">1 TITLE</div>
-            </div>
-        </footer>
-    </main>
-
-    <script src="script.js?v=2.0"></script>
+    <script src="script.js"></script>
 </body>
 </html>
