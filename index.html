@@ -3,136 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>THE FINAL LAP | 2021 F1 Digital Legacy</title>
-    <meta name="description" content="Інтерактивний архів найдраматичнішого фіналу в історії Формули-1: Гамільтон проти Ферстаппена.">
-    <meta property="og:title" content="THE FINAL LAP | 2021 F1 Digital Legacy">
-    <meta property="og:type" content="website">
     
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-</head>
-<body onmousemove="moveCursor(event)">
-
-    <a href="#main-content" class="skip-link">Перейти до контенту</a>
-
-    <div id="loader" role="presentation" aria-label="Завантаження">
-        <div class="light-row">
-            <div class="light" aria-hidden="true"></div>
-            <div class="light" aria-hidden="true"></div>
-            <div class="light" aria-hidden="true"></div>
-            <div class="light" aria-hidden="true"></div>
-            <div class="light" aria-hidden="true"></div>
-        </div>
-        <p id="loader-status">WARMING UP TYRES...</p>
-    </div>
-
-    <div id="cursor-follower"></div>
-    <div id="dot"></div>
-
-    <nav class="pill-nav" aria-label="Головне меню">
-        <div class="logo">F1 2021</div>
-        <div class="nav-actions">
-            <button class="music-pill" onclick="toggleMusic()" aria-label="Увімкнути музичний супровід">
-                <span class="pill-icon">🎵</span> START EXPERIENCE
-            </button>
-        </div>
-    </nav>
-
-    <iframe id="audio-engine" title="Experience Music" width="0" height="0" 
-            src="https://www.youtube.com/embed/LJzp_mDxaT0?enablejsapi=1" 
-            style="display:none" allow="autoplay"></iframe>
-
-    <main id="main-content">
-        <header class="hero">
-            <div class="hero-content">
-                <span class="badge reveal">SEASON FINALE</span>
-                <h1 class="glitch-text">THE FINAL<br><span class="outline">LAP</span></h1>
-                <p class="hero-sub">22 RACES. 2 TITANS. 1 DECISION.</p>
-            </div>
-            
-            <aside class="hero-stats" aria-label="Статистика фіналу">
-                <div class="stat-card">
-                    <span class="stat-value">369.5</span>
-                    <span class="stat-label">PTS EQUAL</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value">58</span>
-                    <span class="stat-label">LAPS TO GLORY</span>
-                </div>
-            </aside>
-        </header>
-
-        <section id="analysis" class="section-reveal" aria-labelledby="analysis-title">
-            <div class="container">
-                <h2 id="analysis-title" class="section-title">DEEP DIVE ANALYSIS</h2>
-                <article class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/0lKzIh02vZM" 
-                                title="F1 2021 Season Analysis" frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="video-desc">
-                        <p>Детальний розбір стратегій, які призвели до кульмінації в Абу-Дабі.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="tactics" class="section-reveal">
-            <div class="container">
-                <div class="bento-grid">
-                    <article class="bento-item checo-block">
-                        <div class="badge">TACTICAL MASTERCLASS</div>
-                        <h2>CHECO:<br>MINISTER OF DEFENSE</h2>
-                        <p>"Checo is a legend" — момент, коли командна робота змінила хід історії.</p>
-                    </article>
-                    <div class="bento-item stat-mini">
-                        <span class="mini-val">-6s</span>
-                        <p>Час, який Гамільтон втратив за Пересом</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="radio" class="section-reveal">
-            <div class="container">
-                <div class="glass-card">
-                    <h2 class="section-title">LIVE TEAM RADIO</h2>
-                    <div id="radio-display" aria-live="polite" role="log">[ STANDBY ]</div>
-                    <div class="radio-controls">
-                        <button class="btn-radio" onclick="playRadio('MAX', 'OMG! OH MY GOD GUYS!')" data-pilot="max">MAX</button>
-                        <button class="btn-radio" onclick="playRadio('HORNER', 'MAX VERSTAPPEN, YOU ARE CHAMPION!')" data-pilot="rb">HORNER</button>
-                        <button class="btn-radio" onclick="playRadio('TOTO', 'NO MICHAEL! NO NO MICHAEL!')" data-pilot="merc">TOTO</button>
-                        <button class="btn-radio" onclick="playRadio('LEWIS', 'THIS HAS BEEN MANIPULATED, MAN.')" data-pilot="lewis">LEWIS</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2026 THE ARCHIVE | F1 DIGITAL LEGACY</p>
-                <div class="social-links">
-                    <a href="https://github.com" target="_blank">GitHub</a>
-                    <a href="#">Twitter</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE FINAL LAP | 2021 F1 Legacy</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
@@ -155,38 +27,48 @@
 
     <iframe id="audio-engine" width="0" height="0" src="https://www.youtube.com/embed/LJzp_mDxaT0?enablejsapi=1" style="display:none"></iframe>
 
-    <div class="container">
+    <main class="container">
         <header class="hero">
             <div class="hero-content">
-                <span class="reveal">SEASON FINALE</span>
+                <span class="badge reveal">SEASON FINALE</span>
                 <h1 class="glitch-text">THE FINAL<br><span class="outline">LAP</span></h1>
                 <p class="hero-sub">22 RACES. 2 TITANS. 1 DECISION.</p>
             </div>
             <div class="hero-stats">
-                <div class="stat"><h3>369.5</h3><p>PTS EQUAL</p></div>
-                <div class="stat"><h3>58</h3><p>LAPS TO GLORY</p></div>
+                <div class="stat-card"><h3>369.5</h3><p>PTS EQUAL</p></div>
+                <div class="stat-card"><h3>58</h3><p>LAPS TO GLORY</p></div>
             </div>
         </header>
 
         <section class="section-reveal">
             <h2 class="section-title">DEEP DIVE ANALYSIS</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/0lKzIh02vZM" frameborder="0" allowfullscreen></iframe>
+            <div class="video-responsive">
+                <iframe 
+                    src="https://www.youtube.com/embed/0lKzIh02vZM" 
+                    title="F1 Analysis" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
         </section>
 
-        <section class="checo-block section-reveal">
-            <div class="checo-content">
+        <section class="bento-grid section-reveal">
+            <article class="bento-item checo-block">
                 <div class="badge">TACTICAL MASTERCLASS</div>
-                <h2>CHECO: MINISTER OF DEFENSE</h2>
-                <p>"Checo is a legend" — стримування Льюїса, яке подарувало Максу шанс на титул.</p>
+                <h2>CHECO:<br>MINISTER OF DEFENSE</h2>
+                <p>"Checo is a legend" — момент, коли командна робота змінила хід історії в Абу-Дабі.</p>
+            </article>
+            <div class="bento-item stat-mini">
+                <span class="mini-val">-6s</span>
+                <p>Час, який Гамільтон втратив за Пересом</p>
             </div>
         </section>
 
         <section class="radio-section section-reveal">
             <div class="glass-card">
-                <h2 class="section-title">TEAM RADIO (ENG)</h2>
-                <div id="radio-display">[ SELECT FREQUENCY ]</div>
+                <h2 class="section-title">TEAM RADIO</h2>
+                <div id="radio-display">[ STANDBY ]</div>
                 <div class="radio-controls">
                     <button class="btn-radio" onclick="playRadio('MAX', 'OMG! OH MY GOD GUYS!')">MAX</button>
                     <button class="btn-radio" onclick="playRadio('HORNER', 'YOU ARE THE WORLD CHAMPION!')">HORNER</button>
@@ -199,9 +81,8 @@
         <footer>
             <p>© 2026 THE ARCHIVE | F1 DIGITAL LEGACY</p>
         </footer>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
-
 </html>
