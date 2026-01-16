@@ -1,23 +1,16 @@
-document.getElementById('cta-btn').addEventListener('click', function() {
-    window.scrollTo({
-        top: document.getElementById('classes').offsetTop - 70,
-        behavior: 'smooth'
-    });
-});
-
-// Ефект появи карток при скролі
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
+document.addEventListener('DOMContentLoaded', () => {
+    const textElement = document.getElementById('typing-text');
+    const content = textElement.innerHTML;
+    textElement.innerHTML = '';
+    
+    let i = 0;
+    function type() {
+        if (i < content.length) {
+            textElement.innerHTML += content.charAt(i);
+            i++;
+            setTimeout(type, 20);
         }
-    });
-});
-
-document.querySelectorAll('.card').forEach(card => {
-    card.style.opacity = 0;
-    card.style.transform = 'translateY(50px)';
-    card.style.transition = 'all 0.6s ease-out';
-    observer.observe(card);
+    }
+    
+    type();
 });
