@@ -3,43 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endurance World | 24h of Speed</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Endurance Racing | 24 Hours of Pure Speed</title>
 </head>
 <body>
+
     <header>
         <nav>
-            <div class="logo">ENDURANCE<span>24</span></div>
+            <div class="brand">ENDURANCE<span>HUB</span></div>
             <ul>
-                <li><a href="#about">Про перегони</a></li>
-                <li><a href="#classes">Класи</a></li>
-                <li><a href="#calendar">Календар</a></li>
+                <li><a href="#live">Live Timing</a></li>
+                <li><a href="#classes">Класи авто</a></li>
+                <li><a href="#track">Траса</a></li>
+                <li><a href="#history">Історія</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>БІЛЬШЕ НІЖ ШВИДКІСТЬ</h1>
-            <p>Витривалість. Технології. Легенди Ле-Мана.</p>
-            <button id="cta-btn">Дізнатися більше</button>
-        </div>
-    </section>
-
-    <section id="classes" class="classes">
-        <h2>Класи автомобілів</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Hypercars</h3>
-                <p>Найвищий клас: гібридні прототипи майбутнього.</p>
+    <main>
+        <section class="hero-section">
+            <div class="overlay">
+                <span class="race-status">LIVE: 24 HEURES DU MANS</span>
+                <h1>ВИЖИВАЄ НАЙСИЛЬНІШИЙ</h1>
+                
+                <div id="race-timer">
+                    <div class="time-block"><span>18</span> год</div>
+                    <div class="time-block"><span>42</span> хв</div>
+                    <div class="time-block"><span>05</span> сек</div>
+                </div>
             </div>
-            <div class="card">
-                <h3>LMGT3</h3>
-                <p>Серійні суперкари, адаптовані для траси.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <script src="script.js"></script>
+        <section id="live" class="leaderboard">
+            <h2>Поточні лідери</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Поз.</th>
+                        <th>Клас</th>
+                        <th>№</th>
+                        <th>Команда / Авто</th>
+                        <th>Інтервал</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="class-hypercar">
+                        <td>1</td>
+                        <td><span class="badge hypercar">Hypercar</span></td>
+                        <td>#51</td>
+                        <td>Ferrari AF Corse (499P)</td>
+                        <td>Leader</td>
+                    </tr>
+                    <tr class="class-hypercar">
+                        <td>2</td>
+                        <td><span class="badge hypercar">Hypercar</span></td>
+                        <td>#8</td>
+                        <td>Toyota Gazoo Racing (GR010)</td>
+                        <td>+15.420s</td>
+                    </tr>
+                    <tr class="class-gt3">
+                        <td>12</td>
+                        <td><span class="badge lmgt3">LMGT3</span></td>
+                        <td>#92</td>
+                        <td>Manthey PureRxcing (Porsche 911)</td>
+                        <td>+4 Laps</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="classes" class="car-categories">
+            <h2>Технічні Класи</h2>
+            <div class="class-container">
+                <article class="class-card">
+                    <img src="hypercar.jpg" alt="Hypercar Class">
+                    <h3>Hypercar (LMH/LMDh)</h3>
+                    <p>Вершина інженерної думки. Гібридні прототипи потужністю понад 670 к.с.</p>
+                    <ul>
+                        <li><strong>Вага:</strong> 1030 кг</li>
+                        <li><strong>Двигун:</strong> Гібридна установка</li>
+                    </ul>
+                </article>
+
+                <article class="class-card">
+                    <img src="gt3.jpg" alt="LMGT3 Class">
+                    <h3>LMGT3</h3>
+                    <p>Суперкари на базі серійних моделей: Ferrari, Porsche, Corvette, BMW.</p>
+                    <ul>
+                        <li><strong>Вага:</strong> ~1300 кг</li>
+                        <li><strong>Особливість:</strong> Клієнтські команди</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="track" class="track-info">
+            <div class="track-content">
+                <h2>Circuit de la Sarthe</h2>
+                <p>Довжина: 13.626 км | Повороти: 38</p>
+                <div class="track-map">
+                    <p>[Карта траси Ле-Ман]</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Endurance Hub. Всі права захищені.</p>
+    </footer>
+
 </body>
 </html>
