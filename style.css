@@ -1,0 +1,62 @@
+:root {
+    --red: #ff1e1e;
+    --blue: #0600ef;
+    --teal: #00d2be;
+    --gold: #d4af37;
+    --bg: #030303;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* { box-sizing: border-box; cursor: none; }
+body { 
+    margin: 0; background: var(--bg); color: #fff; 
+    font-family: 'Space Grotesk', sans-serif; overflow-x: hidden;
+}
+
+/* Custom Cursor */
+#cursor-follower {
+    position: fixed; width: 30px; height: 30px; border: 1px solid var(--border);
+    border-radius: 50%; pointer-events: none; z-index: 10000;
+    transition: transform 0.1s ease-out;
+}
+#dot {
+    position: fixed; width: 4px; height: 4px; background: var(--red);
+    border-radius: 50%; pointer-events: none; z-index: 10001; transform: translate(-50%, -50%);
+}
+
+/* Preloader */
+#loader {
+    position: fixed; inset: 0; background: #000; z-index: 20000;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.light-row { display: flex; gap: 15px; margin-bottom: 20px; }
+.light { width: 30px; height: 30px; background: #111; border-radius: 50%; transition: 0.3s; }
+.light.on { background: var(--red); box-shadow: 0 0 20px var(--red); }
+#loader-status { font-family: 'Syncopate'; font-size: 0.6rem; letter-spacing: 2px; }
+
+/* Navigation & Layout */
+.container { max-width: 1200px; margin: auto; padding: 0 20px; }
+.pill-nav { position: fixed; top: 30px; width: 100%; display: flex; justify-content: space-between; padding: 0 50px; z-index: 1000; }
+.music-pill { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--border); color: #fff; padding: 10px 20px; border-radius: 50px; font-size: 0.7rem; cursor: pointer; }
+
+/* Hero Section */
+.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hero h1 { font-family: 'Syncopate'; font-size: 10vw; margin: 0; line-height: 0.8; text-align: center; }
+.outline { -webkit-text-stroke: 1px #fff; color: transparent; }
+.glitch-text { text-shadow: 2px 0 var(--red), -2px 0 var(--blue); }
+
+/* Sections */
+.section-reveal { margin-top: 150px; opacity: 0; transform: translateY(50px); transition: 1s ease-out; }
+.section-reveal.active { opacity: 1; transform: translateY(0); }
+
+.video-container { aspect-ratio: 16/9; border-radius: 30px; overflow: hidden; border: 1px solid var(--border); }
+
+/* Checo & Radio */
+.checo-block { background: linear-gradient(90deg, #000 0%, #0600ef22 100%); padding: 60px; border-radius: 40px; border: 1px solid var(--border); }
+.glass-card { background: var(--glass); padding: 60px; border-radius: 40px; text-align: center; border: 1px solid var(--border); }
+#radio-display { font-family: monospace; font-size: 1.8rem; color: #0f0; margin: 30px 0; min-height: 80px; }
+.btn-radio { background: transparent; border: 1px solid var(--border); color: #fff; padding: 12px 25px; border-radius: 50px; cursor: pointer; margin: 5px; transition: 0.3s; }
+.btn-radio:hover { background: #fff; color: #000; }
+
+footer { padding: 80px 0; text-align: center; opacity: 0.3; font-size: 0.7rem; }
