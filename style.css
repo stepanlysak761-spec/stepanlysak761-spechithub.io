@@ -1,133 +1,56 @@
-:root {
-    --accent: #ff0000;
-    --bg: #050505;
-    --card-bg: rgba(15, 15, 15, 0.85);
-    --border: rgba(255, 255, 255, 0.08);
-    --text: #ffffff;
-    --gray: #888888;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Ефект друкарської машинки
+    const textStr = "Ferrari 499P — це не просто гоночний автомобіль, а символ історичного реваншу. 120-градусний V6 Biturbo інтегрований у структуру шасі, а гібридна система 900V активується на швидкостях понад 190 км/год.";
+    const typewriter = document.getElementById('typewriter');
+    let charIndex = 0;
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    function type() {
+        if (charIndex < textStr.length) {
+            typewriter.innerHTML += textStr.charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 25);
+        }
+    }
 
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    line-height: 1.6;
-}
+    // 2. Анімація появи при скролі
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+        revealElements.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                el.classList.add('active');
+            }
+        });
+    };
 
-/* Ефект старого монітора */
-.scanline {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-    background-size: 100% 4px;
-    z-index: 2000;
-    pointer-events: none;
-    opacity: 0.2;
-}
+    // 3. Зміна колірних режимів
+    const themeBtn = document.getElementById('theme-btn');
+    const root = document.documentElement;
+    const mainTitle = document.getElementById('main-title');
+    const status = document.getElementById('sys-status');
+    let currentMode = 0; // 0: Red, 1: Yellow, 2: Cyber Blue
 
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 5%;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    position: fixed; width: 100%; top: 0; z-index: 1000;
-}
+    themeBtn.addEventListener('click', () => {
+        currentMode = (currentMode + 1) % 3;
+        
+        if (currentMode === 0) {
+            root.style.setProperty('--accent', '#ff0000');
+            mainTitle.innerText = "499P";
+            status.innerText = "SYS_STATUS: NOMINAL";
+        } else if (currentMode === 1) {
+            root.style.setProperty('--accent', '#ffd700');
+            mainTitle.innerText = "312 PB";
+            status.innerText = "SYS_STATUS: CLASSIC_MODE";
+        } else {
+            root.style.setProperty('--accent', '#00f2ff');
+            mainTitle.innerText = "HYBRID";
+            status.innerText = "SYS_STATUS: OVERDRIVE";
+        }
+    });
 
-.logo { font-family: 'Orbitron', sans-serif; font-weight: 900; letter-spacing: 2px; }
-.logo span { color: var(--accent); text-shadow: 0 0 10px var(--accent); transition: 0.3s; }
-
-.btn-ui {
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--text);
-    padding: 8px 16px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.6rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-ui:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent); }
-
-/* Hero */
-.hero {
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at center, rgba(255,0,0,0.05) 0%, transparent 70%);
-}
-
-.hero h1 { 
-    font-family: 'Orbitron', sans-serif; 
-    font-size: clamp(4rem, 15vw, 10rem); 
-    margin-bottom: 10px;
-    background: linear-gradient(to bottom, #fff, #333);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Grid & Cards */
-.container { max-width: 1200px; margin: -60px auto 100px; padding: 0 20px; position: relative; }
-
-.main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-
-.glass-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 40px;
-    backdrop-filter: blur(10px);
-    transition: 0.4s;
-}
-
-.glass-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-
-.card-title { font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--accent); margin-bottom: 25px; }
-
-.specs-list div {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.specs-list span { color: var(--gray); font-size: 0.75rem; text-transform: uppercase; }
-.specs-list strong { color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; }
-
-/* Modificata Box */
-.tech-showcase { grid-column: 1 / -1; }
-.tech-flex { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; }
-
-.modificata-box {
-    border: 1px dashed var(--accent);
-    padding: 30px;
-    background: rgba(255,0,0,0.02);
-}
-
-.price-tag { display: block; margin-top: 15px; color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.7rem; }
-
-/* Multimedia */
-.image-reveal { margin: 60px 0; overflow: hidden; border: 1px solid var(--border); }
-.image-reveal img { width: 100%; filter: grayscale(1); transition: 1s; }
-.image-reveal:hover img { filter: grayscale(0); transform: scale(1.03); }
-
-.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
-.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; border: 1px solid var(--border); }
-.video-wrapper iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
-
-footer { text-align: center; padding: 60px; font-family: 'Orbitron', sans-serif; font-size: 0.6rem; color: #444; letter-spacing: 4px; }
-
-/* Reveal Animation */
-.reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-    .tech-flex, .video-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 4rem; }
-}
+    // Ініціалізація
+    window.addEventListener('scroll', revealOnScroll);
+    setTimeout(type, 1000);
+    revealOnScroll();
+});
