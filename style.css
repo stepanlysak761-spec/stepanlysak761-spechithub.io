@@ -1,190 +1,99 @@
-/* 1. ГЛОБАЛЬНІ НАЛАШТУВАННЯ */
 :root {
-    --accent: #ff0000;         /* Основний червоний */
-    --accent-glow: rgba(255, 0, 0, 0.5);
-    --bg: #030303;             /* Майже чорний для глибини */
-    --card-bg: rgba(15, 15, 15, 0.8); 
-    --glass-border: rgba(255, 255, 255, 0.05);
-    --text-main: #ffffff;
-    --text-dim: #888888;
-    --font-header: 'Orbitron', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --accent: #ff0000;
+    --bg: #030303;
+    --card-bg: rgba(15, 15, 15, 0.9);
+    --border: rgba(255, 255, 255, 0.07);
+    --text: #ffffff;
+    --text-dim: #888;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    cursor: crosshair; /* Курсор-приціл для ігрової атмосфери */
-}
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
 
 body {
     background-color: var(--bg);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* 2. ТЕХНОЛОГІЧНІ ЕФЕКТИ ФОНУ */
-/* Сітка на задньому плані */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        linear-gradient(var(--glass-border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
-    background-size: 50px 50px;
-    z-index: -1;
-    opacity: 0.2;
+/* HUD Scanline */
+.scanline {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px; z-index: 2000; pointer-events: none; opacity: 0.1;
 }
 
-/* Напівпрозорий градієнт, що рухається за скролом */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.03), transparent 80%);
-    pointer-events: none;
-    z-index: -1;
+/* Header */
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; position: fixed; width: 100%; top: 0; z-index: 1000;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
 }
 
-/* 3. ШАПКА (HEADER) */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    position: fixed;
-    top: 0; width: 100%; z-index: 1000;
-    backdrop-filter: blur(20px); /* Ефект матового скла */
-    border-bottom: 1px solid var(--glass-border);
-}
+.logo-top { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: 2px; }
+.accent-text { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+.sub-brand { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; color: var(--text-dim); letter-spacing: 4px; margin-top: 4px; }
 
-.logo {
-    font-family: var(--font-header);
-    font-weight: 900;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
+#status-display { font-family: 'Orbitron', sans-serif; font-size: 0.6rem; color: #00ff00; margin-right: 20px; }
 
-.logo span {
-    color: var(--accent);
-    text-shadow: 0 0 15px var(--accent-glow);
+.btn-ui {
+    background: transparent; border: 1px solid var(--accent); color: var(--text);
+    padding: 8px 18px; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; cursor: pointer; transition: 0.3s;
 }
+.btn-ui:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
-/* 4. ГЕРОЙ-СЕКЦІЯ (HERO) */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+/* Hero & Glitch */
+.hero { height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(4rem, 18vw, 12rem); position: relative; }
 
-.hero h1 {
-    font-family: var(--font-header);
-    font-size: clamp(4rem, 18vw, 12rem);
-    line-height: 0.8;
-    margin-bottom: 20px;
-    letter-spacing: -5px;
-    /* Ефект металевого блиску */
-    background: linear-gradient(180deg, #fff 30%, #444 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 30px rgba(255,255,255,0.1));
+.glitch { position: relative; }
+.glitch::before, .glitch::after {
+    content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8;
 }
+.glitch:hover::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim 5s infinite linear alternate-reverse; }
+.glitch:hover::after { left: -2px; text-shadow: -2px 0 #00fff9; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
 
-.hero-subtitle {
-    font-family: var(--font-header);
-    color: var(--accent);
-    letter-spacing: 12px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    animation: pulse 2s infinite;
-}
+@keyframes glitch-anim { 0% { clip: rect(10px, 9999px, 20px, 0); } 100% { clip: rect(80px, 9999px, 90px, 0); } }
+@keyframes glitch-anim2 { 0% { clip: rect(30px, 9999px, 40px, 0); } 100% { clip: rect(50px, 9999px, 60px, 0); } }
 
-@keyframes pulse {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
+/* Grid & Cards */
+.container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
+.main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: -50px; }
 
-/* 5. КАРТКИ (GLASSMORPHISM) */
-.glass-card {
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
-    padding: 40px;
-    border-radius: 4px; /* Гострі кути виглядають більш агресивно */
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+.glass-card { background: var(--card-bg); border: 1px solid var(--border); padding: 40px; backdrop-filter: blur(10px); transition: 0.4s; }
+.glass-card:hover { border-color: var(--accent); transform: translateY(-5px); }
 
-.glass-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-    transition: 0.5s;
-}
+.label { font-family: 'Orbitron', sans-serif; color: var(--accent); font-size: 0.7rem; margin-bottom: 20px; display: block; letter-spacing: 2px; }
 
-.glass-card:hover::before {
-    left: 100%;
-}
+.specs-list div { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.specs-list strong { color: var(--accent); font-family: 'Orbitron', sans-serif; }
 
-.glass-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
+/* Facts Grid */
+.section-title { font-family: 'Orbitron', sans-serif; margin: 80px 0 40px; font-size: 1.1rem; border-left: 4px solid var(--accent); padding-left: 15px; }
+.facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
 
-/* 6. ОФОРМЛЕННЯ ФАКТІВ */
-.fact-item {
-    padding: 25px;
-    border: 1px solid var(--glass-border);
-    background: rgba(255, 255, 255, 0.02);
-    transition: 0.3s;
-}
+.fact-item { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 25px; transition: 0.3s; }
+.fact-item:hover { border-color: var(--accent); background: rgba(255,0,0,0.02); }
 
-.fact-item:hover {
-    background: var(--accent);
-}
+.fact-id { color: var(--accent); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: 900; display: block; margin-bottom: 10px; border-bottom: 1px solid rgba(255,0,0,0.2); width: fit-content; padding-bottom: 5px; }
 
-.fact-item:hover .fact-text, 
-.fact-item:hover .fact-id {
-    color: white;
-}
+/* Media */
+.image-frame { border: 1px solid var(--border); margin: 60px 0; position: relative; }
+.image-frame img { width: 100%; display: block; filter: grayscale(1); transition: 1s; }
+.image-frame:hover img { filter: grayscale(0); }
+.frame-label { position: absolute; bottom: 10px; left: 10px; background: var(--accent); color: white; font-size: 0.6rem; padding: 3px 8px; font-family: 'Orbitron', sans-serif; }
 
-/* 7. МЕДІА ТА ВІДЕО */
-.media-reveal img {
-    width: 100%;
-    border: 1px solid var(--glass-border);
-    filter: grayscale(100%) brightness(0.8);
-    transition: 1s;
-}
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.video-item { position: relative; padding-bottom: 56.25%; border: 1px solid var(--border); background: #000; }
+.video-item iframe { position: absolute; top:0; left:0; width: 100%; height: 100%; }
 
-.media-reveal:hover img {
-    filter: grayscale(0%) brightness(1);
-}
+/* Footer */
+.site-footer { text-align: center; padding: 100px 0 50px; font-family: 'Orbitron', sans-serif; font-size: 0.6rem; color: #444; letter-spacing: 5px; }
+.footer-line { width: 50px; height: 2px; background: var(--accent); margin: 0 auto 20px; }
 
-.video-wrapper {
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
+/* Animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-/* 8. СКРОЛБАР */
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent);
-}
+@media (max-width: 768px) { .main-header #status-display { display: none; } }
