@@ -43,12 +43,31 @@ document.querySelectorAll('.section-reveal').forEach(el => obs.observe(el));
 
 // Atmosphere Audio
 let playing = false;
+
 function toggleMusic() {
-    const frame = document.getElementById('audio-engine');
+    const music = document.getElementById('audio-engine');
     const btn = document.querySelector('.music-pill');
-    if(!playing) {
-        frame.src += "&autoplay=1";
-        btn.innerText = "⏸ STOP ATMOSPHERE";
+    
+    // Отримуємо доступ до вікна iframe
+    const player = music.contentWindow;
+
+    if (!playing) {
+        // Якщо це перший запуск — додаємо autoplay
+        if (!music.src.includes("autoplay=1")) {
+            music.src += "&autoplay=1";
+        } else {
+            // Якщо вже було запущено — кажемо YouTube "грай"
+            player.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }
+        btn.innerText = "⏸ STOP AUDIO";
         playing = true;
+    } else {
+        // Відправляємо команду "пауза" у YouTube
+        player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        btn.innerText = "🎵 START AUDIO";
+        playing = false;
     }
 }
+    }
+}
+
