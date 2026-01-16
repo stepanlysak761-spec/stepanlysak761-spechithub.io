@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE FINAL LAP | 2021 F1 Digital Legacy</title>
-    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
@@ -30,26 +29,47 @@
     <main class="container">
         <header class="hero">
             <div class="hero-content">
-                <span class="badge reveal">SEASON FINALE</span>
+                <span class="badge reveal">2021 SEASON ARCHIVE</span>
                 <h1 class="glitch-text">THE FINAL<br><span class="outline">LAP</span></h1>
-                <p class="hero-sub">22 RACES. 2 TITANS. 1 DECISION.</p>
+                <p class="hero-sub">TWO TITANS. ONE HISTORIC BATTLE.</p>
             </div>
             <div class="hero-stats">
                 <div class="stat-card"><h3>369.5</h3><p>PTS EQUAL</p></div>
-                <div class="stat-card"><h3>58</h3><p>LAPS TO GLORY</p></div>
+                <div class="stat-card"><h3>22</h3><p>RACES DRIVEN</p></div>
             </div>
         </header>
 
         <section class="section-reveal">
-            <h2 class="section-title">DEEP DIVE ANALYSIS</h2>
+            <h2 class="section-title">THE PATH TO GLORY</h2>
+            <div class="timeline-grid">
+                <article class="timeline-card silverstone" onmouseover="setTheme('red')">
+                    <div class="card-content">
+                        <span class="race-tag">GP SILVERSTONE</span>
+                        <h3>51G IMPACT</h3>
+                        <p>Точка неповернення. Зіткнення, що зробило боротьбу особистою.</p>
+                    </div>
+                </article>
+                <article class="timeline-card monza" onmouseover="setTheme('blue')">
+                    <div class="card-content">
+                        <span class="race-tag">GP MONZA</span>
+                        <h3>TITANS COLLIDE</h3>
+                        <p>Болід Макса на шоломі Льюїса. Гало врятувало життя, але не стосунки.</p>
+                    </div>
+                </article>
+                <article class="timeline-card jeddah" onmouseover="setTheme('gold')">
+                    <div class="card-content">
+                        <span class="race-tag">GP JEDDAH</span>
+                        <h3>MAX VS THE LIMIT</h3>
+                        <p>Хаос нічної гонки. Очки зрівнялися. Весь світ завмер перед фіналом.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-reveal">
+            <h2 class="section-title">ABU DHABI RECAP</h2>
             <div class="video-responsive">
-                <iframe 
-                    src="https://www.youtube.com/embed/0lKzIh02vZM" 
-                    title="F1 Analysis" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/0lKzIh02vZM" frameborder="0" allowfullscreen></iframe>
             </div>
         </section>
 
@@ -57,21 +77,21 @@
             <article class="bento-item checo-block">
                 <div class="badge">TACTICAL MASTERCLASS</div>
                 <h2>CHECO:<br>MINISTER OF DEFENSE</h2>
-                <p>"Checo is a legend" — момент, коли командна робота змінила хід історії в Абу-Дабі.</p>
+                <p>Як Серхіо Перес стримав Гамільтона на 6 секунд, змінивши долю титулу.</p>
             </article>
             <div class="bento-item stat-mini">
-                <span class="mini-val">-6s</span>
-                <p>Час, який Гамільтон втратив за Пересом</p>
+                <span class="mini-val">LEGEND</span>
+                <p>"Checo is a legend" - Max Verstappen</p>
             </div>
         </section>
 
         <section class="radio-section section-reveal">
             <div class="glass-card">
-                <h2 class="section-title">TEAM RADIO</h2>
-                <div id="radio-display">[ STANDBY ]</div>
+                <h2 class="section-title">LIVE TEAM RADIO</h2>
+                <div id="radio-display">[ SELECT FREQUENCY ]</div>
                 <div class="radio-controls">
                     <button class="btn-radio" onclick="playRadio('MAX', 'OMG! OH MY GOD GUYS!')">MAX</button>
-                    <button class="btn-radio" onclick="playRadio('HORNER', 'YOU ARE THE WORLD CHAMPION!')">HORNER</button>
+                    <button class="btn-radio" onclick="playRadio('HORNER', 'MAX VERSTAPPEN, YOU ARE CHAMPION!')">HORNER</button>
                     <button class="btn-radio" onclick="playRadio('TOTO', 'NO MICHAEL! NO NO MICHAEL!')">TOTO</button>
                     <button class="btn-radio" onclick="playRadio('LEWIS', 'THIS HAS BEEN MANIPULATED, MAN.')">LEWIS</button>
                 </div>
