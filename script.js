@@ -1,59 +1,54 @@
-// Preloader: Lights Out
+// Preloader Logic
 const lights = document.querySelectorAll('.light');
-let lightIdx = 0;
-const startLights = setInterval(() => {
-    if(lightIdx < 5) {
-        lights[lightIdx].classList.add('on');
-        lightIdx++;
+let currentLight = 0;
+const loaderInterval = setInterval(() => {
+    if(currentLight < lights.length) {
+        lights[currentLight].classList.add('on');
+        currentLight++;
     } else {
-        clearInterval(startLights);
+        clearInterval(loaderInterval);
         setTimeout(() => {
             const loader = document.getElementById('loader');
             if(loader) {
                 loader.style.opacity = '0';
-                setTimeout(() => loader.remove(), 800);
+                setTimeout(() => loader.remove(), 600);
             }
-        }, 1000);
+        }, 800);
     }
-}, 400);
+}, 300);
 
 // Radio Simulation
 function playRadio(pilot, text) {
     const display = document.getElementById('radio-display');
     display.innerText = "";
-    // Mercedes teal or Red Bull green
     display.style.color = (pilot === 'TOTO') ? '#00d2be' : '#00ff41';
-    
     let i = 0;
-    const typeWriter = setInterval(() => {
+    const typing = setInterval(() => {
         if(i < text.length) {
             display.innerText += text.charAt(i);
             i++;
         } else {
-            clearInterval(typeWriter);
+            clearInterval(typing);
         }
     }, 50);
 }
 
-// Scroll Reveal Observer
-const revealObserver = new IntersectionObserver((entries) => {
+// Reveal on Scroll
+const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if(entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
+        if(entry.isIntersecting) entry.target.classList.add('active');
     });
-}, { threshold: 0.15 });
+}, { threshold: 0.1 });
+document.querySelectorAll('.section-reveal').forEach(el => obs.observe(el));
 
-document.querySelectorAll('.section-reveal').forEach(el => revealObserver.observe(el));
-
-// Audio Toggle
-let audioPlaying = false;
+// Atmosphere Audio
+let playing = false;
 function toggleMusic() {
-    const music = document.getElementById('audio-engine');
+    const frame = document.getElementById('audio-engine');
     const btn = document.querySelector('.music-pill');
-    if(!audioPlaying) {
-        music.src += "&autoplay=1";
+    if(!playing) {
+        frame.src += "&autoplay=1";
         btn.innerText = "⏸ STOP ATMOSPHERE";
-        audioPlaying = true;
+        playing = true;
     }
 }
