@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
-<body onmousemove="moveCursor(event)">
+<body>
 
     <div id="loader">
         <div class="light-row">
@@ -15,9 +15,6 @@
         </div>
         <p id="loader-status">CALIBRATING 2021 DATA...</p>
     </div>
-
-    <div id="cursor-follower"></div>
-    <div id="dot"></div>
 
     <nav class="pill-nav">
         <div class="logo">ZERO POINT FIVE</div>
@@ -40,57 +37,50 @@
         </header>
 
         <section class="section-reveal">
+            <h2 class="section-title">VIDEO ARCHIVE: THE TITAN BATTLE</h2>
+            <div class="video-grid">
+                <div class="video-card large">
+                    <span class="tag">ABU DHABI FINALE</span>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/MTe12fH2xtQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <h4>THE FINAL LAP OVERTAKE</h4>
+                </div>
+                <div class="video-sub-grid">
+                    <div class="video-card">
+                        <span class="tag" style="background:var(--red)">SILVERSTONE CRASH</span>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/oIKel6jVD3Q" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <span class="tag" style="background:var(--gold)">SEASON RECAP</span>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/yO2SBWOgci4" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-reveal">
             <h2 class="section-title">SEASON FLASHBACKS</h2>
             <div class="modern-bento">
                 <div class="bento-card long" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?q=80&w=2070');">
                     <div class="bento-content">
                         <span class="tag">BAKU</span>
                         <h3>TYRE BLOWOUT</h3>
-                        <p>Макс втрачає перемогу на швидкості 300 км/год. Льюїс робить помилку "Magic Button". 0 очок для обох.</p>
+                        <p>Макс втрачає перемогу на швидкості 300 км/год. 0 очок для обох лідерів.</p>
                     </div>
                 </div>
                 <div class="bento-card square">
                     <div class="bento-content">
                         <span class="tag" style="background: var(--blue);">SPA</span>
                         <h3>THE 0.5 FACTOR</h3>
-                        <p>2 кола за сейфті-каром. Половина очок. Саме ці 0.5 очка зробили фінал історичним.</p>
+                        <p>Найкоротша гонка в історії. Половина очок за 2 кола.</p>
                         <div class="mini-stat">+5.0 PTS</div>
                     </div>
                 </div>
-                <div class="bento-card square">
-                    <div class="bento-content">
-                        <span class="tag" style="background: var(--gold);">HUNGARY</span>
-                        <h3>BOTTAS BOWLING</h3>
-                        <p>Масова аварія на старті. Ферстаппен фінішує на напівзруйнованому боліді, рятуючи очки.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-reveal">
-            <h2 class="section-title">TITANS COLLIDE</h2>
-            <div class="timeline-grid">
-                <article class="timeline-card" onmouseover="setTheme('red')">
-                    <div class="card-content">
-                        <span class="race-tag">GP SILVERSTONE</span>
-                        <h3>51G IMPACT</h3>
-                        <p>Зіткнення, що зробило боротьбу особистою.</p>
-                    </div>
-                </article>
-                <article class="timeline-card" onmouseover="setTheme('blue')">
-                    <div class="card-content">
-                        <span class="race-tag">GP MONZA</span>
-                        <h3>CAR ON TOP</h3>
-                        <p>Гало врятувало життя Льюїсу. Обидва лідери в гравії.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="section-reveal">
-            <h2 class="section-title">THE FINAL LAP RECAP</h2>
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/0lKzIh02vZM" frameborder="0" allowfullscreen></iframe>
             </div>
         </section>
 
