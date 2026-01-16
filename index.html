@@ -3,26 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferrari 499P | Technical Experience</title>
+    <title>Ferrari 499P | Mobile & Desktop Ready</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="scanline"></div>
 
     <header>
         <div class="logo">FERRARI <span>499P</span></div>
-        <div class="controls">
-            <span id="sys-status">SYS_STATUS: NOMINAL</span>
-            <button id="theme-btn" class="btn-ui">ENGINE_MODE</button>
-        </div>
+        <button id="mode-trigger" class="btn-ui">MODE</button>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <span class="badge">LE MANS HYPERCAR</span>
-            <h1 id="main-title">499P</h1>
+            <h1 id="hero-title">499P</h1>
             <p class="hero-subtitle">BEYOND PERFORMANCE</p>
         </div>
     </section>
@@ -30,55 +25,47 @@
     <main class="container">
         <div class="main-grid">
             <div class="glass-card reveal">
-                <h3 class="card-title">// TECHNICAL_DATA</h3>
+                <span class="label">// TELEMETRY</span>
                 <div class="specs-list">
-                    <div><span>POWERTRAIN</span><strong>3.0L V6 BITURBO</strong></div>
-                    <div><span>HYBRID SYSTEM</span><strong>900V FRONT ERS</strong></div>
-                    <div><span>AWD ACTIVATION</span><strong>> 190 KM/H</strong></div>
-                    <div><span>TOTAL OUTPUT</span><strong>680 HP</strong></div>
+                    <div><span>ENGINE</span> <strong>3.0L V6</strong></div>
+                    <div><span>HYBRID</span> <strong>900V</strong></div>
+                    <div><span>AWD</span> <strong>>190 KM/H</strong></div>
                 </div>
             </div>
 
             <div class="glass-card reveal">
-                <h3 class="card-title">// MISSION_DETAILS</h3>
-                <p id="typewriter" class="info-text"></p>
-                <div class="victories-badge">
-                    WINNER: 2023 | 2024 | 2025
-                </div>
+                <span class="label">// BRIEFING</span>
+                <p id="typewriter-output" class="info-text"></p>
             </div>
 
-            <div class="tech-showcase reveal">
+            <div class="tech-wide-card reveal">
                 <div class="glass-card tech-flex">
-                    <div class="text-block">
-                        <h2>AERODYNAMIC DESIGN</h2>
-                        <p>Кожна лінія кузова 499P оптимізована для створення притискної сили. Дизайн відсилає до легендарної червоно-жовтої ліверії 312 PB 1970-х років.</p>
+                    <div class="info-block">
+                        <h2>499P MODIFICATA</h2>
+                        <p>Ексклюзив за €5.1 млн: 870 к.с. без обмежень FIA. Доступно для програми Corse Clienti.</p>
                     </div>
-                    <div class="modificata-box">
-                        <h4>499P MODIFICATA</h4>
-                        <p>Unlimited version: 870 HP. Ексклюзив для трекових заїздів клієнтів Ferrari.</p>
-                        <span class="price-tag">€5.1M EXCLUSIVE</span>
+                    <div class="modificata-badge">
+                        <span>UNLIMITED POWER</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="image-reveal reveal">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg/960px-83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg" alt="AF Corse 83">
+        <div class="media-reveal reveal">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg/960px-83_AF_Corse_Ferrari_499P_Lone_Star_Le_Mans.jpg" alt="Ferrari 499P #83">
         </div>
 
         <div class="video-grid">
-            <div class="video-wrapper reveal">
-                <iframe src="https://www.youtube.com/embed/22I7yJiOu0s" frameborder="0" allowfullscreen></iframe>
+            <div class="video-item reveal">
+                <iframe src="https://www.youtube.com/embed/22I7yJiOu0s" allowfullscreen></iframe>
             </div>
-            <div class="video-wrapper reveal">
-                <iframe src="https://www.youtube.com/embed/Dn0TuqQgXTw" frameborder="0" allowfullscreen></iframe>
+            <div class="video-item reveal">
+                <iframe src="https://www.youtube.com/embed/Dn0TuqQgXTw" allowfullscreen></iframe>
             </div>
         </div>
     </main>
 
-    <footer>
-        SCUDERIA FERRARI DATA HUB © 2023-2026 // MODENA, ITALY
-    </footer>
+    <footer>SCUDERIA FERRARI // 2026</footer>
 
     <script src="script.js"></script>
 </body>
