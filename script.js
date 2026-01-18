@@ -1,32 +1,64 @@
 const sportsData = [
-    { name: "Формула-1", cat: "F1", color: "linear-gradient(45deg, #e10600, #333)", desc: "Вершина кільцевих автоперегонів, де змагаються найшвидші боліди." },
-    { name: "Ралі (WRC)", cat: "Rally", color: "linear-gradient(45deg, #FFB800, #333)", desc: "Змагання на різних типах покриття з етапами на відкритих дорогах." },
-    { name: "MotoGP", cat: "Bikes", color: "linear-gradient(45deg, #2E3192, #333)", desc: "Найпрестижніший чемпіонат з мотоперегонів на кільцевих трасах." },
-    { name: "NASCAR", cat: "Stock Car", color: "linear-gradient(45deg, #0078C1, #333)", desc: "Популярні в США перегони серійних автомобілів з контактною боротьбою." },
-    { name: "IndyCar", cat: "Formula", color: "linear-gradient(45deg, #00AEEF, #333)", desc: "Американська серія перегонів, що поєднує кільцеві траси та овали." },
-    { name: "24h Le Mans", cat: "Endurance", color: "linear-gradient(45deg, #000, #444)", desc: "Гонки на витривалість: швидкість, надійність та командна робота." },
-    { name: "Drag Racing", cat: "Special", color: "linear-gradient(45deg, #444, #111)", desc: "Надзвичайно потужні заїзди на прискорення по прямій." },
-    { name: "Rally-Cross", cat: "Off-Road", color: "linear-gradient(45deg, #603813, #333)", desc: "Динамічні перегони на замкнених трасах із ґрунтовим покриттям." },
-    { name: "Formula E", cat: "Electric", color: "linear-gradient(45deg, #00E5FF, #333)", desc: "Перегони електричних болідів, орієнтовані на екологію." },
-    { name: "Superbike", cat: "Bikes", color: "linear-gradient(45deg, #C1272D, #333)", desc: "Мотоперегони на серійних моделях, близьких до дорожніх." }
-    // Додайте решту 10 за прикладом...
+    { name: "Formula-1 (F1)", cat: "Asphalt", desc: "Вершина кільцевих автоперегонів, де змагаються найшвидші боліди світу." },
+    { name: "Ралі (WRC)", cat: "Off-Road", desc: "Змагання на різних типах покриття (асфальт, ґрунт, сніг) на відкритих дорогах." },
+    { name: "MotoGP", cat: "Bikes", desc: "Найпрестижніший чемпіонат з мотоперегонів на кільцевих трасах." },
+    { name: "NASCAR", cat: "Asphalt", desc: "Популярні в США перегони серійних автомобілів, відомі контактною боротьбою." },
+    { name: "IndyCar", cat: "Asphalt", desc: "Американська серія перегонів, що поєднує кільцеві траси та овали." },
+    { name: "24 години Ле-Мана", cat: "Asphalt", desc: "Гонки на витривалість, де важливі швидкість, надійність і командна робота." },
+    { name: "Драг-рейсинг", cat: "Special", desc: "Короткі, але надзвичайно потужні заїзди на прискорення по прямій." },
+    { name: "Автокрос", cat: "Off-Road", desc: "Динамічні перегони на замкнених трасах із ґрунтовим покриттям." },
+    { name: "Ралі-крос", cat: "Off-Road", desc: "Змішані траси (асфальт+ґрунт) з дуже потужними авто." },
+    { name: "Формула E", cat: "Asphalt", desc: "Сучасні перегони електричних болідів, орієнтовані на екологію." },
+    { name: "Супербайк (WSBK)", cat: "Bikes", desc: "Чемпіонат з мотоперегонів на серійних мотоциклах." },
+    { name: "Dakar Rally", cat: "Off-Road", desc: "Найтяжчий у світі марафон через пустелі та бездоріжжя." },
+    { name: "Drift", cat: "Special", desc: "Мистецтво керування автомобілем у керованому заносі." },
+    { name: "Karting", cat: "Asphalt", desc: "Фундамент автоспорту, з якого починають майже всі профі." },
+    { name: "DTM", cat: "Asphalt", desc: "Німецька серія кузовних автомобілів високого технологічного рівня." },
+    { name: "Enduro", cat: "Bikes", desc: "Мотоциклетні змагання на витривалість по пересіченій місцевості." },
+    { name: "Speedway", cat: "Bikes", desc: "Гонки на мотоциклах без гальм по гаревому овалу." },
+    { name: "Baja 1000", cat: "Off-Road", desc: "Екстремальні перегони пустелями Мексики на вантажівках та багі." },
+    { name: "Hillclimb", cat: "Special", desc: "Гонка на час із підйому на круті гірські вершини." },
+    { name: "Extreme E", cat: "Off-Road", desc: "Електричні позашляховики, що змагаються в екологічно вразливих зонах." }
 ];
 
+const grid = document.getElementById('grid');
+const searchInput = document.getElementById('searchInput');
+
 function displaySports(data) {
-    const grid = document.getElementById('grid');
     grid.innerHTML = "";
-    data.forEach(sport => {
+    data.forEach((sport, index) => {
+        const num = (index + 1).toString().padStart(2, '0');
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-            <div class="card-header" style="background: ${sport.color}">${sport.name}</div>
-            <div class="card-body">
-                <span class="category-tag">${sport.cat}</span>
-                <p class="card-desc">${sport.desc}</p>
-            </div>
+            <div class="card-num">${num} // ${sport.cat}</div>
+            <div class="card-title">${sport.name}</div>
+            <div class="card-desc">${sport.desc}</div>
         `;
         grid.appendChild(card);
     });
+}
+
+searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const filtered = sportsData.filter(s => 
+        s.name.toLowerCase().includes(term) || 
+        s.cat.toLowerCase().includes(term)
+    );
+    displaySports(filtered);
+});
+
+function filterSports(category) {
+    const btns = document.querySelectorAll('.btn');
+    btns.forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+
+    if (category === 'all') {
+        displaySports(sportsData);
+    } else {
+        const filtered = sportsData.filter(s => s.cat === category);
+        displaySports(filtered);
+    }
 }
 
 displaySports(sportsData);
