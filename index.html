@@ -3,46 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Світ Автоспорту</title>
+    <title>Motorsport Wiki | 20 Дисциплін</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Дисципліни Автоспорту</h1>
-    
-    <div class="container">
-        <div class="card" onclick="toggleInfo(this)">
-            <div class="card-header nascar">NASCAR</div>
-            <div class="card-content">
-                <p>Історія від бутлегерів до овальних трас. Шахи на швидкості 320 км/год.</p>
-                <span class="badge">Circuit Racing</span>
-            </div>
+    <nav class="navbar">
+        <div class="logo">MOTOR<span>SPORT</span></div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Пошук дисципліни...">
+            <i class="fas fa-search"></i>
         </div>
+    </nav>
 
-        <div class="card" onclick="toggleInfo(this)">
-            <div class="card-header rally">Ралі-рейди</div>
-            <div class="card-content">
-                <p>Екстремальні подорожі пустелями. Головне — витривалість та навігація.</p>
-                <span class="badge">Dirt Rally</span>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Енциклопедія швидкості</h1>
+            <p>Від асфальтових треків до піщаних дюн: повний розбір 20 ключових дисциплін світу.</p>
+            
+            <div class="filter-buttons">
+                <button class="btn active" onclick="filterSports('all')">Всі</button>
+                <button class="btn" onclick="filterSports('Asphalt')">Асфальт</button>
+                <button class="btn" onclick="filterSports('Off-Road')">Бездоріжжя</button>
+                <button class="btn" onclick="filterSports('Bikes')">Мото</button>
+                <button class="btn" onclick="filterSports('Special')">Спеціальні</button>
             </div>
         </div>
+    </header>
 
-        <div class="card" onclick="toggleInfo(this)">
-            <div class="card-header moto">MotoGP</div>
-            <div class="card-content">
-                <p>Найшвидші байки планети. Потужність 300+ к.с. при вазі всього 157 кг.</p>
-                <span class="badge">Moto Racing</span>
+    <main class="container">
+        <div class="grid" id="grid">
             </div>
-        </div>
+    </main>
 
-        <div class="card" onclick="toggleInfo(this)">
-            <div class="card-header fe">Formula E</div>
-            <div class="card-content">
-                <p>Майбутнє на батарейках. Гонки в центрі мегаполісів та Attack Mode.</p>
-                <span class="badge">Technology</span>
-            </div>
+    <footer>
+        <p>&copy; 2026 Motorsport Academy. Створено для справжніх фанатів швидкості.</p>
+        <div class="socials">
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-telegram"></i>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
