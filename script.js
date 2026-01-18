@@ -1,49 +1,28 @@
 const sportData = {
     "FERRARI 499P": {
-        title: "ARCHIVE_FILE: 499P_HYPERCAR",
-        desc: "Переможець 24 годин Ле-Мана. Гібридна силова установка з повним приводом. Вершина технологічного регламенту LMH.",
-        specs: ["POWER: 680 HP (System)", "WEIGHT: 1030 KG", "ENGINE: 2.9L V6 TWIN TURBO"]
+        title: "DOSSIER: FERRARI_499P_HYPERCAR",
+        desc: "Це вершина інженерії Scuderia Ferrari для чемпіонату WEC. Гібридний монстр, який здобув історичну перемогу в Ле-Мані через 50 років після останньої участі марки.",
+        specs: ["SYSTEM: 3.0L V6 TWIN TURBO HYBRID", "POWER: 500 KW (680 HP)", "RECOVERY: 200 KW ENERGY SYSTEM"]
     },
     "FORMULA 1": {
-        title: "F1_GRAND_PRIX_DATA",
-        desc: "Вища категорія гонок з відкритими колесами. Найшвидші боліди у світі на кільцевих трасах.",
-        specs: ["MAX SPEED: 370 KM/H", "0-100: 2.4 SEC", "CHASSIS: CARBON MONOCOQUE"]
-    },
-    "WRC": {
-        title: "WORLD_RALLY_LOG",
-        desc: "Екстремальні перегони по пересіченій місцевості. Гравій, сніг та асфальт.",
-        specs: ["ENGINE: 1.6L TURBO HYBRID", "DRIVE: 4WD", "POWER: 500+ HP"]
+        title: "GRAND_PRIX_ELITE",
+        desc: "Найвищий рівень автоспорту. Боліди з відкритими колесами, де аеродинаміка створює притискну силу, достатню для їзди по стелі тунелю.",
+        specs: ["0-100: 2.4 SEC", "G-FORCE: 5.0+", "AERO: DRS SYSTEM"]
     },
     "DRIFTING": {
-        title: "DRIFT_RECORDS",
-        desc: "Оцінка кута, траєкторії та димності. Парні заїзди — найвидовищніша частина дисципліни.",
-        specs: ["TIRES: SEMI-SLICK", "POWER: 800-1200 HP", "DRIVE: RWD ONLY"]
+        title: "DRIFT_TACTICAL_DATA",
+        desc: "Мистецтво контрольованого хаосу. Перемогу отримує той, хто демонструє найбільший кут, швидкість та стиль у безперервному заносі.",
+        specs: ["TIRES: SEMI-SLICK", "POWER: 1000+ HP", "STEERING: 70 DEGREE ANGLE"]
     },
-    "MOTOGP": {
-        title: "MOTO_ELITE_SPEC",
-        desc: "Прототипи мотоциклів, створені виключно для гонок. Кути нахилу в поворотах понад 60 градусів.",
-        specs: ["WEIGHT: 157 KG", "POWER: 250+ HP", "TOP SPEED: 360+ KM/H"]
-    },
-    "DAKAR RALLY": {
-        title: "DAKAR_MARATHON_FILE",
-        desc: "Найскладніша гонка-марафон у світі. Тижні через дюни, каміння та пил.",
-        specs: ["DURATION: 14 DAYS", "DISTANCE: 8000+ KM", "NAVIGATION: DIGITAL ROADBOOK"]
-    },
-    "GT3 / GT2 / GT4": {
-        title: "GT_CATEGORY_CORE",
-        desc: "Гонки на базі дорожніх суперкарів. Ferrari, Lamborghini, Porsche, BMW.",
-        specs: ["ABS/TC: ENABLED", "ENGINE: FRONT/MID/REAR", "CLASSES: PRO / AM"]
-    },
-    "DRAG RACING": {
-        title: "ACCELERATION_ARCHIVE",
-        desc: "Битва на 1/4 милі. Драгстери Top Fuel розганяються до 500 км/год за лічені секунди.",
-        specs: ["FUEL: NITRO-METHANE", "POWER: 11000 HP", "BRAKES: PARACHUTE"]
+    "WRC": {
+        title: "WORLD_RALLY_FILES",
+        desc: "Найскладніші умови для пілотування. Вузькі лісові дороги, снігові замети та гравійні серпантини.",
+        specs: ["DRIVE: 4WD HYBRID", "SURFACE: SNOW, GRAVEL, ASPHALT", "GEARS: PADDLE SHIFT"]
     }
-    // Сюди можна додати решту 40 видів за аналогією
+    // ... Ви можете додати решту 45 описів за цією ж структурою
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Reveal Animation
     const reveal = () => {
         document.querySelectorAll('.reveal').forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
@@ -52,26 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', reveal);
     reveal();
 
-    // Modal Logic
     const modal = document.getElementById("infoModal");
     const modalData = document.getElementById("modalData");
     const closeBtn = document.querySelector(".close-btn");
 
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', () => {
-            const name = card.querySelector('h4').innerText;
+            const name = card.querySelector('h4') ? card.querySelector('h4').innerText : card.querySelector('h2').innerText;
             const data = sportData[name];
 
             if (data) {
                 modalData.innerHTML = `
                     <h2 class="modal-h">${data.title}</h2>
                     <p class="modal-p">${data.desc}</p>
-                    <div class="spec-list">
-                        ${data.specs.map(s => `<div class="spec-line">>> ${s}</div>`).join('')}
+                    <div style="margin-top:30px">
+                        ${data.specs.map(s => `<div style="color:red; font-family:Orbitron; font-size:0.8rem; margin-bottom:10px">>> ${s}</div>`).join('')}
                     </div>
                 `;
             } else {
-                modalData.innerHTML = `<h2 class="modal-h">${name}</h2><p class="modal-p">Архівні дані завантажуються...</p>`;
+                modalData.innerHTML = `<h2 class="modal-h">${name}</h2><p class="modal-p">Архівна інформація завантажується з центрального сервера...</p>`;
             }
             modal.style.display = "block";
         });
