@@ -1,21 +1,21 @@
 const sportData = {
     "FERRARI 499P": {
-        title: "DOSSIER: FERRARI_499P_HYPERCAR",
+        title: "DOSSIER: FERRARI 499P",
         desc: "Це вершина інженерії Scuderia Ferrari для чемпіонату WEC. Гібридний монстр, який здобув історичну перемогу в Ле-Мані через 50 років після останньої участі марки.",
         specs: ["SYSTEM: 3.0L V6 TWIN TURBO HYBRID", "POWER: 500 KW (680 HP)", "RECOVERY: 200 KW ENERGY SYSTEM"]
     },
     "FORMULA 1": {
-        title: "GRAND_PRIX_ELITE",
+        title: "GRAND PRIX(F1, F2, F3, F4)",
         desc: "Найвищий рівень автоспорту. Боліди з відкритими колесами, де аеродинаміка створює притискну силу, достатню для їзди по стелі тунелю.",
         specs: ["0-100: 2.4 SEC", "G-FORCE: 5.0+", "AERO: DRS SYSTEM"]
     },
     "DRIFTING": {
-        title: "DRIFT_TACTICAL_DATA",
+        title: "DRIFT",
         desc: "Мистецтво контрольованого хаосу. Перемогу отримує той, хто демонструє найбільший кут, швидкість та стиль у безперервному заносі.",
         specs: ["TIRES: SEMI-SLICK", "POWER: 1000+ HP", "STEERING: 70 DEGREE ANGLE"]
     },
     "WRC": {
-        title: "WORLD_RALLY_FILES",
+        title: "WORLD RALLY(WRC/ERC)",
         desc: "Найскладніші умови для пілотування. Вузькі лісові дороги, снігові замети та гравійні серпантини.",
         specs: ["DRIVE: 4WD HYBRID", "SURFACE: SNOW, GRAVEL, ASPHALT", "GEARS: PADDLE SHIFT"]
     }
@@ -58,3 +58,4 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.onclick = () => modal.style.display = "none";
     window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
 });
+
