@@ -3,249 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motorsport 360 | Archive</title>
-    <style>
-        :root {
-            --accent: #d4af37;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(212, 175, 55, 0.3);
-        }
-
-        body {
-            background-color: #000;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 100px;
-        }
-
-        .header {
-            text-align: center;
-            margin: 60px 0;
-            letter-spacing: 5px;
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            color: var(--accent);
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .header p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 10px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            width: 90%;
-            max-width: 1400px;
-        }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .card:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .card h2 {
-            font-size: 1.2rem;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .card p {
-            font-size: 0.85rem;
-            color: #ccc;
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        /* Стиль для плеєра як на скріншоті */
-        .audio-bar {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(20, 20, 20, 0.9);
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 10px 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
-
-        .play-btn {
-            color: var(--accent);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* Відео-оверлей */
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); display: none; z-index: 2000;
-            justify-content: center; align-items: center;
-        }
-        .video-container { width: 80%; max-width: 900px; aspect-ratio: 16/9; }
-    </style>
+    <title>Світ Автоспорту</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="header">
-        <h1>RACING ARCHIVE</h1>
-        <p>EXPERIENCE THE SPEED THROUGH THE LENS OF HISTORY</p>
-    </div>
+    <h1>Дисципліни Автоспорту</h1>
+    
+    <div class="container">
+        <div class="card" onclick="toggleInfo(this)">
+            <div class="card-header nascar">NASCAR</div>
+            <div class="card-content">
+                <p>Історія від бутлегерів до овальних трас. Шахи на швидкості 320 км/год.</p>
+                <span class="badge">Circuit Racing</span>
+            </div>
+        </div>
 
-    <div class="grid-container">
-        <div class="card" onclick="openVid('dj287SYt4e8')">
-            <h2>01 CIRCUIT RACING</h2>
-            <p>NASCAR: History & Culture. Боротьба на овальних треках.</p>
+        <div class="card" onclick="toggleInfo(this)">
+            <div class="card-header rally">Ралі-рейди</div>
+            <div class="card-content">
+                <p>Екстремальні подорожі пустелями. Головне — витривалість та навігація.</p>
+                <span class="badge">Dirt Rally</span>
+            </div>
         </div>
-        <div class="card" onclick="openVid('H_d9treBXdg')">
-            <h2>02 DIRT RALLY</h2>
-            <p>Rally Raids & Silk Way. Випробування пустелею та піском.</p>
+
+        <div class="card" onclick="toggleInfo(this)">
+            <div class="card-header moto">MotoGP</div>
+            <div class="card-content">
+                <p>Найшвидші байки планети. Потужність 300+ к.с. при вазі всього 157 кг.</p>
+                <span class="badge">Moto Racing</span>
+            </div>
         </div>
-        <div class="card" onclick="openVid('tE3HWOSD6PE')">
-            <h2>03 MOTO RACING</h2>
-            <p>MotoGP Essentials. Швидкість на двох колесах.</p>
-        </div>
-        <div class="card" onclick="openVid('8bxeybL30jY')">
-            <h2>04 TECHNOLOGY</h2>
-            <p>Formula-E: Electric Future. Майбутнє гоночних технологій.</p>
-        </div>
-        <div class="card" onclick="openVid('Z8InAsm9Y3k')">
-            <h2>05 FORMULA 1</h2>
-            <p>Вершина аеродинаміки та майстерності пілотування.</p>
-        </div>
-        <div class="card" onclick="openVid('6X0W-HlC7_c')">
-            <h2>06 ENDURANCE</h2>
-            <p>24 години Ле-Мана: битва на витривалість техніки і людей.</p>
-        </div>
-        <div class="card" onclick="openVid('T1vX_Tshk4E')">
-            <h2>07 DRIFTING</h2>
-            <p>Кут та дим: мистецтво контролю автомобіля у заносі.</p>
-        </div>
-        <div class="card" onclick="openVid('rS00XWNE0d0')">
-            <h2>08 DRAG RACING</h2>
-            <p>402 метри чистого адреналіну та божевільної потужності.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>09 HILLCLIMB</h2>
-            <p>Штурм гірських вершин: небезпека на кожному повороті.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>10 KARTING</h2>
-            <p>Основи автоспорту: де народжуються майбутні чемпіони.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>11 OFF-ROAD 4x4</h2>
-            <p>Позашляхові марафони та скелелазіння на монстр-траках.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>12 INDYCAR</h2>
-            <p>Швидкість американських овалів та легендарні 500 миль Індіанаполіса.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>13 TOURING CARS</h2>
-            <p>Контактна боротьба кращих кузовних серій світу.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>14 MOTOCROSS</h2>
-            <p>Стрибки, бруд та неймовірна атлетика позашляхових мотоциклів.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>15 MONSTER TRUCKS</h2>
-            <p>Шоу гігантських коліс: руйнація та неймовірні трюки.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>16 SUPERMOTO</h2>
-            <p>Мікс асфальту та грунту на універсальних байках.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>17 TRUCK RACING</h2>
-            <p>Залізні велетні на вузьких гоночних трасах.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>18 RALLYCROSS</h2>
-            <p>Короткі вибухові заїзди на змішаному покритті.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>19 VINTAGE RACING</h2>
-            <p>Дух історії: класичні гоночні авто минулих десятиліть.</p>
-        </div>
-        <div class="card" onclick="openVid('VIDEO_ID')">
-            <h2>20 SIM RACING</h2>
-            <p>Цифровий автоспорт: межа між грою та реальністю стирається.</p>
+
+        <div class="card" onclick="toggleInfo(this)">
+            <div class="card-header fe">Formula E</div>
+            <div class="card-content">
+                <p>Майбутнє на батарейках. Гонки в центрі мегаполісів та Attack Mode.</p>
+                <span class="badge">Technology</span>
+            </div>
         </div>
     </div>
 
-    <div class="audio-bar">
-        <span style="font-size: 0.8rem;">🎵 Skyfall - Adele</span>
-        <button class="play-btn" onclick="toggleMusic()" id="mBtn">PLAY</button>
-    </div>
-
-    <audio id="bgMusic" loop>
-        <source src="Adele - Skyfall.mp3" type="audio/mpeg">
-    </audio>
-
-    <div id="videoOverlay" class="overlay" onclick="closeVid()">
-        <div class="video-container">
-            <iframe id="vidPlayer" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <script>
-        const music = document.getElementById('bgMusic');
-        const mBtn = document.getElementById('mBtn');
-
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                mBtn.innerText = 'PAUSE';
-            } else {
-                music.pause();
-                mBtn.innerText = 'PLAY';
-            }
-        }
-
-        function openVid(id) {
-            if(id === 'VIDEO_ID') return alert('Відео ще додається!');
-            document.getElementById('vidPlayer').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-            document.getElementById('videoOverlay').style.display = 'flex';
-        }
-
-        function closeVid() {
-            document.getElementById('videoOverlay').style.display = 'none';
-            document.getElementById('vidPlayer').src = '';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
