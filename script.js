@@ -1,18 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Функція появи елементів при скролі
     const reveal = () => {
-        document.querySelectorAll('.reveal').forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            const elementVisible = 50;
+
+            if (elementTop < windowHeight - elementVisible) {
                 el.classList.add('active');
             }
         });
     };
 
+    // Слухаємо скрол
     window.addEventListener('scroll', reveal);
+    
+    // Запускаємо один раз при старті
     reveal();
 
-    // Ефект системного статусу
-    const status = document.querySelector('.sys-status');
+    // Додатковий ефект: легке миготіння тексту логотипу
+    const logo = document.querySelector('.glitch');
     setInterval(() => {
-        status.style.opacity = Math.random() > 0.9 ? '0.2' : '1';
+        logo.style.opacity = Math.random() > 0.98 ? '0.5' : '1';
     }, 100);
 });
