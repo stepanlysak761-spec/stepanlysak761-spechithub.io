@@ -2,6 +2,7 @@
     --bg: #000000;
     --accent: #ff0000;
     --border: #1a1a1a;
+    --text-dim: #666;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
@@ -15,34 +16,32 @@ body { background: var(--bg); color: #fff; font-family: 'Rajdhani', sans-serif; 
 .system-status { font-family: 'Orbitron'; color: var(--accent); font-size: 0.7rem; align-self: center; }
 
 .intro-hero { min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 5%; border-bottom: 1px solid var(--border); }
-.intro-title { font-family: 'Orbitron'; font-size: 4rem; margin-bottom: 20px; }
-.intro-text { max-width: 800px; font-size: 1.4rem; color: #888; line-height: 1.6; }
-.highlight { color: #fff; }
+.intro-title { font-family: 'Orbitron'; font-size: 3.5rem; margin-bottom: 20px; }
+.intro-text { max-width: 850px; font-size: 1.3rem; color: #888; line-height: 1.8; }
+.highlight { color: #fff; border-bottom: 1px solid var(--accent); }
 
 .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
 
 .hypercard-499p { display: flex; gap: 40px; background: #050505; border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 40px; margin-bottom: 60px; }
-.project-info { flex: 1; }
-.project-image { flex: 1; }
-.project-image img { width: 100%; height: auto; border: 1px solid var(--border); filter: grayscale(0.5) contrast(1.2); }
-.mini-specs { display: flex; gap: 30px; margin-top: 30px; }
-.spec span { display: block; font-size: 0.6rem; color: #555; font-family: 'Orbitron'; }
-.spec { font-family: 'Orbitron'; font-size: 1.2rem; }
+.project-image img { width: 100%; max-width: 600px; border: 1px solid var(--border); filter: grayscale(0.2) contrast(1.1); }
 
 .dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.col-title { font-family: 'Orbitron'; font-size: 0.8rem; color: #333; margin-bottom: 20px; border-bottom: 1px solid #111; padding-bottom: 10px; }
-.card { background: #0a0a0a; border: 1px solid var(--border); padding: 20px; transition: 0.3s; }
-.card:hover { border-color: var(--accent); background: #111; transform: translateX(5px); }
-.card h4 { font-family: 'Orbitron'; font-size: 0.8rem; color: #eee; margin-bottom: 8px; }
-.card p { font-size: 0.75rem; color: #555; }
+.col-title { font-family: 'Orbitron'; font-size: 0.85rem; color: var(--accent); margin-bottom: 25px; letter-spacing: 2px; }
 
-.modal { display: none; position: fixed; z-index: 5000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(15px); }
+.card { background: #0a0a0a; border: 1px solid var(--border); padding: 20px; transition: 0.3s; cursor: pointer; }
+.card:hover { border-color: var(--accent); transform: translateY(-5px); background: #111; }
+.card h4 { font-family: 'Orbitron'; font-size: 0.8rem; color: #fff; margin-bottom: 8px; }
+.card p { font-size: 0.75rem; color: var(--text-dim); }
+
+.modal { display: none; position: fixed; z-index: 5000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(20px); }
 .modal-content { background: #000; border: 1px solid var(--accent); margin: 5% auto; padding: 60px; width: 90%; max-width: 700px; position: relative; }
 .close-btn { position: absolute; right: 30px; top: 20px; color: var(--accent); font-size: 30px; cursor: pointer; }
-.modal-h { font-family: 'Orbitron'; color: var(--accent); margin-bottom: 20px; }
-.modal-p { font-size: 1.2rem; line-height: 1.7; color: #ccc; }
+.modal-h { font-family: 'Orbitron'; color: var(--accent); margin-bottom: 20px; font-size: 1.8rem; letter-spacing: 2px; }
+.modal-p { font-size: 1.2rem; line-height: 1.7; color: #ccc; margin-bottom: 30px; }
+.spec-tag { display: block; color: var(--accent); font-family: 'Orbitron'; font-size: 0.75rem; margin-bottom: 10px; border-left: 2px solid var(--accent); padding-left: 15px; }
 
-.reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-@media (max-width: 1000px) { .dashboard-grid { grid-template-columns: 1fr 1fr; } .hypercard-499p { flex-direction: column; } }
+@media (max-width: 1100px) { .dashboard-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 700px) { .dashboard-grid { grid-template-columns: 1fr; .hypercard-499p { flex-direction: column; } }
