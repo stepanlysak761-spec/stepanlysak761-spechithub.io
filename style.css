@@ -1,35 +1,54 @@
-/* Додайте до вашого CSS */
-.intro-text {
-    max-width: 900px;
-    margin: 20px auto;
-    line-height: 1.8;
-    color: #ccc;
-    font-size: 1.1rem;
-    text-align: justify;
+const sportsData = [
+    { name: "Formula 1", cat: "Asphalt", desc: "Вершина швидкості та технологій." },
+    { name: "Formula 2 3 4", cat: "Asphalt", desc: "Молодіжні серії та шлях до зірок." },
+    { name: "GT Series", cat: "Asphalt", desc: "Суперкари класів GT3, GT2, GT4." },
+    { name: "WEC Le Mans", cat: "Asphalt", desc: "Гонки на витривалість 24 години." },
+    { name: "IndyCar NASCAR", cat: "Asphalt", desc: "Американські овали та треки." },
+    { name: "WRC ERC", cat: "Off-Road", desc: "Світові та європейські ралі." },
+    { name: "Rally Raids", cat: "Off-Road", desc: "Дакар та пустельні марафони." },
+    { name: "Rallycross", cat: "Off-Road", desc: "Кільцевий ґрунт та асфальт." },
+    { name: "MotoGP WSBK", cat: "Bikes", desc: "Кільцеві мотоперегони світу." },
+    { name: "Karting", cat: "Asphalt", desc: "Основи та початок автоспорту." }
+];
+
+const grid = document.getElementById('grid');
+const searchInput = document.getElementById('searchInput');
+
+function displaySports(data) {
+    grid.innerHTML = "";
+    data.forEach((sport, index) => {
+        // Форматуємо номер (01, 02...)
+        const num = (index + 1).toString().padStart(2, '0');
+        
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-num">${num} // ${sport.cat}</div>
+            <div class="card-title">${sport.name}</div>
+            <div class="card-desc">${sport.desc}</div>
+        `;
+        grid.appendChild(card);
+    });
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, #fff, #ff4d4d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+// Пошук
+searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const filtered = sportsData.filter(s => s.name.toLowerCase().includes(term));
+    displaySports(filtered);
+});
+
+// Фільтрація
+function filterSports(category) {
+    if (category === 'all') {
+        displaySports(sportsData);
+    } else {
+        const filtered = sportsData.filter(s => s.cat === category);
+        displaySports(filtered);
+    }
+    // Стиль кнопок
+    document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
 }
 
-/* Оновлення кнопки серіалу */
-.play-btn {
-    text-decoration: none;
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    padding: 15px 30px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: 0.3s;
-}
-
-.play-btn:hover {
-    background: #cc0000;
-    transform: translateY(-3px);
-}
+displaySports(sportsData);
