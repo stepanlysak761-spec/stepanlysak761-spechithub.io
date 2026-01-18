@@ -1,131 +1,35 @@
-:root {
-    --primary: #ff4d4d;
-    --dark-bg: #0a0a0a;
-    --card-bg: #161616;
-    --text: #ffffff;
-    --gray: #888;
+/* Додайте до вашого CSS */
+.intro-text {
+    max-width: 900px;
+    margin: 20px auto;
+    line-height: 1.8;
+    color: #ccc;
+    font-size: 1.1rem;
+    text-align: justify;
 }
 
-body {
-    background-color: var(--dark-bg);
-    color: var(--text);
-    font-family: 'Orbitron', sans-serif; /* Якщо немає, підтягнеться Arial */
-    margin: 0;
-    padding: 0;
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, #ff4d4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Навігація */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 1.5rem;
+/* Оновлення кнопки серіалу */
+.play-btn {
+    text-decoration: none;
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 15px 30px;
     font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.logo span { color: var(--primary); }
-
-.search-box {
-    position: relative;
-    width: 300px;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 10px 15px;
-    background: #222;
-    border: 1px solid #444;
-    border-radius: 20px;
-    color: white;
-}
-
-/* Героїчний блок */
-.hero {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
-}
-
-.btn {
-    padding: 10px 20px;
-    margin: 5px;
-    background: #222;
-    border: 1px solid var(--primary);
-    color: white;
     border-radius: 5px;
-    cursor: pointer;
+    margin-top: 20px;
     transition: 0.3s;
 }
 
-.btn:hover, .btn.active {
-    background: var(--primary);
-}
-
-/* Сітка карток */
-.container { padding: 40px 5%; }
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-/* Картки */
-.card {
-    background: var(--card-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: 0.4s ease;
-    border: 1px solid #222;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(255, 77, 77, 0.3);
-    border-color: var(--primary);
-}
-
-.card-header {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.card-body { padding: 20px; }
-
-.category-tag {
-    font-size: 0.7rem;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    padding: 2px 8px;
-    border-radius: 10px;
-}
-
-.card-desc {
-    margin-top: 15px;
-    color: var(--gray);
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-/* Футер */
-footer {
-    text-align: center;
-    padding: 40px;
-    border-top: 1px solid #222;
-    color: var(--gray);
+.play-btn:hover {
+    background: #cc0000;
+    transform: translateY(-3px);
 }
