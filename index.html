@@ -3,219 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Racing Experience | Skyfall Edition</title>
+    <title>Motorsport 360 | Archive</title>
     <style>
         :root {
-            --glass: rgba(255, 255, 255, 0.1);
-            --accent: #d4af37; /* Золотий акцент під стиль Skyfall */
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(212, 175, 55, 0.3);
         }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', sans-serif;
-            background: #050505;
+        body {
+            background-color: #000;
             color: white;
-            overflow: hidden;
-        }
-
-        /* Фонове відео/зображення */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #000, #1a1a1a);
-            z-index: -1;
-        }
-
-        /* Контейнер інтерфейсу */
-        .container {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            backdrop-filter: blur(10px);
+            padding-bottom: 100px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            text-transform: uppercase;
+            margin: 60px 0;
             letter-spacing: 5px;
         }
 
         .header h1 {
             font-size: 3rem;
-            margin: 0;
             color: var(--accent);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            margin: 0;
+            text-transform: uppercase;
         }
 
-        /* Категорії (кнопки) */
-        .categories {
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
-            width: 80%;
-            max-width: 800px;
+            width: 90%;
+            max-width: 1400px;
         }
 
-        .category-card {
+        .card {
             background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 20px;
             text-align: center;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: 0.4s;
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .category-card:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .card:hover {
+            background: rgba(212, 175, 55, 0.1);
             border-color: var(--accent);
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        .category-card h3 {
-            margin: 0;
+        .card h2 {
             font-size: 1.2rem;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* Модальне вікно для відео */
-        .video-overlay {
+        .card p {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Стиль для плеєра як на скріншоті */
+        .audio-bar {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video-container {
-            width: 80%;
-            max-width: 1000px;
-            aspect-ratio: 16/9;
-            background: black;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 30px;
+            bottom: 30px;
             right: 30px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            z-index: 101;
-        }
-
-        /* Музичний плеєр */
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--glass);
-            padding: 10px 20px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid var(--border);
             border-radius: 30px;
-            border: 1px solid var(--accent);
+            padding: 10px 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
         }
+
+        .play-btn {
+            color: var(--accent);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Відео-оверлей */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; z-index: 2000;
+            justify-content: center; align-items: center;
+        }
+        .video-container { width: 80%; max-width: 900px; aspect-ratio: 16/9; }
     </style>
 </head>
 <body>
 
-    <div class="background"></div>
+    <div class="header">
+        <h1>RACING ARCHIVE</h1>
+        <p>EXPERIENCE THE SPEED THROUGH THE LENS OF HISTORY</p>
+    </div>
 
-    <div class="container">
-        <div class="header">
-            <h1>RACING ARCHIVE</h1>
-            <p>Experience the speed through the lens of history</p>
+    <div class="grid-container">
+        <div class="card" onclick="openVid('dj287SYt4e8')">
+            <h2>01 CIRCUIT RACING</h2>
+            <p>NASCAR: History & Culture. Боротьба на овальних треках.</p>
         </div>
-
-        <div class="categories">
-            <div class="category-card" onclick="playVideo('dj287SYt4e8')">
-                <h3>01 CIRCUIT RACING</h3>
-                <small>NASCAR: History & Culture</small>
-            </div>
-            <div class="category-card" onclick="playVideo('H_d9treBXdg')">
-                <h3>02 DIRT RALLY</h3>
-                <small>Rally Raids & Silk Way</small>
-            </div>
-            <div class="category-card" onclick="playVideo('tE3HWOSD6PE')">
-                <h3>03 MOTO RACING</h3>
-                <small>MotoGP Essentials</small>
-            </div>
-            <div class="category-card" onclick="playVideo('8bxeybL30jY')">
-                <h3>04 TECHNOLOGY</h3>
-                <small>Formula-E: Electric Future</small>
-            </div>
+        <div class="card" onclick="openVid('H_d9treBXdg')">
+            <h2>02 DIRT RALLY</h2>
+            <p>Rally Raids & Silk Way. Випробування пустелею та піском.</p>
+        </div>
+        <div class="card" onclick="openVid('tE3HWOSD6PE')">
+            <h2>03 MOTO RACING</h2>
+            <p>MotoGP Essentials. Швидкість на двох колесах.</p>
+        </div>
+        <div class="card" onclick="openVid('8bxeybL30jY')">
+            <h2>04 TECHNOLOGY</h2>
+            <p>Formula-E: Electric Future. Майбутнє гоночних технологій.</p>
+        </div>
+        <div class="card" onclick="openVid('Z8InAsm9Y3k')">
+            <h2>05 FORMULA 1</h2>
+            <p>Вершина аеродинаміки та майстерності пілотування.</p>
+        </div>
+        <div class="card" onclick="openVid('6X0W-HlC7_c')">
+            <h2>06 ENDURANCE</h2>
+            <p>24 години Ле-Мана: битва на витривалість техніки і людей.</p>
+        </div>
+        <div class="card" onclick="openVid('T1vX_Tshk4E')">
+            <h2>07 DRIFTING</h2>
+            <p>Кут та дим: мистецтво контролю автомобіля у заносі.</p>
+        </div>
+        <div class="card" onclick="openVid('rS00XWNE0d0')">
+            <h2>08 DRAG RACING</h2>
+            <p>402 метри чистого адреналіну та божевільної потужності.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>09 HILLCLIMB</h2>
+            <p>Штурм гірських вершин: небезпека на кожному повороті.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>10 KARTING</h2>
+            <p>Основи автоспорту: де народжуються майбутні чемпіони.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>11 OFF-ROAD 4x4</h2>
+            <p>Позашляхові марафони та скелелазіння на монстр-траках.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>12 INDYCAR</h2>
+            <p>Швидкість американських овалів та легендарні 500 миль Індіанаполіса.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>13 TOURING CARS</h2>
+            <p>Контактна боротьба кращих кузовних серій світу.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>14 MOTOCROSS</h2>
+            <p>Стрибки, бруд та неймовірна атлетика позашляхових мотоциклів.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>15 MONSTER TRUCKS</h2>
+            <p>Шоу гігантських коліс: руйнація та неймовірні трюки.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>16 SUPERMOTO</h2>
+            <p>Мікс асфальту та грунту на універсальних байках.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>17 TRUCK RACING</h2>
+            <p>Залізні велетні на вузьких гоночних трасах.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>18 RALLYCROSS</h2>
+            <p>Короткі вибухові заїзди на змішаному покритті.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>19 VINTAGE RACING</h2>
+            <p>Дух історії: класичні гоночні авто минулих десятиліть.</p>
+        </div>
+        <div class="card" onclick="openVid('VIDEO_ID')">
+            <h2>20 SIM RACING</h2>
+            <p>Цифровий автоспорт: межа між грою та реальністю стирається.</p>
         </div>
     </div>
 
-    <div id="overlay" class="video-overlay" onclick="closeVideo()">
-        <span class="close-btn">&times;</span>
+    <div class="audio-bar">
+        <span style="font-size: 0.8rem;">🎵 Skyfall - Adele</span>
+        <button class="play-btn" onclick="toggleMusic()" id="mBtn">PLAY</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="Adele - Skyfall.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="videoOverlay" class="overlay" onclick="closeVid()">
         <div class="video-container">
-            <iframe id="yt-player" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe id="vidPlayer" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-    </div>
-
-    <div class="audio-control">
-        <span>🎵 Skyfall - Adele</span>
-        <audio id="bg-music" loop>
-            <source src="Adele - Skyfall.mp3" type="audio/mpeg">
-        </audio>
-        <button onclick="toggleMusic()" id="music-btn" style="background:none; border:none; color:var(--accent); cursor:pointer; font-weight:bold;">PLAY</button>
     </div>
 
     <script>
-        const music = document.getElementById('bg-music');
-        const overlay = document.getElementById('overlay');
-        const player = document.getElementById('yt-player');
-
-        function playVideo(id) {
-            player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-            overlay.style.display = 'flex';
-            // Приглушуємо музику при перегляді відео
-            music.volume = 0.2;
-        }
-
-        function closeVideo() {
-            overlay.style.display = 'none';
-            player.src = "";
-            music.volume = 1.0;
-        }
+        const music = document.getElementById('bgMusic');
+        const mBtn = document.getElementById('mBtn');
 
         function toggleMusic() {
             if (music.paused) {
                 music.play();
-                document.getElementById('music-btn').innerText = 'PAUSE';
+                mBtn.innerText = 'PAUSE';
             } else {
                 music.pause();
-                document.getElementById('music-btn').innerText = 'PLAY';
+                mBtn.innerText = 'PLAY';
             }
         }
 
-        // Починати музику після першого кліку (вимога браузерів)
-        document.body.addEventListener('click', () => {
-            if(music.paused && music.currentTime === 0) {
-                music.play();
-                document.getElementById('music-btn').innerText = 'PAUSE';
-            }
-        }, {once: true});
+        function openVid(id) {
+            if(id === 'VIDEO_ID') return alert('Відео ще додається!');
+            document.getElementById('vidPlayer').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            document.getElementById('videoOverlay').style.display = 'flex';
+        }
+
+        function closeVid() {
+            document.getElementById('videoOverlay').style.display = 'none';
+            document.getElementById('vidPlayer').src = '';
+        }
     </script>
 </body>
 </html>
