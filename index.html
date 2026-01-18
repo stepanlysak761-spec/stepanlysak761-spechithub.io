@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOTORSPORT NEXUS | PRO DASHBOARD</title>
+    <title>MOTORSPORT NEXUS | OMNI DATABASE</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,75 +14,77 @@
         <div class="logo-box">
             <h1 class="glitch" data-text="MOTOR_NEXUS">MOTOR_NEXUS</h1>
             <div class="subtitle">// GLOBAL_RACING_DATABASE</div>
-        </div>
-        <div class="system-meta">
-            <span>STATUS: ONLINE</span>
-            <span>2026_ARCHIVE</span>
+            <div class="status-line">STATUS: ONLINE 2026_ARCHIVE</div>
         </div>
     </header>
 
-    <section class="top-priority-zone">
-        <div class="hypercard-499p reveal">
-            <div class="badge">TOP_PRIORITY_ASSET</div>
-            <div class="project-info">
-                <h2>FERRARI 499P <span>HYPERCAR</span></h2>
-                <p>Еталон інженерії LMH. Переможець 24 годин Ле-Мана. Гібридна синергія потужності та аеродинаміки.</p>
-                <div class="mini-specs">
-                    <div><span>HP</span> 680</div>
-                    <div><span>KG</span> 1030</div>
-                    <div><span>ERS</span> 200KW</div>
+    <main class="container">
+        <section class="top-priority-zone">
+            <div class="hypercard-499p reveal">
+                <div class="project-info">
+                    <span class="tag-label">PROJECT_499P_LMH</span>
+                    <h2>FERRARI 499P</h2>
+                    <div class="mini-specs">
+                        <div class="spec"><span>HP</span> 680</div>
+                        <div class="spec"><span>DRIVE</span> AWD_HYB</div>
+                    </div>
+                    <a href="https://uakino.best/filmy/genre_sport/24906-ferrari.html" target="_blank" class="btn-watch">DATA_STREAM_FILM</a>
                 </div>
-                <a href="https://uakino.best/filmy/genre_sport/24906-ferrari.html" target="_blank" class="btn-watch">WATCH_FERRARI_MOVIE</a>
+                <div class="project-view">
+                    <img src="https://ferrari.scene7.com/is/image/ferrari/639b13a7693c460023c3ca54-tofm_rq_2983340_main3_1250x700" alt="499P">
+                </div>
             </div>
-            <div class="project-view">
-                <img src="https://ferrari.scene7.com/is/image/ferrari/639b13a7693c460023c3ca54-tofm_rq_2983340_main3_1250x700" alt="499P">
+        </section>
+
+        <section class="media-grid reveal">
+            <div class="media-item">
+                <span class="img-tag">ENGINE_V6_CORE</span>
+                <div class="img-placeholder" style="background:#0a0a0a; height:100%; display:flex; align-items:center; justify-content:center; color:#333;">SYSTEM_SCAN</div>
+            </div>
+            <div class="media-item">
+                <span class="img-tag">AERO_DIFFUSER_F</span>
+                <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=1000">
+            </div>
+            <div class="media-item">
+                <span class="img-tag">OPTICS_THERMAL</span>
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=1000">
+            </div>
+        </section>
+
+        <div class="dashboard-grid">
+            <div class="column reveal">
+                <h3 class="col-title">CIRCUIT_ELITE</h3>
+                <div class="card" data-sport="f1"><h4>FORMULA 1-4</h4><p>Вершина серій з відкритими колесами.</p></div>
+                <div class="card" data-sport="gt"><h4>GT_SERIES (GT2-4)</h4><p>Кузовні суперкари світових брендів.</p></div>
+                <div class="card" data-sport="wec"><h4>ENDURANCE</h4><p>WEC, IMSA. Гонки на витривалість.</p></div>
+            </div>
+            <div class="column reveal">
+                <h3 class="col-title">DIRT_RALLY</h3>
+                <div class="card" data-sport="rally"><h4>WRC / ERC</h4><p>Класичне ралі: гравій та сніг.</p></div>
+                <div class="card" data-sport="dakar"><h4>RALLY_RAIDS</h4><p>Дакар та марафони через пустелю.</p></div>
+                <div class="card" data-sport="rx"><h4>RALLYCROSS</h4><p>Агресивні гонки на змішаних трасах.</p></div>
+            </div>
+            <div class="column reveal">
+                <h3 class="col-title">MOTO_HUB</h3>
+                <div class="card" data-sport="motogp"><h4>MOTOGP / WSBK</h4><p>Кільцеві мотоциклетні перегони.</p></div>
+                <div class="card" data-sport="mx"><h4>MOTOCROSS / SX</h4><p>Стрибки, бруд та MXGP.</p></div>
+                <div class="card" data-sport="enduro"><h4>HARD_ENDURO</h4><p>Екстремальне подолання перешкод.</p></div>
+            </div>
+            <div class="column reveal">
+                <h3 class="col-title">TECH_STYLE</h3>
+                <div class="card" data-sport="drift"><h4>DRIFTING</h4><p>Formula Drift. Контрольований занос.</p></div>
+                <div class="card" data-sport="drag"><h4>DRAG RACING</h4><p>Прискорення на 402 метри.</p></div>
+                <div class="card" data-sport="time"><h4>TIME ATTACK</h4><p>Битва за тисячні секунди.</p></div>
             </div>
         </div>
-    </section>
-
-    <main class="dashboard-grid">
-        
-        <div class="column reveal">
-            <h3 class="column-header">CIRCUIT_ELITE</h3>
-            <div class="card card-f1"><h4>FORMULA 1-4</h4><p>Вершина серій з відкритими колесами.</p></div>
-            <div class="card card-gt"><h4>GT_SERIES (GT2-4)</h4><p>Кузовні суперкари світових брендів.</p></div>
-            <div class="card card-touring"><h4>TOURING CARS</h4><p>DTM, TCR, BTCC. Контактна боротьба.</p></div>
-            <div class="card card-wec"><h4>ENDURANCE</h4><p>WEC, IMSA. Гонки на витривалість.</p></div>
-            <div class="card card-indy"><h4>INDYCAR / NASCAR</h4><p>Швидкісні овали США.</p></div>
-            <div class="card card-kart"><h4>KARTING</h4><p>Фундамент автоспорту.</p></div>
-        </div>
-
-        <div class="column reveal">
-            <h3 class="column-header">DIRT_&_RALLY</h3>
-            <div class="card card-rally"><h4>WRC / ERC</h4><p>Класичне ралі: гравій та сніг.</p></div>
-            <div class="card card-dakar"><h4>RALLY_RAIDS</h4><p>Дакар та марафони через пустелю.</p></div>
-            <div class="card card-rx"><h4>RALLYCROSS</h4><p>Агресивні гонки на змішаних трасах.</p></div>
-            <div class="card card-offroad"><h4>TROPHY / TRIALS</h4><p>Джип-тріал та трофі-рейди.</p></div>
-            <div class="card card-baja"><h4>BAJA / BUGGY</h4><p>Трофі-траки та пустельні баггі.</p></div>
-            <div class="card card-hill"><h4>HILL CLIMB</h4><p>Швидкісні підйоми на гору.</p></div>
-        </div>
-
-        <div class="column reveal">
-            <h3 class="column-header">MOTO_UNIVERSE</h3>
-            <div class="card card-motogp"><h4>MOTOGP / WSBK</h4><p>Кільцеві мотоциклетні перегони.</p></div>
-            <div class="card card-mx"><h4>MOTOCROSS / SX</h4><p>Стрибки, бруд та MXGP.</p></div>
-            <div class="card card-enduro"><h4>HARD_ENDURO</h4><p>Екстремальне подолання перешкод.</p></div>
-            <div class="card card-speedway"><h4>SPEEDWAY</h4><p>Гонки на гарі та льоду без гальм.</p></div>
-            <div class="card card-trial"><h4>MOTO_TRIAL</h4><p>Мистецтво балансу на мотоциклі.</p></div>
-            <div class="card card-quads"><h4>QUADS & SNOW</h4><p>Квадроцикли та снігоходи.</p></div>
-        </div>
-
-        <div class="column reveal">
-            <h3 class="column-header">TECH_&_STYLE</h3>
-            <div class="card card-fe"><h4>FORMULA E</h4><p>Електричне майбутнє гонок.</p></div>
-            <div class="card card-drift"><h4>DRIFTING</h4><p>Formula Drift. Контрольований занос.</p></div>
-            <div class="card card-drag"><h4>DRAG RACING</h4><p>Максимальне прискорення на 402м.</p></div>
-            <div class="card card-time"><h4>TIME ATTACK</h4><p>Битва за одну тисячну секунди.</p></div>
-            <div class="card card-historic"><h4>HISTORIC RACING</h4><p>Класичні боліди минулих епох.</p></div>
-            <div class="card card-custom"><h4>CUSTOM_SERIES</h4><p>Екзотичні та ледові ралі.</p></div>
-        </div>
-
     </main>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modalData"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
