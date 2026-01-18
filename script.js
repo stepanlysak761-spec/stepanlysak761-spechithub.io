@@ -1,19 +1,45 @@
 const sportData = {
-    "FORMULA 1-4": {
-        title: "FORMULA_SERIES",
-        desc: "Вершина світового автоспорту. Боліди з відкритими колесами, що використовують найсучаснішу аеродинаміку та гібридні силові установки.",
-        specs: ["MAX SPEED: 370 KM/H", "G-FORCE: 5.0G", "ENGINE: 1.6L V6 TURBO HYBRID"]
+    "FERRARI 499P": {
+        title: "ARCHIVE_FILE: 499P_HYPERCAR",
+        desc: "Переможець 24 годин Ле-Мана. Гібридна силова установка з повним приводом. Вершина технологічного регламенту LMH.",
+        specs: ["POWER: 680 HP (System)", "WEIGHT: 1030 KG", "ENGINE: 2.9L V6 TWIN TURBO"]
+    },
+    "FORMULA 1": {
+        title: "F1_GRAND_PRIX_DATA",
+        desc: "Вища категорія гонок з відкритими колесами. Найшвидші боліди у світі на кільцевих трасах.",
+        specs: ["MAX SPEED: 370 KM/H", "0-100: 2.4 SEC", "CHASSIS: CARBON MONOCOQUE"]
+    },
+    "WRC": {
+        title: "WORLD_RALLY_LOG",
+        desc: "Екстремальні перегони по пересіченій місцевості. Гравій, сніг та асфальт.",
+        specs: ["ENGINE: 1.6L TURBO HYBRID", "DRIVE: 4WD", "POWER: 500+ HP"]
     },
     "DRIFTING": {
-        title: "DRIFT_CHAMPIONSHIP",
-        desc: "Технічна дисципліна, де оцінюється кут заносу, траєкторія та стиль. Головна мета — контроль автомобіля у безперервному ковзанні.",
-        specs: ["JUDGING: ANGLE, LINE, STYLE", "POWER: 1000+ HP", "TIRE SMOKE: MAXIMUM"]
+        title: "DRIFT_RECORDS",
+        desc: "Оцінка кута, траєкторії та димності. Парні заїзди — найвидовищніша частина дисципліни.",
+        specs: ["TIRES: SEMI-SLICK", "POWER: 800-1200 HP", "DRIVE: RWD ONLY"]
     },
-    "WRC / ERC": {
-        title: "WORLD_RALLY",
-        desc: "Гонки на виживання по гравію, снігу та вузьким лісовим дорогам. Кожен заїзд — це випробування механічної міцності та майстерності пілота.",
-        specs: ["SURFACE: MULTI", "CREW: DRIVER + CO-DRIVER", "DRIVE: 4WD"]
+    "MOTOGP": {
+        title: "MOTO_ELITE_SPEC",
+        desc: "Прототипи мотоциклів, створені виключно для гонок. Кути нахилу в поворотах понад 60 градусів.",
+        specs: ["WEIGHT: 157 KG", "POWER: 250+ HP", "TOP SPEED: 360+ KM/H"]
+    },
+    "DAKAR RALLY": {
+        title: "DAKAR_MARATHON_FILE",
+        desc: "Найскладніша гонка-марафон у світі. Тижні через дюни, каміння та пил.",
+        specs: ["DURATION: 14 DAYS", "DISTANCE: 8000+ KM", "NAVIGATION: DIGITAL ROADBOOK"]
+    },
+    "GT3 / GT2 / GT4": {
+        title: "GT_CATEGORY_CORE",
+        desc: "Гонки на базі дорожніх суперкарів. Ferrari, Lamborghini, Porsche, BMW.",
+        specs: ["ABS/TC: ENABLED", "ENGINE: FRONT/MID/REAR", "CLASSES: PRO / AM"]
+    },
+    "DRAG RACING": {
+        title: "ACCELERATION_ARCHIVE",
+        desc: "Битва на 1/4 милі. Драгстери Top Fuel розганяються до 500 км/год за лічені секунди.",
+        specs: ["FUEL: NITRO-METHANE", "POWER: 11000 HP", "BRAKES: PARACHUTE"]
     }
+    // Сюди можна додати решту 40 видів за аналогією
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,12 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalData.innerHTML = `
                     <h2 class="modal-h">${data.title}</h2>
                     <p class="modal-p">${data.desc}</p>
-                    <div style="margin-top:20px">
-                        ${data.specs.map(s => `<div style="color:#ff0000; font-family:Orbitron; font-size:0.7rem; margin-bottom:5px">>> ${s}</div>`).join('')}
+                    <div class="spec-list">
+                        ${data.specs.map(s => `<div class="spec-line">>> ${s}</div>`).join('')}
                     </div>
                 `;
             } else {
-                modalData.innerHTML = `<h2 class="modal-h">${name}</h2><p class="modal-p">Архівна інформація для цього сектору ще синхронізується...</p>`;
+                modalData.innerHTML = `<h2 class="modal-h">${name}</h2><p class="modal-p">Архівні дані завантажуються...</p>`;
             }
             modal.style.display = "block";
         });
