@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motorsport Wiki | 20 Дисциплін</title>
+    <title>Motorsport Wiki | Світ Швидкості</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,10 +21,20 @@
     <header class="hero">
         <div class="hero-content">
             <h1>Енциклопедія швидкості</h1>
-            <p>Від асфальтових треків до піщаних дюн: повний розбір 20 ключових дисциплін світу.</p>
+            <div class="intro-container">
+                <p>
+                    <strong>Моторспорт</strong> — це сукупність змагань, у яких використовуються транспортні засоби з двигунами внутрішнього згоряння або електродвигунами. 
+                    Основною метою моторспорту є змагання у швидкості, витривалості, технічній досконалості та майстерності пілотів. 
+                    Він поєднує спорт, інженерію та шоу, приваблюючи мільйони фанатів у всьому світі.
+                </p>
+                <p>
+                    Найпопулярнішим і найвідомішим видом моторспорту вважається <strong>Формула-1</strong>, адже вона має найбільші бюджети та передові технології. 
+                    Моторспорт постійно розвивається, впроваджуючи нові формати, і залишається одним із найзахопливіших видів спорту у світі.
+                </p>
+            </div>
             
             <div class="filter-buttons">
-                <button class="btn active" onclick="filterSports('all')">Всі</button>
+                <button class="btn active" onclick="filterSports('all')">Всі види</button>
                 <button class="btn" onclick="filterSports('Asphalt')">Асфальт</button>
                 <button class="btn" onclick="filterSports('Off-Road')">Бездоріжжя</button>
                 <button class="btn" onclick="filterSports('Bikes')">Мото</button>
@@ -32,17 +43,42 @@
         </div>
     </header>
 
+    <section class="series-section">
+        <div class="series-container">
+            <div class="series-badge">Рекомендовано до перегляду</div>
+            <div class="series-content">
+                <div class="series-info">
+                    <h2>Формула 1: Женіть, щоб вижити</h2>
+                    <p>Прем'єра 7-го сезону! Зазирніть за лаштунки найшвидших перегонів планети та дізнайтеся про драми, які залишаються поза екранами трансляцій.</p>
+                    <div class="series-meta">
+                        <span><i class="fas fa-star"></i> 7 Сезон</span>
+                        <span><i class="fas fa-language"></i> Українська озвучка</span>
+                    </div>
+                    <a href="https://uakino.best/seriesss/dokymentalni/26806-formula-1-zheny-shchob-vyzhyty-7-sezon.html" target="_blank" class="play-link">
+                        <i class="fas fa-play"></i> Дивитися на UAKINO
+                    </a>
+                </div>
+                <div class="series-preview">
+                    <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80" alt="Formula 1 Drive to Survive">
+                    <div class="overlay-play"><i class="fas fa-play-circle"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main class="container">
         <div class="grid" id="grid">
             </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Motorsport Academy. Створено для справжніх фанатів швидкості.</p>
-        <div class="socials">
-            <i class="fab fa-youtube"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-telegram"></i>
+        <div class="footer-content">
+            <p>&copy; 2026 Motorsport Academy. Швидкість — це наше життя.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
         </div>
     </footer>
 
