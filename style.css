@@ -89,3 +89,68 @@
     padding-top: 15px;
     letter-spacing: 1px;
 }
+/* --- АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ --- */
+@media (max-width: 768px) {
+    /* Навігація: робимо лого та пошук один під одним */
+    .navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .search-box {
+        width: 100%; /* Пошук на всю ширину */
+    }
+
+    /* Текст у Hero-секції */
+    .hero h1 {
+        font-size: 1.6rem; /* Зменшуємо заголовок */
+        text-align: center;
+    }
+
+    .intro-container p {
+        font-size: 0.9rem;
+        text-align: justify;
+    }
+
+    /* Кнопки фільтрів: робимо їх зручними для натискання пальцем */
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn {
+        margin: 0;
+        flex: 1 1 45%; /* Кнопки стають по дві в ряд */
+        font-size: 0.65rem;
+        padding: 12px 5px;
+    }
+
+    /* Секція серіалу */
+    .series-info h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Сітка карток: по одній великій картці на екран */
+    .grid {
+        grid-template-columns: 1fr; 
+        padding: 10px 20px;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 25px; /* Менше відступів всередині */
+    }
+
+    .card:hover {
+        padding-left: 25px; /* Прибираємо зсув на мобільному */
+        transform: translateY(-3px);
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+}
+
