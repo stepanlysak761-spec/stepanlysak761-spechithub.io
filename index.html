@@ -3,68 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motorsport 360 | Global Database</title>
+    <title>Motorsport 360</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="tire-background"></div>
-    <div class="ui-overlay"></div>
+
+    <div class="tire-bg"></div>
 
     <header>
-        <div class="header-container">
-            <h1 class="main-logo">Motorsport 360</h1>
-            <div class="header-info">
-                <span>SYSTEM: ONLINE</span>
-                <span>EDITION: PIRELLI TECH 2026</span>
-            </div>
-        </div>
+        <h1 class="main-logo">Motorsport 360</h1>
+        <p class="status-line">SYSTEM ONLINE // PIRELLI TECH EDITION // 2026</p>
     </header>
 
     <main class="dashboard">
-        <div class="column">
-            <h2 class="col-title">01 CIRCUIT RACING</h2>
+        <section class="column">
+            <h2 class="category-title">CIRCUIT RACING</h2>
             <div class="card" data-id="F1"><h4>FORMULA 1</h4><p>Вершина швидкості</p></div>
             <div class="card" data-id="F2"><h4>FORMULA 2 3 4</h4><p>Молодіжні серії</p></div>
-            <div class="card" data-id="GT3"><h4>GT SERIES</h4><p>Суперкари GT3 GT2 GT4</p></div>
+            <div class="card" data-id="GT"><h4>GT SERIES</h4><p>Суперкари GT3 GT2</p></div>
             <div class="card" data-id="WEC"><h4>WEC LE MANS</h4><p>Гонки на витривалість</p></div>
-            <div class="card" data-id="IMSA"><h4>IMSA</h4><p>Прототипи США</p></div>
-            <div class="card" data-id="DTM"><h4>TOURING CARS</h4><p>DTM TCR BTCC</p></div>
-            <div class="card" data-id="INDY"><h4>INDYCAR NASCAR</h4><p>Американські перегони</p></div>
-            <div class="card" data-id="KART"><h4>KARTING</h4><p>Основи автоспорту</p></div>
-        </div>
+            <div class="card" data-id="INDY"><h4>INDYCAR NASCAR</h4><p>Овали та треки</p></div>
+        </section>
 
-        <div class="column">
-            <h2 class="col-title">02 DIRT RALLY</h2>
+        <section class="column">
+            <h2 class="category-title">RALLY/DAKAR</h2>
             <div class="card" data-id="WRC"><h4>WRC ERC</h4><p>Світове та євро ралі</p></div>
-            <div class="card" data-id="DAKAR"><h4>RALLY RAIDS</h4><p>Дакар та марафони</p></div>
-            <div class="card" data-id="WRX"><h4>RALLYCROSS</h4><p>Кільцевий грунт</p></div>
-            <div class="card" data-id="BAJA"><h4>BAJA BUGGY</h4><p>Пустельні багі</p></div>
-            <div class="card" data-id="TRUCK"><h4>TROPHY TRUCKS</h4><p>Позашляхові монстри</p></div>
-            <div class="card" data-id="TRIAL"><h4>TRIALS</h4><p>Джип тріал</p></div>
-            <div class="card" data-id="HILL"><h4>HILL CLIMB</h4><p>Гонки вгору</p></div>
-        </div>
+            <div class="card" data-id="DAKAR"><h4>RALLY RAIDS</h4><p>Дакар та пустелі</p></div>
+            <div class="card" data-id="WRX"><h4>RALLYCROSS</h4><p>Змішане покриття</p></div>
+            <div class="card" data-id="BAJA"><h4>BAJA BUGGY</h4><p>Трофі та багі</p></div>
+            <div class="card" data-id="HILL"><h4>HILL CLIMB</h4><p>Підйоми на гору</p></div>
+        </section>
 
-        <div class="column">
-            <h2 class="col-title">03 MOTO RACING</h2>
-            <div class="card" data-id="MOTOGP"><h4>MOTOGP WSBK</h4><p>Кільцеві мотоцикли</p></div>
-            <div class="card" data-id="MXGP"><h4>MOTOCROSS SX</h4><p>Стрибки та бруд</p></div>
-            <div class="card" data-id="ENDURO"><h4>HARD ENDURO</h4><p>Екстремальне виживання</p></div>
-            <div class="card" data-id="SPEED"><h4>SPEEDWAY</h4><p>Гар та лід</p></div>
-            <div class="card" data-id="MTRIAL"><h4>MOTO TRIAL</h4><p>Техніка балансу</p></div>
-            <div class="card" data-id="QUAD"><h4>QUADS SNOW</h4><p>Квадро та снігоходи</p></div>
-        </div>
+        <section class="column">
+            <h2 class="category-title>"MOTORACING</h2>
+            <div class="card" data-id="MOTOGP"><h4>MOTOGP WSBK</h4><p>Кільцеві мото</p></div>
+            <div class="card" data-id="MX"><h4>MOTOCROSS SX</h4><p>Стрибки та бруд</p></div>
+            <div class="card" data-id="ENDURO"><h4>HARD ENDURO</h4><p>Виживання</p></div>
+            <div class="card" data-id="SPEED"><h4>SPEEDWAY</h4><p>Без гальм</p></div>
+            <div class="card" data-id="TRIAL"><h4>MOTO TRIAL</h4><p>Баланс та техніка</p></div>
+        </section>
 
-        <div class="column">
-            <h2 class="col-title">04 TECHNOLOGY</h2>
-            <div class="card" data-id="FE"><h4>FORMULA E</h4><p>Електричні боліди</p></div>
+        <section class="column">
+            <h2 class="category-title">TECHNOLOGY</h2>
+            <div class="card" data-id="FE"><h4>FORMULA E</h4><p>Електричне майбутнє</p></div>
             <div class="card" data-id="DRIFT"><h4>DRIFTING</h4><p>Контрольований занос</p></div>
-            <div class="card" data-id="DRAG"><h4>DRAG RACING</h4><p>402 метри прискорення</p></div>
+            <div class="card" data-id="DRAG"><h4>DRAG RACING</h4><p>Прискорення на 402м</p></div>
             <div class="card" data-id="TIME"><h4>TIME ATTACK</h4><p>Боротьба за коло</p></div>
-            <div class="card" data-id="HIST"><h4>HISTORIC RACING</h4><p>Класичні боліди</p></div>
-            <div class="card" data-id="AIR"><h4>AIR BOAT</h4><p>Авіа та водні гонки</p></div>
-            <div class="card" data-id="CUSTOM"><h4>CUSTOM SERIES</h4><p>Екзотичні серії</p></div>
-        </div>
+            <div class="card" data-id="HIST"><h4>HISTORIC RACING</h4><p>Ретро боліди</p></div>
+        </section>
     </main>
 
     <div id="infoModal" class="modal">
