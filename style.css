@@ -1,98 +1,107 @@
 :root {
     --pirelli-yellow: #FFD700;
-    --bg-dark: rgba(0, 0, 0, 0.85);
-    --glass-border: rgba(255, 215, 0, 0.3);
+    --text-main: #FFFFFF;
+    --glass: rgba(15, 15, 15, 0.8);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background: #000;
-    color: #fff;
     font-family: 'Rajdhani', sans-serif;
+    color: var(--text-main);
     overflow-x: hidden;
 }
 
-/* Фон з шиною Pirelli */
-.background-overlay {
+/* Фон Pirelli P Zero */
+.tire-background {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://img.freepik.com/premium-photo/black-car-tire-close-up-dark-background_933496-18961.jpg') no-repeat center center fixed;
-    background-size: cover;
-    z-index: -1;
-    filter: brightness(0.4);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://img.freepik.com/premium-photo/black-car-tire-close-up-dark-background_933496-18961.jpg') center/cover no-repeat;
+    z-index: -2;
+    filter: brightness(0.3) contrast(1.1);
 }
 
-.cyber-header {
+.header-container {
     padding: 40px 5%;
-    text-align: center;
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
-.glitch {
+.main-logo {
     font-family: 'Orbitron';
     font-size: 2.5rem;
-    color: var(--pirelli-yellow);
     letter-spacing: 5px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    text-transform: uppercase;
+    background: linear-gradient(to right, #fff, var(--pirelli-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+.header-info { font-size: 0.8rem; color: var(--pirelli-yellow); letter-spacing: 2px; text-align: right; }
 
-/* Ефект скла для карток */
-.glass-card {
-    background: rgba(15, 15, 15, 0.6);
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.col-title {
+    font-family: 'Orbitron';
+    font-size: 0.85rem;
+    color: var(--pirelli-yellow);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--pirelli-yellow);
+    letter-spacing: 2px;
+}
+
+/* Рамки для спорту */
+.card {
+    background: var(--glass);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 20px;
-    transition: 0.4s;
-    cursor: pointer;
     margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    /* Зрізаний кут як у HUD */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%);
+    border-left: 3px solid transparent;
 }
 
-.glass-card:hover {
-    border-color: var(--pirelli-yellow);
-    background: rgba(255, 215, 0, 0.1);
-    transform: scale(1.02);
+.card:hover {
+    border-left: 3px solid var(--pirelli-yellow);
+    background: rgba(255, 215, 0, 0.05);
+    transform: translateX(5px);
 }
 
-.main-hero { display: flex; align-items: center; justify-content: space-between; margin-bottom: 50px; }
-.main-hero img { max-width: 500px; border: 1px solid var(--pirelli-yellow); }
+.card h4 { font-family: 'Orbitron'; font-size: 0.9rem; margin-bottom: 5px; }
+.card p { font-size: 0.75rem; color: #888; }
 
-.dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.col-title { font-family: 'Orbitron'; color: var(--pirelli-yellow); font-size: 0.9rem; margin-bottom: 20px; text-transform: uppercase; }
-
-.glass-card h4 { font-family: 'Orbitron'; color: #fff; font-size: 0.8rem; margin-bottom: 5px; }
-.glass-card p { font-size: 0.75rem; color: #aaa; }
-
-/* Modal Styles */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
-    z-index: 9999;
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.9);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
 }
 
 .modal-content {
-    background: rgba(20, 20, 20, 0.9);
-    border: 2px solid var(--pirelli-yellow);
+    background: #0a0a0a;
+    border: 1px solid var(--pirelli-yellow);
+    width: 90%; max-width: 500px;
     margin: 10% auto;
     padding: 40px;
-    width: 80%;
-    max-width: 600px;
     position: relative;
 }
 
-.close-btn { position: absolute; right: 20px; top: 10px; color: var(--pirelli-yellow); font-size: 30px; cursor: pointer; }
+.close-btn { position: absolute; top: 15px; right: 20px; color: var(--pirelli-yellow); font-size: 2rem; cursor: pointer; }
 
-/* Reveal Animation */
-.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 1000px) { .dashboard-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .dashboard-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) { .dashboard { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .dashboard { grid-template-columns: 1fr; } }
