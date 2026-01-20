@@ -1,106 +1,67 @@
 const sportsData = [
-    { name: "Formula-1 (F1)", cat: "Asphalt", desc: "Королівські перегони: найшвидші боліди та найсучасніші технології світу." },
-    { name: "Ралі (WRC)", cat: "Off-Road", desc: "Екстремальні змагання на виживання на ґрунті, снігу та асфальті." },
-    { name: "MotoGP", cat: "Bikes", desc: "Вершина мотоциклетного спорту: неймовірні нахили та шалена швидкість." },
-    { name: "NASCAR", cat: "Asphalt", desc: "Культові американські перегони серійних авто на швидкісних овалах." },
-    { name: "IndyCar", cat: "Asphalt", desc: "Найшвидші перегони з відкритими колесами в США, включаючи легендарні Indy 500." },
-    { name: "24h Le Mans", cat: "Asphalt", desc: "Найвідоміший у світі добовий марафон на витривалість." },
-    { name: "Drifting", cat: "Special", desc: "Мистецтво керування автомобілем у керованому заносі на межі можливостей." },
-    { name: "Dakar Rally", cat: "Off-Road", desc: "Найважчий ралі-рейд планети через безкраї пустелі." },
-    { name: "Formula E", cat: "Asphalt", desc: "Тихі, але надшвидкі перегони повністю електричних болідів у центрі міст." },
-    { name: "Superbike (WSBK)", cat: "Bikes", desc: "Чемпіонат світу на базі серійних спортивних мотоциклетів." },
-    { name: "Drag Racing", cat: "Special", desc: "Битва потужностей: 402 метри за лічені секунди." },
-    { name: "Rallycross (WRX)", cat: "Off-Road", desc: "Короткі вибухові заїзди на змішаних трасах: асфальт + ґрунт." },
-    { name: "Karting", cat: "Asphalt", desc: "Фундамент професійного автоспорту, де народжуються майбутні чемпіони." },
-    { name: "DTM", cat: "Asphalt", desc: "Престижна німецька серія високотехнологічних кузовних автомобілів." },
-    { name: "Enduro", cat: "Bikes", desc: "Мото-змагання на витривалість по найскладнішому природному бездоріжжю." },
-    { name: "Hillclimb", cat: "Special", desc: "Швидкісний підйом по небезпечних гірських серпантинах." },
-    { name: "Speedway", cat: "Bikes", desc: "Гонки на байках без гальм по гаревому овальному треку." },
-    { name: "Baja 1000", cat: "Off-Road", desc: "Легендарна пустельна гонка через Мексику на багі та потужних траках." },
-    { name: "Extreme E", cat: "Off-Road", desc: "Гонки електричних позашляховиків у найбільш віддалених точках світу." },
-    { name: "GT World Challenge", cat: "Asphalt", desc: "Змагання найкращих суперкарів світу у форматі тривалих перегонів." }
+    { name: "Formula-1 (F1)", cat: "Asphalt", short: "Вершина кільцевих автоперегонів світу.", full: "«Формула-1» — чемпіонат світу з кільцевих автоперегонів на автомобілях з відкритими колесами... [весь твій текст про F1]" },
+    { name: "Ралі (WRC)", cat: "Off-Road", short: "Чемпіонат світу з ралі.", full: "WRC — термін, що означає Чемпіонат світу з ралі та клас автомобілів World Rally Car..." },
+    { name: "NASCAR", cat: "Asphalt", short: "Американські перегони серійних авто.", full: "Національна Асоціація перегонів серійних автомобілів — найбільша організація в США..." },
+    { name: "IndyCar", cat: "Asphalt", short: "Найпрестижніша серія Північної Америки.", full: "Найпрестижніша серія автоперегонів з відкритими колесами Північної Америки..." },
+    { name: "24h Le Mans", cat: "Asphalt", short: "Найвідоміші перегони на витривалість.", full: "24 Години Ле-Мана — найвідоміші автомобільні перегони на витривалість у Франції..." },
+    { name: "Drifting", cat: "Special", short: "Мистецтво керування в заносі.", full: "Техніка проходження поворотів з навмисним зривом провідної осі..." },
+    { name: "Dakar Rally", cat: "Off-Road", short: "Трансконтинентальний ралі-марафон.", full: "Щорічний трансконтинентальний ралі-рейд, що проводиться з 1978 року..." },
+    { name: "Formula E", cat: "Asphalt", short: "Електричні боліди.", full: "Інноваційний чемпіонат для повністю електричних болідів на вуличних трасах." },
+    { name: "Superbike (WSBK)", cat: "Bikes", short: "Чемпіонат на серійних байках.", full: "Чемпіонат світу з шосейно-кільцевих перегонів на вдосконалених версіях серійних мотоциклів." },
+    { name: "Drag Racing", cat: "Special", short: "Парні заїзди на прискорення.", full: "Парні заїзди на максимальне прискорення по прямій трасі довжиною 402 метри." },
+    { name: "Rallycross (WRX)", cat: "Off-Road", short: "Контактні перегони на змішаних трасах.", full: "Контактні перегони на коротких кільцевих трасах: асфальт та ґрунт." },
+    { name: "Karting", cat: "Asphalt", short: "Початкова школа автоспорту.", full: "Машини без підвіски з ідеальною керованістю. Фундамент для пілотів F1." },
+    { name: "DTM", cat: "Asphalt", short: "Німецька кузовна серія.", full: "Серія, де змагаються прототипи, зовні схожі на серійні дорожні авто." },
+    { name: "Enduro", cat: "Bikes", short: "Витривалість на бездоріжжі.", full: "Мотоциклетні змагання на складних маршрутах із природними перешкодами." },
+    { name: "Hillclimb", cat: "Special", short: "Підйом вгору на час.", full: "Максимально швидкий підйом по небезпечному гірському серпантину." },
+    { name: "Speedway", cat: "Bikes", short: "Гонки без гальм по овалу.", full: "Гонки на мотоциклах без гальм по гаревому або піщаному покриттю." },
+    { name: "Baja 1000", cat: "Off-Road", short: "Пустельна гонка через Каліфорнію.", full: "Позашляхова гонка для багі, вантажівок та мотоциклів через півострів Каліфорнія." },
+    { name: "Extreme E", cat: "Off-Road", short: "Електричні позашляховики.", full: "Міжнародна серія перегонів на електричних SUV у віддалених частинах світу." },
+    { name: "GT World Challenge", cat: "Asphalt", short: "Гран-турізмо суперкари.", full: "Престижні перегони автомобілів класу GT, що базуються на серійних суперкарах." },
+    { name: "Autocross", cat: "Off-Road", short: "Маневреність на багі.", full: "Змагання на маневреність та швидкість на закритих ґрунтових трасах." }
 ];
 
 const grid = document.getElementById('grid');
-const searchInput = document.getElementById('searchInput');
+const modal = document.getElementById('infoModal');
 
-// ПАЛІТРА КОЛЬОРІВ ДЛЯ 4 КАТЕГОРІЙ
 function getCategoryColor(cat) {
     switch(cat) {
-        case 'Asphalt': return '#a855f7'; // Фіолетовий
-        case 'Off-Road': return '#ff007f'; // Маджента (Рожевий)
-        case 'Bikes': return '#00f2ff';    // Бірюзовий
-        case 'Special': return '#7000ff';  // Глибокий індиго
+        case 'Asphalt': return '#a855f7'; 
+        case 'Off-Road': return '#ff007f'; 
+        case 'Bikes': return '#00f2ff';    
+        case 'Special': return '#7000ff';  
         default: return '#ffffff';
     }
 }
 
 function displaySports(data) {
-    if (!grid) return;
     grid.innerHTML = "";
-    
-    data.forEach((sport, index) => {
-        const techId = Math.random().toString(16).slice(2, 8).toUpperCase();
+    data.forEach(sport => {
         const color = getCategoryColor(sport.cat);
-        
         const card = document.createElement('div');
         card.className = 'card';
         card.style.borderLeftColor = color;
-        card.style.setProperty('--card-glow', color + '66'); // Додаємо прозорість для світіння
+        card.style.setProperty('--glow', color);
 
         card.innerHTML = `
-            <div class="card-num" style="color: ${color}">${sport.cat}</div>
+            <div class="card-num" style="color:${color}">${sport.cat}</div>
             <div class="card-title">${sport.name}</div>
-            <div class="card-desc">${sport.desc}</div>
-            <div class="card-footer">
-                <span>SYSTEM: ONLINE</span>
-                <span>SCAN_ID: ${techId}</span>
-            </div>
+            <div class="card-desc">${sport.short}</div>
+            <div class="card-footer">CLICK TO SCAN DATA_ID</div>
         `;
         
+        card.onclick = () => {
+            document.getElementById('modalTitle').innerText = sport.name;
+            document.getElementById('modalBody').innerText = sport.full;
+            document.getElementById('modalCat').innerText = sport.cat;
+            document.getElementById('modalCat').style.color = color;
+            modal.style.display = "block";
+        };
         grid.appendChild(card);
-        
-        // Анімація появи
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(15px)';
-        setTimeout(() => {
-            card.style.transition = 'all 0.4s ease-out';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 40);
     });
 }
 
-// Пошук
-if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = sportsData.filter(s => 
-            s.name.toLowerCase().includes(term) || 
-            s.cat.toLowerCase().includes(term)
-        );
-        displaySports(filtered);
-    });
-}
+document.querySelector('.close-btn').onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; };
 
-// Фільтрація
-function filterSports(category) {
-    const btns = document.querySelectorAll('.btn');
-    btns.forEach(btn => btn.classList.remove('active'));
-    
-    if (window.event && window.event.currentTarget) {
-        window.event.currentTarget.classList.add('active');
-    }
-
-    if (category === 'all') {
-        displaySports(sportsData);
-    } else {
-        const filtered = sportsData.filter(s => s.cat === category);
-        displaySports(filtered);
-    }
-}
-
-// Старт
-document.addEventListener('DOMContentLoaded', () => {
-    displaySports(sportsData);
-});
+displaySports(sportsData);
