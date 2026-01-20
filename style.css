@@ -2,7 +2,6 @@
     --bg: #050505;
     --card-bg: #0d0d0d;
     --border: #1a1025;
-    --text-dim: #94a3b8;
 }
 
 body {
@@ -13,7 +12,6 @@ body {
     text-transform: uppercase;
 }
 
-/* Навігація */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -32,7 +30,6 @@ body {
     padding: 10px 20px; color: #a855f7; width: 250px; outline: none;
 }
 
-/* Контейнер */
 .container { padding: 40px 5%; }
 
 .filter-bar { margin-bottom: 30px; display: flex; gap: 10px; flex-wrap: wrap; }
@@ -42,7 +39,6 @@ body {
 }
 .btn.active, .btn:hover { border-color: #a855f7; color: #fff; box-shadow: 0 0 10px rgba(168,85,247,0.3); }
 
-/* Сітка */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -61,16 +57,13 @@ body {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--glow);
-    border-color: var(--glow);
 }
 
 .card-num { font-family: 'Orbitron'; font-size: 0.7rem; margin-bottom: 10px; }
 .card-title { font-family: 'Orbitron'; font-size: 1.3rem; margin-bottom: 10px; }
-.card-desc { color: var(--text-dim); font-size: 0.9rem; text-transform: none; line-height: 1.4; }
+.card-desc { color: #94a3b8; font-size: 0.9rem; text-transform: none; line-height: 1.4; }
 
-.card-footer { margin-top: 15px; font-size: 0.6rem; color: #333; border-top: 1px solid #111; padding-top: 10px; }
-
-/* MODAL */
+/* MODAL STYLES */
 .modal {
     display: none; position: fixed; z-index: 1000;
     left: 0; top: 0; width: 100%; height: 100%;
@@ -79,12 +72,19 @@ body {
 
 .modal-content {
     background: #0a0a0a; margin: 5% auto; padding: 40px;
-    border: 1px solid #a855f7; width: 80%; max-width: 700px;
+    border: 1px solid #a855f7; width: 80%; max-width: 800px;
     position: relative; border-radius: 4px;
 }
 
-.close-btn { position: absolute; right: 20px; top: 10px; color: #a855f7; font-size: 30px; cursor: pointer; }
+.close-btn { position: absolute; right: 20px; top: 10px; color: #a855f7; font-size: 35px; cursor: pointer; }
 
-.modal-cat { font-family: 'Orbitron'; font-size: 0.8rem; margin-bottom: 5px; }
-#modalTitle { font-family: 'Orbitron'; font-size: 2rem; margin: 0 0 20px 0; }
-.modal-text { font-size: 1rem; color: #ccc; line-height: 1.6; text-transform: none; max-height: 400px; overflow-y: auto; }
+.modal-cat { font-family: 'Orbitron'; font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 2px; }
+#modalTitle { font-family: 'Orbitron'; font-size: 2.2rem; margin: 0 0 20px 0; color: #fff; }
+.modal-text { 
+    font-size: 1.1rem; color: #ccc; line-height: 1.7; 
+    text-transform: none; max-height: 50vh; overflow-y: auto; padding-right: 10px;
+}
+
+/* Скроллбар для тексту */
+.modal-text::-webkit-scrollbar { width: 4px; }
+.modal-text::-webkit-scrollbar-thumb { background: #a855f7; }
