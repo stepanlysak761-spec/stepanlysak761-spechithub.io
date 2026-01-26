@@ -1,8 +1,8 @@
 :root {
     --bg: #050505;
     --card-bg: #0d0d0d;
-    --accent: #e10600; /* Фірмовий колір F1 */
-    --border: #252525;
+    --border: #1a1a1a;
+    --accent: #a855f7;
 }
 
 body {
@@ -10,113 +10,80 @@ body {
     color: #fff;
     font-family: 'Rajdhani', sans-serif;
     margin: 0;
+    text-transform: uppercase;
+}
+
+.navbar {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-}
-
-.container {
-    width: 100%;
-    max-width: 500px;
     padding: 20px;
-}
-
-.f1-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-top: 5px solid var(--accent);
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-header .category {
-    color: var(--accent);
-    font-family: 'Orbitron';
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-}
-
-header h1 {
-    font-family: 'Orbitron';
-    font-size: 2rem;
-    margin: 10px 0 20px 0;
+    background: #000;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 15px;
-}
-
-.description p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #ccc;
-    text-transform: none; /* Текст опису звичайним шрифтом */
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin: 25px 0;
 }
 
-.stat-item {
-    background: #151515;
-    padding: 15px;
-    border: 1px solid var(--border);
+.logo { font-family: 'Orbitron'; font-size: 1.5rem; letter-spacing: 2px; }
+.logo span { color: var(--accent); }
+
+#searchInput {
+    background: #111; border: 1px solid var(--border);
+    padding: 10px 15px; color: var(--accent); width: 100%; max-width: 400px;
+    outline: none; font-family: 'Rajdhani';
 }
 
-.stat-item .label {
-    display: block;
-    font-size: 0.7rem;
-    color: #888;
-    margin-bottom: 5px;
+.filter-wrapper {
+    position: sticky; top: 0; background: var(--bg); z-index: 10;
+    padding: 15px 0; border-bottom: 1px solid var(--border);
 }
 
-.stat-item .value {
-    font-family: 'Orbitron';
-    font-size: 1rem;
-    color: #fff;
+.filter-bar {
+    display: flex; gap: 10px; justify-content: center; overflow-x: auto; padding: 0 10px;
 }
 
-.details h3 {
-    font-family: 'Orbitron';
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.details p {
-    font-size: 0.95rem;
-    color: #999;
-    text-transform: none;
-    line-height: 1.4;
-}
-
-footer {
-    margin-top: 30px;
-}
-
-.btn-action {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 12px;
-    font-family: 'Orbitron';
-    cursor: pointer;
+.btn {
+    background: transparent; border: 1px solid var(--border); color: #666;
+    padding: 8px 15px; cursor: pointer; font-family: 'Orbitron'; font-size: 0.7rem;
     transition: 0.3s;
 }
 
-.btn-action:hover {
-    background: var(--accent);
-    color: #fff;
+.btn.active { border-color: var(--accent); color: #fff; background: rgba(168, 85, 247, 0.1); }
+
+.container { padding: 30px 5%; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-/* Мобільна адаптація */
-@media (max-width: 480px) {
-    .f1-card {
-        padding: 20px;
-    }
-    header h1 {
-        font-size: 1.5rem;
-    }
+.card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 25px; cursor: pointer; transition: 0.3s;
+    border-top: 3px solid #333;
+}
+
+.card:hover { border-top-color: var(--accent); transform: translateY(-5px); }
+
+.card-cat { font-size: 0.7rem; color: var(--accent); margin-bottom: 10px; font-family: 'Orbitron'; }
+.card-title { font-family: 'Orbitron'; font-size: 1.4rem; margin-bottom: 12px; }
+.card-desc { font-size: 0.95rem; color: #888; text-transform: none; line-height: 1.4; }
+
+.modal {
+    display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: #0d0d0d; margin: 10vh auto; padding: 40px;
+    width: 90%; max-width: 600px; border: 1px solid var(--accent); position: relative;
+}
+
+.close-btn { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; color: #666; }
+.modal-cat { font-family: 'Orbitron'; font-size: 0.8rem; color: var(--accent); margin-bottom: 10px; }
+#modalTitle { font-family: 'Orbitron'; font-size: 2rem; margin-bottom: 20px; }
+.modal-text { text-transform: none; line-height: 1.7; color: #ccc; font-size: 1.1rem; }
+
+@media (min-width: 768px) {
+    .navbar { flex-direction: row; justify-content: space-between; padding: 20px 5%; }
 }
