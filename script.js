@@ -109,7 +109,7 @@ const cars = [
             { name: "Брендон Хартлі", role: "Основний пілот" },
             { name: "Рьо Хіракава", role: "Основний пілот" },
             { name: "Майк Конвей", role: "Основний пілот" }
-        ]
+    ]
     },
     {
         id: 5,
@@ -421,6 +421,27 @@ function init() {
             closeModal();
         }
     });
+    
+    // Оптимізація для ПК - збільшення розмірів карток
+    if (window.innerWidth >= 1024) {
+        // Додаємо CSS для більших карток на ПК
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (min-width: 1024px) {
+                .car-card {
+                    min-height: 500px;
+                }
+                .car-description {
+                    font-size: 1rem;
+                    line-height: 1.7;
+                }
+                .spec-value {
+                    font-size: 1.2rem;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 // Запускаємо ініціалізацію після завантаження сторінки
