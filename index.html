@@ -2,30 +2,45 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <title>WEC Hypercar Database</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEC Hypercars | The Golden Era</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">WEC HYPERCARS</div>
-            <ul>
-                <li><a href="#ferrari">Ferrari</a></li>
-                <li><a href="#porsche">Porsche</a></li>
-                <li><a href="#peugeot">Peugeot</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="hero">
-        <h1>ЕРА ГІПЕРКАРІВ</h1>
-        <p>Швидкість. Технології. Витривалість.</p>
-    </section>
+<div class="bg"></div>
 
-    <main id="cars-container">
-        </main>
+<header class="header">
+    <h1>HYPERCAR DATABASE</h1>
+    <p>Архів прототипів класу Hypercar (WEC)</p>
 
-    <script src="script.js"></script>
+    <input type="text" id="search" placeholder="Пошук автомобіля…">
+
+    <div class="filters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="LMH">LMH</button>
+        <button data-filter="LMDh">LMDh</button>
+        <button data-filter="favorite">⭐ Favorite</button>
+    </div>
+</header>
+
+<main id="gallery" class="gallery"></main>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-box" role="dialog" aria-modal="true">
+        <span class="close">&times;</span>
+        <div id="modal-content"></div>
+    </div>
+</div>
+
+<footer>
+    © WEC Hypercar Archive · Concept UI
+</footer>
+
 </body>
 </html>
