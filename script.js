@@ -1,5 +1,5 @@
 const cars = [
-    // LMH клас
+    // LMH клас (3 авто)
     {
         id: 1,
         name: "Peugeot 9X8",
@@ -85,7 +85,7 @@ const cars = [
         ]
     },
     
-    // LMDh клас
+    // LMDh клас (4 авто)
     {
         id: 4,
         name: "Porsche 963",
@@ -199,7 +199,7 @@ const cars = [
         ]
     },
     
-    // LMGT3 клас
+    // LMGT3 клас (6 авто)
     {
         id: 8,
         name: "Ferrari 296 GT3",
@@ -375,6 +375,7 @@ const gallery = document.getElementById('gallery');
 const modal = document.getElementById('modal');
 const modalData = document.getElementById('modal-data');
 const filterButtons = document.querySelectorAll('.filter-btn');
+const statsBar = document.querySelector('.stats-bar');
 let currentFilter = 'all';
 
 /**
@@ -429,12 +430,12 @@ function renderCars(filter = 'all') {
     
     filteredCars.forEach((car) => {
         const card = document.createElement('div');
-        card.className = 'car-card';
+        card.className = `car-card ${car.class}`;
         card.dataset.id = car.id;
         
         card.innerHTML = `
             <div class="card-header">
-                <div class="car-badge">${car.class}</div>
+                <div class="car-badge ${car.class}">${car.class}</div>
                 <div class="car-icon" style="background: ${car.iconColor}">
                     <i class="${car.icon}"></i>
                 </div>
@@ -493,19 +494,32 @@ function openModal(carId) {
     if (!car) return;
     
     // Визначаємо колір для класу
-    let classColor;
+    let classColor, className;
     switch(car.class) {
-        case 'LMH': classColor = '#f57f20'; break;
-        case 'LMDh': classColor = '#00b3ff'; break;
-        case 'LMGT3': classColor = '#ff2a6d'; break;
-        default: classColor = car.iconColor;
+        case 'LMH': 
+            classColor = '#f57f20'; 
+            className = 'LMH (Le Mans Hypercar)';
+            break;
+        case 'LMDh': 
+            classColor = '#00b3ff'; 
+            className = 'LMDh (Le Mans Daytona hybrid)';
+            break;
+        case 'LMGT3': 
+            classColor = '#ff2a6d'; 
+            className = 'LMGT3 (Le Mans Grand Touring 3)';
+            break;
+        default: 
+            classColor = car.iconColor;
+            className = car.class;
     }
     
     modalData.innerHTML = `
         <div class="modal-header">
             <h2 class="modal-title">${car.name}</h2>
             <div class="modal-subtitle">
-                <span style="color: ${classColor}; font-weight: bold">${car.class}</span>
+                <span class="class-marker ${car.class.toLowerCase()}" style="background: rgba(${parseInt(classColor.slice(1,3), 16)}, ${parseInt(classColor.slice(3,5), 16)}, ${parseInt(classColor.slice(5,7), 16)}, 0.1); color: ${classColor}; border-color: ${classColor}">
+                    ${car.class}
+                </span>
                 <span>•</span>
                 <span>${car.manufacturer}</span>
                 <span>•</span>
@@ -576,17 +590,14 @@ function openModal(carId) {
                 <div class="info-section">
                     <h3 class="section-title"><i class="fas fa-palette"></i> Ідентифікація</h3>
                     <div class="info-text">
-                        Основна ліверія автомобіля виконана в кольорі 
-                        <span style="color: ${car.color}; font-weight: bold">${car.color}</span>.
+                        <p><strong>Клас:</strong> <span style="color: ${classColor}; font-weight: bold">${className}</span></p>
+                        <p><strong>Основний колір:</strong> <span style="color: ${car.color}; font-weight: bold">${car.color}</span></p>
                         <div class="color-palette">
                             <div class="color-item" style="background: ${car.color}" title="Основний колір"></div>
                             <div class="color-item" style="background: #111111" title="Чорний"></div>
                             <div class="color-item" style="background: #ffffff" title="Білий"></div>
                             <div class="color-item" style="background: #333333" title="Сірий"></div>
                         </div>
-                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary)">
-                            <i class="fas fa-info-circle"></i> Клас: <span style="color: ${classColor}">${car.class}</span>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -623,30 +634,13 @@ function initFilters() {
 }
 
 /**
- * Ініціалізація додатку
- */
-function init() {
-    createParticles();
-    renderCars();
-    initFilters();
-    
-    // Закриття модального вікна по ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
-    });
-    
-    // Оновлюємо статистику в шапці
-    updateStats();
-}
-
-/**
  * Оновлення статистики в шапці
  */
 function updateStats() {
-    const statsBar = document.querySelector('.stats-bar');
     if (statsBar) {
+        const totalPilots = cars.reduce((total, car) => total + car.pilots.length, 0);
+        const favoriteCars = cars.filter(car => car.favorite).length;
+        
         statsBar.innerHTML = `
             <div class="stat-item">
                 <div class="stat-value">${cars.length}</div>
@@ -657,14 +651,52 @@ function updateStats() {
                 <div class="stat-label">Класи</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">${cars.reduce((total, car) => total + car.pilots.length, 0)}+</div>
+                <div class="stat-value">${totalPilots}</div>
                 <div class="stat-label">Пілотів</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">2024</div>
-                <div class="stat-label">Сезон</div>
+                <div class="stat-value">${favoriteCars}</div>
+                <div class="stat-label">Обраних</div>
             </div>
         `;
+    }
+}
+
+/**
+ * Ініціалізація додатку
+ */
+function init() {
+    createParticles();
+    renderCars();
+    initFilters();
+    updateStats();
+    
+    // Закриття модального вікна по ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+    
+    // Оптимізація для ПК - збільшення розмірів карток
+    if (window.innerWidth >= 1024) {
+        // Додаємо CSS для більших карток на ПК
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (min-width: 1024px) {
+                .car-card {
+                    min-height: 500px;
+                }
+                .car-description {
+                    font-size: 1rem;
+                    line-height: 1.7;
+                }
+                .spec-value {
+                    font-size: 1.2rem;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
 }
 
