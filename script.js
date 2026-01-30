@@ -1,4 +1,5 @@
 const cars = [
+    // LMH клас
     {
         id: 1,
         name: "Peugeot 9X8",
@@ -57,6 +58,36 @@ const cars = [
     },
     {
         id: 3,
+        name: "Toyota GR010 Hybrid",
+        manufacturer: "Toyota Gazoo Racing",
+        color: "#1e6b94",
+        iconColor: "#1e6b94",
+        icon: "fas fa-bolt",
+        class: "LMH",
+        favorite: true,
+        specs: { 
+            engine: "3.5L V6 Twin-Turbo", 
+            power: "680 HP", 
+            hybrid: "MGU Rear", 
+            weight: "1040 кг",
+            topSpeed: "340 км/год",
+            torque: ">700 Нм",
+            year: "2021"
+        },
+        description: "Наступник TS050 Hybrid, розроблений для нового регламенту Hypercar. GR010 має обмеження потужності до 500 кВт та максимальну вагу 1040 кг.",
+        history: "Наступник TS050 Hybrid, розроблений для нового регламенту Hypercar. Вперше представлений у січні 2021 року. GR010 має обмеження потужності до 500 кВт та максимальну вагу 1040 кг. Гібридна система включає електродвигун на задній осі.",
+        racing: "Дебютував у 2021 році на 6 годинах Спа. Виграв чемпіонат у 2021 та 2022 роках. У 2023 році поступився Ferrari на Ле-Мані. Команда Toyota Gazoo Racing є найуспішнішою у сучасній історії WEC.",
+        pilots: [
+            { name: "Себастьєн Буемі", role: "Основний пілот" },
+            { name: "Брендон Хартлі", role: "Основний пілот" },
+            { name: "Рьо Хіракава", role: "Основний пілот" },
+            { name: "Майк Конвей", role: "Основний пілот" }
+        ]
+    },
+    
+    // LMDh клас
+    {
+        id: 4,
         name: "Porsche 963",
         manufacturer: "Porsche Penske Motorsport",
         color: "#d4af37",
@@ -82,34 +113,6 @@ const cars = [
             { name: "Фредерік Маковіцькі", role: "Основний пілот" },
             { name: "Дейн Кемерон", role: "Основний пілот" }
         ]
-    },
-    {
-        id: 4,
-        name: "Toyota GR010 Hybrid",
-        manufacturer: "Toyota Gazoo Racing",
-        color: "#1e6b94",
-        iconColor: "#1e6b94",
-        icon: "fas fa-bolt",
-        class: "LMH",
-        favorite: true,
-        specs: { 
-            engine: "3.5L V6 Twin-Turbo", 
-            power: "680 HP", 
-            hybrid: "MGU Rear", 
-            weight: "1040 кг",
-            topSpeed: "340 км/год",
-            torque: ">700 Нм",
-            year: "2021"
-        },
-        description: "Наступник TS050 Hybrid, розроблений для нового регламенту Hypercar. GR010 має обмеження потужності до 500 кВт та максимальну вагу 1040 кг.",
-        history: "Наступник TS050 Hybrid, розроблений для нового регламенту Hypercar. Вперше представлений у січні 2021 року. GR010 має обмеження потужності до 500 кВт та максимальну вагу 1040 кг. Гібридна система включає електродвигун на задній осі.",
-        racing: "Дебютував у 2021 році на 6 годинах Спа. Виграв чемпіонат у 2021 та 2022 роках. У 2023 році поступився Ferrari на Ле-Мані. Команда Toyota Gazoo Racing є найуспішнішою у сучасній історії WEC.",
-        pilots: [
-            { name: "Себастьєн Буемі", role: "Основний пілот" },
-            { name: "Брендон Хартлі", role: "Основний пілот" },
-            { name: "Рьо Хіракава", role: "Основний пілот" },
-            { name: "Майк Конвей", role: "Основний пілот" }
-    ]
     },
     {
         id: 5,
@@ -166,6 +169,204 @@ const cars = [
             { name: "Рене Раст", role: "Основний пілот" },
             { name: "Філіп Енг", role: "Основний пілот" }
         ]
+    },
+    {
+        id: 7,
+        name: "Lamborghini SC63",
+        manufacturer: "Lamborghini Iron Lynx",
+        color: "#ffcc00",
+        iconColor: "#ffcc00",
+        icon: "fas fa-bull",
+        class: "LMDh",
+        favorite: false,
+        specs: { 
+            engine: "3.8L V8 Twin-Turbo", 
+            power: "670 HP", 
+            hybrid: "LMDh Standard", 
+            weight: "1030 кг",
+            topSpeed: "338 км/год",
+            torque: "700 Нм",
+            year: "2024"
+        },
+        description: "Перший прототип Lamborghini для гонок на витривалість. Розроблений на базі шасі Ligier. Представляє нову еру для італійського бренду в автоспорті.",
+        history: "Оголошений у 2022 році як перша спроба Lamborghini у вищому дивізіоні витривалості. SC63 названий на честь засновника Ferruccio Lamborghini (SC — його ініціали) та року заснування компанії (1963).",
+        racing: "Дебют відбувся у 2024 році на 24 годинах Дайтони. У WEC планується дебют на 1812 км Катару. Команда Lamborghini Iron Lynx поєднує італійську пристрасть з німецькою інженерією.",
+        pilots: [
+            { name: "Романо Гатті", role: "Основний пілот" },
+            { name: "Мірко Бортолотті", role: "Основний пілот" },
+            { name: "Андреа Кальдареллі", role: "Основний пілот" },
+            { name: "Матео Кресоні", role: "Основний пілот" }
+        ]
+    },
+    
+    // LMGT3 клас
+    {
+        id: 8,
+        name: "Ferrari 296 GT3",
+        manufacturer: "Ferrari AF Corse",
+        color: "#ff2800",
+        iconColor: "#ff2800",
+        icon: "fas fa-horse-head",
+        class: "LMGT3",
+        favorite: true,
+        specs: { 
+            engine: "3.0L V6 Twin-Turbo", 
+            power: "600 HP", 
+            hybrid: "Відсутня", 
+            weight: "1240 кг",
+            topSpeed: "300 км/год",
+            torque: "710 Нм",
+            year: "2023"
+        },
+        description: "Наступник успішної 488 GT3, з новим двигуном V6 з подвійним турбонаддувом. Перший GT3 автомобіль Ferrari з двигуном V6.",
+        history: "Представлений у 2022 році як заміна для 488 GT3. Двигун заснований на дорожній версії Ferrari 296 GTB, але значно модифікований для гоночних потреб. Відрізняється покращеною аеродинамікою та кращим балансом.",
+        racing: "Дебютував у 2023 році в чемпіонаті GT World Challenge Europe. У 2024 році представляє Ferrari у новому класі LMGT3 WEC. Вже здобув перемоги в Daytona 24H та Себрінгу.",
+        pilots: [
+            { name: "Алессіо Ровера", role: "Професійний пілот" },
+            { name: "Роберт Шварцман", role: "Професійний пілот" },
+            { name: "Франческо Кастеллаччі", role: "Пілот-аматор" },
+            { name: "Томас Нойбауер", role: "Професійний пілот" }
+        ]
+    },
+    {
+        id: 9,
+        name: "Porsche 911 GT3 R",
+        manufacturer: "Porsche Motorsport",
+        color: "#000000",
+        iconColor: "#d4af37",
+        icon: "fas fa-car",
+        class: "LMGT3",
+        favorite: false,
+        specs: { 
+            engine: "4.2L Flat-6", 
+            power: "565 HP", 
+            hybrid: "Відсутня", 
+            weight: "1240 кг",
+            topSpeed: "295 км/год",
+            torque: "590 Нм",
+            year: "2023"
+        },
+        description: "Найновіша версія легендарного 911 GT3 R, оптимізована для нового регламенту LMGT3. Зберігає традиційний опозитний двигун без турбонаддуву.",
+        history: "Еволюція успішної лінійки Porsche 911 GT3 R. Версія 2023 року отримала нову аеродинаміку, покращену ефективність гальм та оновлену електроніку. Заснована на дорожньому 911 GT3 RS.",
+        racing: "Один з найпопулярніших GT3 автомобілів у світі. В WEC представляється командами Proton Competition та Manthey Racing. Має багату історію перемог у 24 годинах Ле-Мана та інших престижних гонках.",
+        pilots: [
+            { name: "Кевін Естре", role: "Заводський пілот" },
+            { name: "Рішар Ліц", role: "Заводський пілот" },
+            { name: "Мікаель Кристенсен", role: "Заводський пілот" },
+            { name: "Фред Маковікі", role: "Заводський пілот" }
+        ]
+    },
+    {
+        id: 10,
+        name: "Corvette Z06 GT3.R",
+        manufacturer: "Corvette Racing",
+        color: "#ff4500",
+        iconColor: "#ff4500",
+        icon: "fas fa-flag-usa",
+        class: "LMGT3",
+        favorite: false,
+        specs: { 
+            engine: "5.5L V8", 
+            power: "590 HP", 
+            hybrid: "Відсутня", 
+            weight: "1240 кг",
+            topSpeed: "305 км/год",
+            torque: "650 Нм",
+            year: "2024"
+        },
+        description: "Перший справжній GT3 автомобіль від Corvette, розроблений спеціально для міжнародних змагань замість GTLM. Потужний атмосферний V8 двигун.",
+        history: "Розроблений для переходу Corvette Racing з класу GTLM до нового LMGT3. Представлений у 2023 році. Відрізняється від попередніх Corvette тим, що це перший автомобіль бренду, розроблений відповідно до специфікацій GT3 з нуля.",
+        racing: "Дебютував на 24 годинах Дайтони 2024 року. У WEC представляє Pratt Miller Motorsport. Американський автомобіль з європейською гоночною історією через успіхи в Le Mans GTE Pro.",
+        pilots: [
+            { name: "Антоніо Гарсія", role: "Заводський пілот" },
+            { name: "Джордан Тейлор", role: "Заводський пілот" },
+            { name: "Томмі Мілнер", role: "Заводський пілот" },
+            { name: "Нік Кетсбург", role: "Заводський пілот" }
+        ]
+    },
+    {
+        id: 11,
+        name: "Aston Martin Vantage GT3",
+        manufacturer: "Aston Martin Racing",
+        color: "#00a78e",
+        iconColor: "#00a78e",
+        icon: "fas fa-wings",
+        class: "LMGT3",
+        favorite: true,
+        specs: { 
+            engine: "4.0L V8 Twin-Turbo", 
+            power: "585 HP", 
+            hybrid: "Відсутня", 
+            weight: "1240 кг",
+            topSpeed: "298 км/год",
+            torque: "700 Нм",
+            year: "2024"
+        },
+        description: "Оновлена версія успішного Aston Martin Vantage GT3 з двигуном від Mercedes-AMG. Покращена аеродинаміка та надійність.",
+        history: "Еволюція попередньої версії Vantage GT3, яка виграла чемпіонат світу FIA GT у 2022 році. Версія 2024 року отримала новий передній спліттер, заднє крило та оновлену систему охолодження.",
+        racing: "У WEC представляється командою Heart of Racing. Також бере участь у чемпіонатах IMSA, GT World Challenge та British GT. Має перемоги в 24 годинах Спа та 12 годинах Себрінга.",
+        pilots: [
+            { name: "Росс Ганн", role: "Заводський пілот" },
+            { name: "Алекс Ріберс", role: "Заводський пілот" },
+            { name: "Даррен Тернер", role: "Заводський пілот" },
+            { name: "Марко Серенсен", role: "Заводський пілот" }
+        ]
+    },
+    {
+        id: 12,
+        name: "Ford Mustang GT3",
+        manufacturer: "Ford Multimatic Motorsports",
+        color: "#0033a0",
+        iconColor: "#0033a0",
+        icon: "fas fa-horse",
+        class: "LMGT3",
+        favorite: false,
+        specs: { 
+            engine: "5.4L V8", 
+            power: "580 HP", 
+            hybrid: "Відсутня", 
+            weight: "1240 кг",
+            topSpeed: "302 км/год",
+            torque: "680 Нм",
+            year: "2024"
+        },
+        description: "Повернення Ford до GT-гонок після успіху з GT у 2016-2019 роках. Заснований на дорожньому Mustang Dark Horse, але радикально перероблений для гонок.",
+        history: "Оголошений у 2022 році як частина повернення Ford до витривалості. Розроблений спільно з Multimatic, який також створював Ford GT. Перший Mustang, розроблений для міжнародних GT3 змагань.",
+        racing: "Дебют у 2024 році на 24 годинах Дайтони. У WEC представляється командою Proton Competition. Планується участь у Ле-Мані 2024 року, де Mustang повертається після багаторічної перерви.",
+        pilots: [
+            { name: "Гаррі Тінкнелл", role: "Заводський пілот" },
+            { name: "Енді Прайол", role: "Заводський пілот" },
+            { name: "Джоуї Генд", role: "Заводський пілот" },
+            { name: "Дірк Мюллер", role: "Заводський пілот" }
+        ]
+    },
+    {
+        id: 13,
+        name: "McLaren 720S GT3 Evo",
+        manufacturer: "McLaren Customer Racing",
+        color: "#ff8700",
+        iconColor: "#ff8700",
+        icon: "fas fa-speedometer",
+        class: "LMGT3",
+        favorite: false,
+        specs: { 
+            engine: "4.0L V8 Twin-Turbo", 
+            power: "590 HP", 
+            hybrid: "Відсутня", 
+            weight: "1240 кг",
+            topSpeed: "310 км/год",
+            torque: "700 Нм",
+            year: "2024"
+        },
+        description: "Оновлена версія успішної 720S GT3 з покращеною аеродинамікою, надійністю та ефективністю. Один з найшвидших автомобілів у класі.",
+        history: "Еволюція McLaren 720S GT3, яка дебютувала у 2019 році. Версія Evo представлена у 2023 році з понад 20 оновленнями, включаючи новий передній спліттер, дифузор та систему охолодження.",
+        racing: "У WEC представляється командою United Autosports. Також активно бере участь у GT World Challenge, Intercontinental GT Challenge та IMSA. Відомий своєю швидкістю на прямих ділянках.",
+        pilots: [
+            { name: "Олівер Джавіс", role: "Заводський пілот" },
+            { name: "Джеймс Котінгем", role: "Заводський пілот" },
+            { name: "Брендон Леїч", role: "Професійний пілот" },
+            { name: "Марвін Кірхгофер", role: "Професійний пілот" }
+        ]
     }
 ];
 
@@ -181,7 +382,7 @@ let currentFilter = 'all';
  */
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
-    const particleCount = 40;
+    const particleCount = 50;
     
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -220,6 +421,8 @@ function renderCars(filter = 'all') {
         filteredCars = cars.filter(car => car.class === 'LMH');
     } else if (filter === 'lmdh') {
         filteredCars = cars.filter(car => car.class === 'LMDh');
+    } else if (filter === 'lmgt3') {
+        filteredCars = cars.filter(car => car.class === 'LMGT3');
     } else if (filter === 'favorite') {
         filteredCars = cars.filter(car => car.favorite);
     }
@@ -289,11 +492,20 @@ function openModal(carId) {
     const car = cars.find(c => c.id === carId);
     if (!car) return;
     
+    // Визначаємо колір для класу
+    let classColor;
+    switch(car.class) {
+        case 'LMH': classColor = '#f57f20'; break;
+        case 'LMDh': classColor = '#00b3ff'; break;
+        case 'LMGT3': classColor = '#ff2a6d'; break;
+        default: classColor = car.iconColor;
+    }
+    
     modalData.innerHTML = `
         <div class="modal-header">
             <h2 class="modal-title">${car.name}</h2>
             <div class="modal-subtitle">
-                <span style="color: ${car.iconColor}">${car.class}</span>
+                <span style="color: ${classColor}; font-weight: bold">${car.class}</span>
                 <span>•</span>
                 <span>${car.manufacturer}</span>
                 <span>•</span>
@@ -372,6 +584,9 @@ function openModal(carId) {
                             <div class="color-item" style="background: #ffffff" title="Білий"></div>
                             <div class="color-item" style="background: #333333" title="Сірий"></div>
                         </div>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary)">
+                            <i class="fas fa-info-circle"></i> Клас: <span style="color: ${classColor}">${car.class}</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -422,25 +637,34 @@ function init() {
         }
     });
     
-    // Оптимізація для ПК - збільшення розмірів карток
-    if (window.innerWidth >= 1024) {
-        // Додаємо CSS для більших карток на ПК
-        const style = document.createElement('style');
-        style.textContent = `
-            @media (min-width: 1024px) {
-                .car-card {
-                    min-height: 500px;
-                }
-                .car-description {
-                    font-size: 1rem;
-                    line-height: 1.7;
-                }
-                .spec-value {
-                    font-size: 1.2rem;
-                }
-            }
+    // Оновлюємо статистику в шапці
+    updateStats();
+}
+
+/**
+ * Оновлення статистики в шапці
+ */
+function updateStats() {
+    const statsBar = document.querySelector('.stats-bar');
+    if (statsBar) {
+        statsBar.innerHTML = `
+            <div class="stat-item">
+                <div class="stat-value">${cars.length}</div>
+                <div class="stat-label">Автомобілів</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Класи</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">${cars.reduce((total, car) => total + car.pilots.length, 0)}+</div>
+                <div class="stat-label">Пілотів</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">2024</div>
+                <div class="stat-label">Сезон</div>
+            </div>
         `;
-        document.head.appendChild(style);
     }
 }
 
