@@ -2,45 +2,88 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>WEC Hypercar Database</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>WEC Hypercars | Digital Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
 </head>
 <body>
 
-<div class="bg"></div>
+    <!-- Анімований фон -->
+    <div class="bg-animation"></div>
+    
+    <!-- Частинки -->
+    <div class="particles" id="particles"></div>
 
-<header class="header">
-    <h1>HYPERCAR DATABASE</h1>
-    <p>Архів прототипів класу Hypercar (WEC)</p>
+    <div class="container">
+        <header>
+            <div class="logo">WEC ARCHIVE</div>
+            <h1>HYPERCAR DATABASE</h1>
+            <p class="subtitle">Повний архів гоночних прототипів класу Hypercar чемпіонату світу з витривалості. Технічні характеристики, історія виступів та конструктивні особливості.</p>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Автомобілів</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Класи</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24+</div>
+                    <div class="stat-label">Пілотів</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2024</div>
+                    <div class="stat-label">Сезон</div>
+                </div>
+            </div>
+            
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-layer-group"></i> Усі автомобілі
+                </button>
+                <button class="filter-btn" data-filter="lmh">
+                    <i class="fas fa-flag-checkered"></i> LMH
+                </button>
+                <button class="filter-btn" data-filter="lmdh">
+                    <i class="fas fa-bolt"></i> LMDh
+                </button>
+                <button class="filter-btn" data-filter="favorite">
+                    <i class="fas fa-star"></i> Обрані
+                </button>
+            </div>
+        </header>
 
-    <input type="text" id="search" placeholder="Пошук автомобіля…">
+        <main class="gallery" id="gallery">
+            <!-- Автомобілі будуть додані через JavaScript -->
+        </main>
 
-    <div class="filters">
-        <button data-filter="all" class="active">All</button>
-        <button data-filter="LMH">LMH</button>
-        <button data-filter="LMDh">LMDh</button>
-        <button data-filter="favorite">⭐ Favorite</button>
+        <footer>
+            <div class="footer-logo">WEC HYPERCAR DB</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Про проект</a>
+                <a href="#" class="footer-link">Методологія</a>
+                <a href="#" class="footer-link">Джерела</a>
+                <a href="#" class="footer-link">Контакти</a>
+                <a href="#" class="footer-link">Підтримка</a>
+            </div>
+            <p>База даних WEC Hypercar © 2023-2024. Всі права захищено.</p>
+            <p class="copyright">Цей сайт є навчальним проектом та не пов'язаний з офіційними організаціями WEC або FIA.</p>
+        </footer>
     </div>
-</header>
 
-<main id="gallery" class="gallery"></main>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <div class="modal-box" role="dialog" aria-modal="true">
-        <span class="close">&times;</span>
-        <div id="modal-content"></div>
+    <!-- Модальне вікно -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modal-data"></div>
+        </div>
     </div>
-</div>
 
-<footer>
-    © WEC Hypercar Archive · Concept UI
-</footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
