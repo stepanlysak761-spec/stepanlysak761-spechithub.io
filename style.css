@@ -14,6 +14,11 @@
     --success: #2ecc71;
     --warning: #f39c12;
     --danger: #e74c3c;
+    
+    /* Кольори класів */
+    --lmh-color: #f57f20;
+    --lmdh-color: #00b3ff;
+    --lmgt3-color: #ff2a6d;
 }
 
 * {
@@ -109,7 +114,7 @@ h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     letter-spacing: 3px;
-    background: linear-gradient(90deg, var(--text-primary), var(--primary), var(--secondary));
+    background: linear-gradient(90deg, var(--text-primary), var(--primary), var(--secondary), var(--accent));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -189,11 +194,46 @@ h1 {
     gap: 8px;
 }
 
-.filter-btn:hover, .filter-btn.active {
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
     background: rgba(245, 127, 32, 0.1);
     border-color: var(--primary);
     color: var(--primary);
     transform: translateY(-2px);
+}
+
+.filter-btn[data-filter="lmh"]:hover,
+.filter-btn[data-filter="lmh"].active {
+    background: rgba(245, 127, 32, 0.1);
+    border-color: var(--lmh-color);
+    color: var(--lmh-color);
+}
+
+.filter-btn[data-filter="lmdh"]:hover,
+.filter-btn[data-filter="lmdh"].active {
+    background: rgba(0, 179, 255, 0.1);
+    border-color: var(--lmdh-color);
+    color: var(--lmdh-color);
+}
+
+.filter-btn[data-filter="lmgt3"]:hover,
+.filter-btn[data-filter="lmgt3"].active {
+    background: rgba(255, 42, 109, 0.1);
+    border-color: var(--lmgt3-color);
+    color: var(--lmgt3-color);
+}
+
+.filter-btn[data-filter="favorite"]:hover,
+.filter-btn[data-filter="favorite"].active {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: var(--success);
+    color: var(--success);
 }
 
 /* Галерея */
@@ -234,14 +274,31 @@ h1 {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(245, 127, 32, 0.1);
-    color: var(--primary);
     font-size: 0.8rem;
     font-weight: 700;
     padding: 5px 15px;
     border-radius: 30px;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* Кольори бейджів для класів */
+.car-badge.LMH {
+    background: rgba(245, 127, 32, 0.1);
+    color: var(--lmh-color);
+    border: 1px solid rgba(245, 127, 32, 0.3);
+}
+
+.car-badge.LMDh {
+    background: rgba(0, 179, 255, 0.1);
+    color: var(--lmdh-color);
+    border: 1px solid rgba(0, 179, 255, 0.3);
+}
+
+.car-badge.LMGT3 {
+    background: rgba(255, 42, 109, 0.1);
+    color: var(--lmgt3-color);
+    border: 1px solid rgba(255, 42, 109, 0.3);
 }
 
 .car-name {
@@ -614,6 +671,34 @@ footer {
     color: var(--text-muted);
 }
 
+/* Класові маркери в модальному вікні */
+.class-marker {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.class-marker.lmh {
+    background: rgba(245, 127, 32, 0.1);
+    color: var(--lmh-color);
+    border: 1px solid rgba(245, 127, 32, 0.3);
+}
+
+.class-marker.lmdh {
+    background: rgba(0, 179, 255, 0.1);
+    color: var(--lmdh-color);
+    border: 1px solid rgba(0, 179, 255, 0.3);
+}
+
+.class-marker.lmgt3 {
+    background: rgba(255, 42, 109, 0.1);
+    color: var(--lmgt3-color);
+    border: 1px solid rgba(255, 42, 109, 0.3);
+}
+
 /* Оптимізація для ПК */
 @media (min-width: 1024px) {
     .container {
@@ -716,5 +801,34 @@ footer {
     
     .modal-title {
         font-size: 1.8rem;
+    }
+}
+
+/* Спеціальні стилі для різних класів в картках */
+.car-card.LMH:hover {
+    border-color: var(--lmh-color);
+}
+
+.car-card.LMDh:hover {
+    border-color: var(--lmdh-color);
+}
+
+.car-card.LMGT3:hover {
+    border-color: var(--lmgt3-color);
+}
+
+/* Додаткові стилі для кращого відображення на ПК */
+@media (min-width: 1024px) {
+    .car-card {
+        min-height: 500px;
+    }
+    
+    .car-description {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .spec-value {
+        font-size: 1.2rem;
     }
 }
