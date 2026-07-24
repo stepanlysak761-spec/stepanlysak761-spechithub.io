@@ -4,8 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanillora — Minecraft Vanilla+ Збірка</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --accent-green: #22c55e;
+            --accent-glow: rgba(34, 197, 94, 0.2);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-color: #1f2937;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding-top: 80px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 15px 20px;
+        }
+
+        nav ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-green);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 100px;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h1, h2 {
+            color: var(--accent-green);
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
+
     <nav>
         <ul>
             <li><a href="#home">Головна</a></li>
@@ -22,16 +109,37 @@
     </nav>
 
     <main>
-        <section id="home"><h1>Головна</h1></section>
-        <section id="about"><h2>Про збірку</h2></section>
-        <section id="features"><h2>Особливості</h2></section>
-        <section id="requirements"><h2>Системні Вимоги</h2></section>
-        <section id="roadmap"><h2>Road Map</h2></section>
-        <section id="changelog"><h2>Changelog</h2></section>
-        <section id="faq"><h2>FAQ</h2></section>
-        <section id="report"><h2>Повідомити про помилку</h2></section>
-        <section id="author"><h2>Про автора</h2></section>
-        <section id="stats"><h2>Статистика</h2></section>
+        <section id="home"><h1>Головна</h1><p>Ласкаво просимо на сайт збірки Vanillora!</p></section>
+        <section id="about"><h2>Про збірку</h2><p>Тут буде опис проєкту...</p></section>
+        <section id="features"><h2>Особливості</h2><p>Тут будуть особливості...</p></section>
+        <section id="requirements"><h2>Системні Вимоги</h2><p>Тут будуть вимоги...</p></section>
+        <section id="roadmap"><h2>Road Map</h2><p>Тут буде план розвитку...</p></section>
+        <section id="changelog"><h2>Changelog</h2><p>Тут будуть оновлення...</p></section>
+        <section id="faq"><h2>FAQ</h2><p>Тут будуть часті запитання...</p></section>
+        <section id="report"><h2>Повідомити про помилку</h2><p>Тут буде форма зв'язку...</p></section>
+        <section id="author"><h2>Про автора</h2><p>Тут буде інформація про тебе...</p></section>
+        <section id="stats"><h2>Статистика</h2><p>Тут буде статистика...</p></section>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
