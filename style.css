@@ -1,11 +1,11 @@
 :root {
-    --bg-color: #0b0f19;
-    --card-bg: #111827;
+    --bg-color: #07090e;
+    --card-bg: rgba(17, 24, 39, 0.7);
+    --card-border: rgba(255, 255, 255, 0.08);
     --accent-green: #22c55e;
-    --accent-glow: rgba(34, 197, 94, 0.2);
-    --text-main: #f9fafb;
+    --accent-glow: rgba(34, 197, 94, 0.3);
+    --text-main: #f3f4f6;
     --text-muted: #9ca3af;
-    --border-color: #1f2937;
 }
 
 * {
@@ -18,67 +18,103 @@
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--bg-color);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
     color: var(--text-main);
     line-height: 1.7;
-    padding-top: 80px;
+    padding-top: 100px;
 }
 
+/* Сучасна скляна нав-бар панель */
 nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(17, 24, 39, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1300px;
+    background: rgba(11, 15, 25, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
     z-index: 1000;
-    padding: 15px 20px;
+    padding: 12px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 nav ul {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     list-style: none;
-    gap: 20px;
+    gap: 16px;
 }
 
 nav a {
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    transition: color 0.2s;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
 }
 
 nav a:hover {
     color: var(--accent-green);
+    background: rgba(34, 197, 94, 0.1);
+    text-shadow: 0 0 10px var(--accent-glow);
 }
 
+/* Головний контейнер */
 main {
-    max-width: 900px;
-    margin: 20px auto;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 50px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    max-width: 1000px;
+    margin: 0 auto 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
 }
 
+/* Картки секцій у стилі Neumorphism / Glassmorphism */
 section {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border-color);
-    scroll-margin-top: 100px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    scroll-margin-top: 110px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-section:last-child {
-    border-bottom: none;
+section:hover {
+    border-color: rgba(34, 197, 94, 0.3);
 }
 
 h1, h2 {
-    color: var(--accent-green);
+    color: var(--text-main);
+    font-size: 1.8rem;
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h1::before, h2::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 24px;
+    background: var(--accent-green);
+    border-radius: 4px;
+    box-shadow: 0 0 12px var(--accent-green);
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1rem;
 }
