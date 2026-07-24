@@ -1,4 +1,3 @@
-// Плавний скрол для навігації та додаткові інтерактивні функції
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a');
 
